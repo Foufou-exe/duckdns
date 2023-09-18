@@ -9,7 +9,7 @@ export default {
   },
   plugins: [require("daisyui")],
   daisyui: {
-    themes: ["aqua", "night"],
+    themes: ["night","winter"],
   },
 }
 
