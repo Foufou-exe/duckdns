@@ -2,7 +2,6 @@
   <div>
     <Navbar />
     <main>
-
     </main>
     <Footer />
   </div>

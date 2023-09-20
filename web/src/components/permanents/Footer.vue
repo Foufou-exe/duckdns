@@ -1,7 +1,15 @@
 <template>
     <footer class="footer p-10 text-base-content absolute bottom-0 left-0 right-0">
         <aside>
-            <img src="/duck.png" class="w-14 mr-2" />
+            <label class="swap swap-flip">
+  
+                <!-- this hidden checkbox controls the state -->
+                <input type="checkbox" />
+                
+                <div class="swap-on"><img src="/duckdns.png" class="w-14 mr-2" /></div>
+                <div class="swap-off"><img src="/duck.png" class="w-14 mr-2" /></div>
+            </label>
+            <!-- <img src="/duck.png" class="w-14 mr-2" /> -->
             <p>Duck DNS<br/>Providing reliable tech since 2013</p>
         </aside> 
         <nav>
@@ -17,10 +25,10 @@
                     <img src="/images/paypal.png" class="mr-2 w-48" />
                 </a>
                 <a href="bitcoin:16gHnv3NTjpF5ZavMi9QYBFxUkNchdicUS" class="link link-hover lg:tooltip lg:tooltip-open lg:tooltip-bottom" data-tip="Donate with Bitcoin">
-                    <img src="/images/bitcoins.png" class="mr-2 w-56" />
+                    <img src="/images/bitcoins.png" class="mr-2 w-48 rounded" />
                 </a>
                 <a href="https://www.patreon.com/user?u=3209735&ty=h&u=3209735" class="link link-hover lg:tooltip lg:tooltip-open lg:tooltip-bottom" data-tip="Donate with Patreon">
-                    <img src="/images/patreon.png" class="mr-2 w-56" />
+                    <img src="/images/patreon.png" class="mr-2 w-48" />
                 </a>
             </div>
         </nav>
