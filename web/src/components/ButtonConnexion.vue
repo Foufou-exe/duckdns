@@ -1,3 +1,4 @@
+
 <template>
     <!-- INFO : Modal clique -->
     <button onclick="login.showModal()" class="btn btn-active btn-secondary ml-2 text-white">
@@ -13,9 +14,12 @@
             <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
         </form>
         <h3 class="font-extrabold text-2xl flex justify-center mb-8">Login/Sign up</h3>
+        
         <ButtonPersona />
         <!-- Divison in two partie -->
         <div class="divider">OR</div>
+
+
         <ButtonGithub />
         <ButtonGoogle />
         <ButtonTwitter />
@@ -28,20 +32,17 @@
 </template>
 
 <script>
-import ButtonPersona from './persona/ButtonPersona.vue';
-import ButtonReddit from './reddit/ButtonReddit.vue';
-import ButtonTwitter from './twitter/ButtonTwitter.vue';
-import ButtonGithub from './github/ButtonGithub.vue';
-import ButtonGoogle from './google/ButtonGoogle.vue';
 
 export default {
     name: 'ButtonConnexion',
-    components: {
-        ButtonPersona,
-        ButtonReddit,
-        ButtonTwitter,
-        ButtonGithub,
-        ButtonGoogle
-    }
 }
+</script>
+
+<script setup>
+import ButtonPersona from './ModelsConnexion/ButtonPersona.vue';
+import ButtonReddit from './ModelsConnexion/ButtonReddit.vue';
+import ButtonTwitter from './ModelsConnexion/ButtonTwitter.vue';
+import ButtonGithub from './ModelsConnexion/ButtonGithub.vue';
+import ButtonGoogle from './ModelsConnexion/ButtonGoogle.vue';
+
 </script>

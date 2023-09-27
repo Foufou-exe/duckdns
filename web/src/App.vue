@@ -1,22 +1,23 @@
 <template>
-  <div>
     <Navbar />
-    <main>
-    </main>
+    <div class="flex min-h-screen items-center justify-center">
+      <router-view>
+
+      </router-view>
+    </div>
     <Footer />
-  </div>
+
 </template>
 
 <script>
-  // Import components permanently
-  import Navbar from './components/permanents/Navbar.vue'
-  import Footer from './components/permanents/Footer.vue'
-
-
   export default {
-    components: {
-      Navbar,
-      Footer
-    }
+    name: 'App',
   }
+</script>
+
+<script setup>
+  // Import components permanently
+  import Navbar from './components/Layout/Navbar.vue'
+  import Footer from './components/Layout/Footer.vue'
+  import { RouterView } from 'vue-router'
 </script>
