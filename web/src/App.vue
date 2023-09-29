@@ -1,9 +1,11 @@
 <template>
     <Navbar />
     <div class="flex min-h-screen items-center justify-center">
-      <router-view>
+      <div class="max-w-3xl mx-auto mt-5 p-5">
+        <router-view>
 
-      </router-view>
+        </router-view>
+      </div>
     </div>
     <Footer />
 
