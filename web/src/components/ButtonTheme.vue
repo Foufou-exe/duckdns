@@ -1,5 +1,5 @@
 <template>
-<label class="swap swap-rotate">
+<label class="swap swap-rotate mr-3">
 
     <!-- this hidden checkbox controls the state -->
     <input type="checkbox" v-model="isNightMode" @change="toggleTheme" />
