@@ -44,10 +44,10 @@
         </ul>
       </details>
 
-      <div class="btn btn-ghost">
+      <a class="btn btn-ghost" href="/">
         <img src="duck.png" class="w-10 h-10" />
         <a class="text-3xl font-extrabold hidden md:block">Duck DNS</a>
-      </div>
+      </a>
     </div>
 
 
