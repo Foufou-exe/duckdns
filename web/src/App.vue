@@ -3,7 +3,6 @@
       <div class="flex min-h-screen items-center justify-center">
         <div class="max-w-3xl mx-auto mt-5 p-5">
           <router-view>
-            <component :is="currentRouteComponent"></component>
           </router-view>
         </div>
       </div>

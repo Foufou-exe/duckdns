@@ -5,7 +5,7 @@
     <h3 class="font-bold">News for Reddit !</h3>
     <div class="text-xs">Login with Reddit is no more - Legal request</div>
   </div>
-  <button class="btn btn-sm btn-ghost">Link News</button>
+  <router-link :to="{ name: 'NewsReddit' }" class="btn btn-sm btn-ghost">Link News</router-link>
 </div>
 
 </template>

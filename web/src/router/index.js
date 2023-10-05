@@ -46,6 +46,19 @@ const router = createRouter({
             path: '/documentation',
             name: 'documentation',
             component: () => import('../views/Documentation.vue')
+        },
+        {
+            // Redirection for News
+            path: '/news',
+            component: () => import('../views/News.vue'),
+            children: [
+                {
+                    // Redirection news page Reddit
+                    path: 'NewsReddit',
+                    name: 'NewsReddit',
+                    component: () => import('../components/News/NewsReddit.vue')
+                }
+            ],
         }
 
     ]

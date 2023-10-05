@@ -33,6 +33,6 @@ export default {
 </script>
 
 <script setup>
-import NewsHome from '../News/NewsHome.vue';
+import NewsHome from './NewsHome.vue';
 </script>
 
