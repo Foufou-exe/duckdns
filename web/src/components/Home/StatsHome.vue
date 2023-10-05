@@ -4,9 +4,7 @@
 </template>
 
 <script>
-
 export default {
-    name: 'IntroHome',
-}
-
+  name: 'StatsHome',
+};
 </script>

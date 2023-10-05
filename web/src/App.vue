@@ -3,7 +3,7 @@
       <div class="flex min-h-screen items-center justify-center">
         <div class="max-w-3xl mx-auto mt-5 p-5">
           <router-view>
-
+            <component :is="currentRouteComponent"></component>
           </router-view>
         </div>
       </div>
@@ -27,31 +27,33 @@
 
 
 <style>
-/* Styles de base de la barre de défilement */
+/* Basic scrollbar styles */
 ::-webkit-scrollbar {
     width: 10px;
     height: 10px;
 }
 
-/* Track de la barre de défilement */
+/* Scrollbar track */
 ::-webkit-scrollbar-track {
     background: #f1f1f1; 
     border-radius: 4px;
 }
 
-/* Poignée de la barre de défilement */
+/* Scrollbar handle */
 ::-webkit-scrollbar-thumb {
     background-color: #ccc; 
     border-radius: 4px;
 }
 
-/* Lorsque la souris survole la poignée de la barre de défilement */
+/* When mouse hovers over scrollbar handle */
 ::-webkit-scrollbar-thumb:hover {
     background-color: #b0b0b0; 
 }
 
+/* Scrollbar style for light theme */
+
 [data-theme='light'] {
-    --scrollbar-thumb: #ccc;
+    --scrollbar-thumb: hsl(var(--s));
     --scrollbar-track: #f1f1f1;
     --scrollbar-thumb-hover: #b0b0b0;
 }
@@ -68,8 +70,12 @@
     background-color: var(--scrollbar-thumb-hover);
 }
 
+
+
+/* Scrollbar style for dark theme */
+
 [data-theme='night'] {
-    --scrollbar-thumb: #444;
+    --scrollbar-thumb: hsl(var(--s));
     --scrollbar-track: #222;
     --scrollbar-thumb-hover: #666;
 }

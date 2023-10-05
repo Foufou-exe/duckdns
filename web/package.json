@@ -14,9 +14,11 @@
     "@fortawesome/free-regular-svg-icons": "^6.4.2",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/vue-fontawesome": "^3.0.3",
+    "@lottiefiles/vue-lottie-player": "^1.1.0",
     "theme-change": "^2.5.0",
     "vue": "^3.3.4",
-    "vue-router": "^4.0.13"
+    "vue-router": "^4.0.13",
+    "vue3-lottie": "^3.1.0"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.10",
