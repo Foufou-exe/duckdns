@@ -15,6 +15,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/vue-fontawesome": "^3.0.3",
     "@lottiefiles/vue-lottie-player": "^1.1.0",
+    "pinia": "^2.1.6",
     "theme-change": "^2.5.0",
     "vue": "^3.3.4",
     "vue-router": "^4.0.13",

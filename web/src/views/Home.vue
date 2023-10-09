@@ -1,11 +1,11 @@
 <template>
-    <IntroHome />
-    <StatsHome />
-    <SectionHomeWhy />
+    <HomeTextWelcome />
+    <HomeStatistiques />
+    <HomeTextWhy />
 </template>
 
 <script setup>
-import SectionHomeWhy from '../components/Home/SectionHomeWhy.vue';
-import IntroHome from '../components/Home/IntroHome.vue';
-import StatsHome from '../components/Home/StatsHome.vue';
+import HomeTextWhy from '@/components/HomeTextWhy.vue';
+import HomeTextWelcome from '@/components/HomeTextWelcome.vue';
+import HomeStatistiques from '@components/HomeStatistiques.vue'
 </script>

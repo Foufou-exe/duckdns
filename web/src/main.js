@@ -1,35 +1,20 @@
-// Import the main component
-import { createApp } from 'vue'
-// Import CSS file
-import './app.css'
-// Import Vue Main Component
+// Vue Main Component
 import App from './App.vue'
-// Import Vue Router
-import router from './router' 
 
+// Composant Vue
+import { createApp } from 'vue'
 
-// Import Icones  : "Font Awesome"
-import { library, dom } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { fas } from '@fortawesome/free-solid-svg-icons';
-import { fab } from '@fortawesome/free-brands-svg-icons';
-import { far } from '@fortawesome/free-regular-svg-icons';
+// CSS
+import './app.css'
 
-// Import Lottie
-import Vue3Lottie from 'vue3-lottie'
+// CSS Personnalisé
+import '@styles/scrollbar.css'
 
-// Add the imported icons to the library
-library.add(fas, far, fab)
-// Tell FontAwesome to watch the DOM and add the SVGs when it detects icon markup
-dom.watch();
+// Plugins
+import { RegisterPlugins } from '@/plugins'
 
-// Create a Vue application
-createApp(App)
-    // Register the router instance 
-    .use(router)
-    // Register the lottie component globally
-    .use(Vue3Lottie)
-    // Register the component globally
-    .component("font-awesome-icon", FontAwesomeIcon)
-    .mount('#app')
+const app = createApp(App)
 
+RegisterPlugins(app)
+
+app.mount('#app')
