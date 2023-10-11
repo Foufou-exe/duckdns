@@ -1,89 +1,193 @@
 <template>
-HTTP API Specification
-The update URL can be requested on HTTPS or HTTP. It is recommended that you always use HTTPS
-We provide HTTP services for unfortunate users that have HTTPS blocked
-You can update your domain(s) with a single HTTPS get to DuckDNS
+<div>
+    <h1 class="text-4xl font-extrabold mb-5">Specification</h1>
+    <h3 class="text-3xl font-bold mb-5">HTTP API</h3>
+    <p>
+        The update URL can be requested on HTTPS or HTTP. It is recommended that you always use HTTPS .<br>
+        We provide HTTP services for unfortunate users that have HTTPS blocked . <br><br>
+
+        You can update your domain(s) with a single HTTPS get to DuckDNS :<br><br>
+    </p>
 
 https://www.duckdns.org/update?domains={YOURVALUE}&token={YOURVALUE}[&ip={YOURVALUE}][&ipv6={YOURVALUE}][&verbose=true][&clear=true]
-The domain can be a single domain - or a comma separated list of domains.
-The domain does not need to include the .duckdns.org part of your domain, just the subname.
-If you do not specify the IP address, then it will be detected - this only works for IPv4 addresses
-You can put either an IPv4 or an IPv6 address in the ip parameter
-If you want to update BOTH of your IPv4 and IPv6 records at once, then you can use the optional parameter ipv6
-to clear both your records use the optional parameter clear=true
-A normal good response is
 
-OK
-A normal bad response is
+    <p>
+        <br>
+        The domain can be a single domain - or a comma separated list of domains.<br><br>
+        The domain does not need to include the .duckdns.org part of your domain, just the subname.<br>
+        If you do not specify the IP address, then it will be detected - this only works for IPv4 addresses .<br>
+        You can put either an IPv4 or an IPv6 address in the <b>ip parameter</b><br>
+        If you want to update BOTH of your IPv4 and IPv6 records at once, then you can use the optional parameter ipv6 to clear both your records use the optional parameter <b>clear=true</b> .
+        <br><br>
+        A normal good response is :
+    </p>
+    <br>
+    <div class="mockup-code">
+        <pre data-prefix="$" class="text-success"><code>OK</code></pre>
+    </div>
+    <br><br>
+    <p>A normal bad response is :</p>
+    <br>
+    <div class="mockup-code">
+        <pre data-prefix="$" class="text-error"><code>KO</code></pre>
+    </div>
+    <br>
+    <p>If you add the <b>&verbose=true</b> parameter to your request, then OK responses have more information :</p>
+    <br>
+    <div class="mockup-code">
+    <pre data-prefix="$" class="text-success"><code>OK</code></pre> 
+    <pre data-prefix=">" ><code>127.0.0.2 <i>[The current IP address for your update - can be blank]</i></code></pre>
+    <pre data-prefix=">" ><code>2002:DB7::21f:5bff:febf:ce22:8a2e <i>[The current IPV6 address for your update - can be blank]</i></code></pre>
+    <pre data-prefix=">" class="text-warning"><code>UPDATED [UPDATED or NOCHANGE]</code></pre>
+    </div>
 
-KO
-if you add the &verbose=true parameter to your request, then OK responses have more information
+    <br><br>
+    <h4 class="text-2xl font-bold mb-5">HTTP Parameters</h4>
 
-OK
-127.0.0.2 [The current IP address for your update - can be blank]
-2002:DB7::21f:5bff:febf:ce22:8a2e [The current IPV6 address for your update - can be blank]
-UPDATED [UPDATED or NOCHANGE]
-HTTP Parameters
-domains - REQUIRED - comma separated list of the subnames you want to update
-token - REQUIRED - your account token
-ip - OPTIONAL - if left blank we detect IPv4 addresses, if you want you can supply a valid IPv4 or IPv6 address
-ipv6 - OPTIONAL - a valid IPv6 address, if you specify this then the autodetection for ip is not used
-verbose - OPTIONAL - if set to true, you get information back about how the request went
-clear - OPTIONAL - if set to true, the update will ignore all ip's and clear both your records
-
-
-
-
-Special no-parameter request format
-Some very basic routers can only make requests without parameters
-For these requirements the following request is possible
-
-https://duckdns.org/update/{YOURDOMAIN}/{YOURTOKEN}[/{YOURIPADDRESS}]
-Restrictions
-YOURDOMAIN - REQUIRED - only a single subdomain
-YOURTOKEN - REQUIRED - your account token
-YOURIPADDRESS - OPTIONAL - if left blank we detect IPv4 addresses, if you want to over-ride this, with a valid IPv4 or IPv6 address
+    <ul class="mb-5 list-disc list-inside">
+        <li>
+            <font-awesome-icon icon="triangle-exclamation" /> <a class="text-red">REQUIRED</a> : <b>Domains</b> / Comma separated list of the subnames you want to update.
+        </li>
+        <li>
+            <font-awesome-icon icon="triangle-exclamation" /> REQUIRED : <b>Token</b> / your account token.
+        </li>
+        <li>
+             <i>OPTIONAL</i> : <b>IP</b>  /if left blank we detect IPv4 addresses, if you want you can supply a valid IPv4 or IPv6 address.
+        </li>
+        <li>
+            <i>OPTIONAL</i> :  <b>Ipv6</b>  / a valid IPv6 address, if you specify this then the autodetection for ip is not used.
+        </li>
+        <li>
+             <i>OPTIONAL</i> : <b>Verbose</b>  / if set to true, you get information back about how the request went.
+        </li>
+        <li>
+             <i>OPTIONAL</i> : <b>Clear</b> / if set to true, the update will ignore all ip's and clear both your records.
+        </li>
+    </ul>
 
 
+    <h3 class="text-2xl font-bold mb-5">Special no-parameter request format</h3>
+
+    <p>
+        Some very basic routers can only make requests without parameters .
+        <br><br>
+        For these requirements the following request is possible :
+        <br><br>
+    </p>
+
+    <div class="mockup-code">
+        <pre data-prefix="$" class="text-success"><code>https://duckdns.org/update/{<b class="text-warning">YOURDOMAIN</b>}/{<b class="text-warning">YOURTOKEN</b>}[/{<b class="text-warning">YOURIPADDRESS</b>}]</code></pre>
+    </div>
+
+    <br><br>
+
+    <h3 class="text-2xl font-bold mb-5">Restrictions</h3>
+    <ul class="mb-5 list-disc list-inside">
+        <li>
+            <font-awesome-icon icon="triangle-exclamation" /> <a class="text-red">REQUIRED</a> : <b>YOURDOMAIN</b> / only a single subdomain.
+        </li>
+        <li>
+            <font-awesome-icon icon="triangle-exclamation" /> REQUIRED : <b>YOURTOKEN</b> / your account token.
+        </li>
+        <li>
+             <i>OPTIONAL</i> : <b>YOURIPADDRESS</b>  / if left blank we detect IPv4 addresses, if you want to over-ride this, with a valid IPv4 or IPv6 address.
+        </li>
+    </ul>
 
 
-TXT Record API
-The TXT update URL can be requested on HTTPS or HTTP. It is recommended that you always use HTTPS
-We provide HTTP services for unfortunate users that have HTTPS blocked
-You can update your domain(s) TXT record with a single HTTPS get to DuckDNS
-your TXT record will apply to all sub-subdomains under your domain e.g. xxx.yyy.duckdns.org shares the same TXT record as yyy.duckdns.org
+    <h3 class="text-2xl font-bold mb-5">TXT Record API</h3>
 
-https://www.duckdns.org/update?domains={YOURVALUE}&token={YOURVALUE}&txt={YOURVALUE}[&verbose=true][&clear=true]
-The domain can be a single domain - or a comma separated list of domains.
-The domain does not need to include the .duckdns.org part of your domain, just the subname.
-to clear the TXT value of your records use the optional parameter clear=true
-A normal good response is
+    <p>
+        The TXT update URL can be requested on HTTPS or HTTP. It is recommended that you always use HTTPS . <br>
+        We provide HTTP services for unfortunate users that have HTTPS blocked .<br><br>
 
-OK
-A normal bad response is
+        You can update your domain(s) TXT record with a single HTTPS get to DuckDNS .<br><br>
+        Your TXT record will apply to all sub-subdomains under your domain e.g. <b>xxx.yyy.duckdns.org</b> shares the same TXT record as <b>yyy.duckdns.org</b> :<br><br>
+    </p>
 
-KO
-if you add the &verbose=true parameter to your request, then OK responses have more information
+    <div class="mockup-code">
+        <pre data-prefix="$"><code>https://www.duckdns.org/update?domains={<b class="text-warning">YOURVALUE</b>}&token={<b class="text-warning">YOURVALUE</b>}&txt={<b class="text-warning">YOURVALUE</b>}[<b class="text-warning">&verbose=true</b>][<b class="text-warning">&clear=true</b>]</code></pre>
+    </div>
 
-OK
-sometxt=thistext [The current TXT record for your update - can be blank]
-UPDATED [UPDATED or NOCHANGE]
-HTTP Parameters
-domains - REQUIRED - comma separated list of the subnames you want to update
-token - REQUIRED - your account token
-txt - REQUIRED - the txt you require
-verbose - OPTIONAL - if set to true, you get information back about how the request went
-clear - OPTIONAL - if set to true, the update will ignore the txt parameter and clear the txt record
+    <br><br>
 
-Note that the TXT record does not show up in the WEB interface
-You can use online web based Dig tools to query your record
-https://www.digwebinterface.com/?hostnames=test.duckdns.org&type=TXT&ns=resolver&useresolver=8.8.4.4
-To see your TXT record on linux or osx you can query DNS directly
+    <p>
+        The domain can be a single domain - or a comma separated list of domains. <br><br>
+        The domain does not need to include the .duckdns.org part of your domain, just the subname.<br><br>
+        To clear the TXT value of your records use the optional parameter <b>clear=true</b> .<br><br>
+    </p>
 
-dig test.duckdns.org TXT
-As stated before, this record will be also presented for any sub-subdomain queries
+    <p>A normal good response is :</p>
+    <br>
+    <div class="mockup-code">
+        <pre data-prefix="$" class="text-success"><code>OK</code></pre>
+    </div>
+    <br>
+    <p>A normal bad response is:</p>
+    <br>
+    <div class="mockup-code">
+        <pre data-prefix="$" class="text-error"><code>KO</code></pre>
+    </div>
 
-dig test.test.duckdns.org TXT
-This can be used for example to prove your ownership with letsencrypt.org
-    
+    <br><br>
+    <p>If you add the <b>&verbose=true</b> parameter to your request, then OK responses have more information :</p>
+    <br>
+    <div class="mockup-code">
+    <pre data-prefix="$" class="text-success"><code>OK</code></pre> 
+    <pre data-prefix=">" ><code>sometxt=thistext [The current TXT record for your update - can be blank]</code></pre> 
+    <pre data-prefix=">" ><code>UPDATED [UPDATED or NOCHANGE]</code></pre>
+    </div>
+
+    <br><br>
+
+    <h3 class="text-2xl font-bold mb-5">HTTP Parameters</h3>
+
+    <ul class="mb-5 list-disc list-inside">
+        <li>
+            <font-awesome-icon icon="triangle-exclamation" /> <a class="text-red">REQUIRED</a> : <b>Domains</b> / Comma separated list of the subnames you want to update.
+        </li>
+        <li>
+            <font-awesome-icon icon="triangle-exclamation" /> REQUIRED : <b>Token</b> / your account token.
+        </li>
+        <li>
+            <font-awesome-icon icon="triangle-exclamation" /> REQUIRED : <b>Txt</b>  / if left blank we detect IPv4 addresses, if you want you can supply a valid IPv4 or IPv6 address.
+        </li>
+        <li>
+             <i>OPTIONAL</i> : <b>Verbose</b>  / if set to true, you get information back about how the request went.
+        </li>
+        <li>
+             <i>OPTIONAL</i> : <b>Clear</b> / if set to true, the update will ignore the txt parameter and clear the txt record.
+        </li>
+    </ul>
+
+    <i>TODO : Note that the TXT record does not show up in the WEB interface </i>
+    <br><br>
+
+    <p>
+        You can use online web based Dig tools to query your record :
+        <br><br>
+        <a href="https://www.digwebinterface.com/?hostnames=test.duckdns.org&type=TXT&ns=resolver&useresolver=8.8.4.4"  class="link">https://www.digwebinterface.com/?hostnames=test.duckdns.org&type=TXT&ns=resolver&useresolver=8.8.4.4</a>
+        <br><br>
+        To see your TXT record on linux or osx you can query DNS directly :
+        <br><br>
+        <div class="mockup-code">
+            <pre data-prefix="$"><code>dig test.duckdns.org TXT</code></pre>
+        </div>
+        <br>
+        As stated before, this record will be also presented for any sub-subdomain queries :
+        <br><br>
+        <div class="mockup-code">
+            <pre data-prefix="$"><code>dig test.duckdns.org TXT</code></pre>
+        </div>
+        <br><br>
+        This can be used for example to prove your ownership with <a href="letsencrypt.org" class="text-bold link">letsencrypt.org</a>
+    </p>
+        
+</div>
+
+
 </template>
+
+<script setup>
+//
+</script>

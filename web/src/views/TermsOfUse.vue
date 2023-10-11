@@ -6,7 +6,7 @@
         <span class="font-semibold">Last updated <a class="underline">December 14th 2018</a></span>
     </div>
 
-    <div class="font-mono">
+    <div class="font-thin">
         <p>1. As a user of the DuckDNS Website, you agree to these terms and conditions (the "Terms"). DuckDNS may change these Terms from time to time, so you should check back periodically to ensure you are aware of any changes, as they will continue to apply to you as a user of DuckDNS. If you violate these Terms, we may remove, delete, lock and/or take over your DuckDNS account or DuckDNS domain. We may terminate this agreement or suspend your account at any time with or without notice.</p>
         <br>
         <p>2. By using this Website, or by using or creating an account with DuckDNS, you may provide us with personal information as described in our Privacy Statement. You acknowledge that you have read and understood our Privacy Statement, which governs our collection, use, storage and disclosure of such personal information, and that you consent to our collection, use, storage and disclosure of your personal information as outlined in our Privacy Statement.</p>

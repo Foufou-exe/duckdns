@@ -1,8 +1,9 @@
 <template>
-<router-view></router-view>
-
+    <div class="p-5">
+        <ListesNews />
+    </div>
 </template>
 
-<script>
-//
+<script setup>
+import ListesNews from '../components/ListesNews.vue';
 </script>
