@@ -1,19 +1,18 @@
 <template>
-<div class="min-h-screen lg:flex block">
+<div class="min-h-screen flex flex-col lg:flex-row items-center">
     <!-- Vue3Lottie -->
-    <Vue3Lottie 
+    <!-- <Vue3Lottie 
         :animationData="DuckJSON" 
         :loop="true" 
         :autoplay="true" 
-        :style="{width: '200px', height: '200px'}" 
-        class="lg:mr-4" 
-    />
+        class="mb-4 lg:mb-0 lg:mr-4 w-1/2 lg:w-1/5" 
+    /> -->
 
     <!-- Contenu à droite de Vue3Lottie sur grands écrans, et en dessous sur petits écrans -->
-    <div class="p-3">
-        <h1 class="text-6xl font-extrabold mb-5">Welcome to Duck DNS</h1>
-        <span class="text-2xl">Free Dynamic DNS hosted on AWS</span>
-        <HomeNews class="mt-4"/>
+    <div class="space-y-3">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-3 sm:mb-4 md:mb-5">Welcome to Duck DNS</h1>
+        <span class="text-xl sm:text-1.5xl md:text-2xl">Free Dynamic DNS hosted on AWS</span>
+        <HomeNews />
     </div>
 </div>
 

@@ -50,6 +50,7 @@ const router = createRouter({
         {
             // Redirection for News
             path: '/news',
+            name: 'news',
             component: () => import('@views/News.vue'),
             children: [
                 {

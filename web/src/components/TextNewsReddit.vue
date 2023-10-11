@@ -1,6 +1,6 @@
 <template>
     <div class="mb-10">
-        <h1 class="text-4xl font-extrabold mb-5">Goodbye Reddit? <div class="badge badge-outline badge-primary font-normal">Last News</div></h1>
+        <h1 class="text-4xl font-extrabold mb-5">Goodbye Reddit ? <div class="badge badge-outline badge-primary font-normal">Last News</div></h1>
         <p class="font-thin">
             We have had an exchange of emails from the Reddit Legal team.
             They extended the switch off date to the <a class="font-bold">8 March 2021</a>, we have now took down the ability to login with Reddit oAuth.
@@ -10,7 +10,7 @@
 
     </div>
     <div class="collapse collapse-arrow p-5 border">
-        <!-- <input type="radio" name="my-accordion-2" checked="checked" />  -->
+        <input type="radio" name="my-accordion-2" checked="checked" /> 
         <div class="collapse-title text-2xl font-bold">
           Our Annoucement
         </div>
@@ -62,8 +62,9 @@
         </div>
     </div>
 
+    <TheButtonsNavigations/>
 </template>
 
 <script setup>
-//
+import TheButtonsNavigations from './TheButtonsNavigations.vue';
 </script>

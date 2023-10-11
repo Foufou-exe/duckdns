@@ -1,11 +1,7 @@
 <template>
-    <HomeTextWelcome />
-    <HomeStatistiques />
-    <HomeTextWhy />
+    <BaseHome />
 </template>
 
 <script setup>
-import HomeTextWhy from '@/components/HomeTextWhy.vue';
-import HomeTextWelcome from '@/components/HomeTextWelcome.vue';
-import HomeStatistiques from '@components/HomeStatistiques.vue'
+import BaseHome from '@components/BaseHome.vue';
 </script>
