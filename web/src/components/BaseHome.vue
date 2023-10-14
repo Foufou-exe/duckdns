@@ -1,5 +1,5 @@
 <template>
-    <div class="max-sm:mx-5">
+    <div class=" max-sm:p-5 md:p-5 max-md:p-5">
         <HomeTextWelcome />
         <!-- <HomeStatistiques /> -->
         <HomeTextWhy />

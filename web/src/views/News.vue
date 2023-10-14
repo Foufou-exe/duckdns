@@ -1,9 +1,7 @@
 <template>
-    <div class="p-5">
-        <ListesNews />
-    </div>
+    <BaseNews />
 </template>
 
 <script setup>
-import ListesNews from '../components/ListesNews.vue';
+import BaseNews from '@components/BaseNews.vue';
 </script>

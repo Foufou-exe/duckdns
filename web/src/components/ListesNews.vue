@@ -2,7 +2,7 @@
     <div class="p-5">
       <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
         <h1 class="text-5xl font-bold mb-5 md:mb-10">News List</h1>
-        <select v-model="sortOrder" @change="sortNews" class="select select-bordered max-sm:mb-3 max-md:mb-3">
+        <select class="select select-bordered max-sm:mb-3 max-md:mb-3">
           <option disabled selected>Trier</option>
           <option value="dateDesc">Date (Recent to Old)</option>
           <option value="dateAsc">Date (Old to Recent)</option>

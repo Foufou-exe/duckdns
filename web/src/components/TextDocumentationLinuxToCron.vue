@@ -1,3 +1,4 @@
+<template>
 linux cron
 if your linux install is running a crontab, then you can use a cron job to keep updated
 we can see this with
@@ -30,9 +31,6 @@ this should simply return to a prompt
 we can also see if the last attempt was successful (OK or bad KO)
 cat duck.log
 if it is KO check your Token and Domain are correct in the duck.sh script
-
-<template>
-
 </template>
 
 <script setup>

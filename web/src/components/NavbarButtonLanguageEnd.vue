@@ -1,12 +1,12 @@
 <template>
     <div class="dropdown">
         <div class="lg:tooltip lg:tooltip-bottom" data-tip="Language">
-            <label  tabindex="0" class="btn btn-ghost">
+            <label tabindex="0" class="btn btn-ghost">
                 <font-awesome-icon icon="language" class="text-lg"></font-awesome-icon>
                 <font-awesome-icon icon="chevron-down" class="text-xs hidden sm:block"></font-awesome-icon>
             </label>
         </div>
-        <ul class="shadow menu dropdown-content bg-base-200 rounded-box w-52">
+        <ul tabindex="0" class="menu dropdown-content bg-base-200 rounded-box w-52">
             <li>
                 <a href="#" class="hover:font-bold"><span class="badge badge-outline badge-sm font-semibold">FR</span>Français</a>
             </li>
