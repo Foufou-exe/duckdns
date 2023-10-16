@@ -15,7 +15,7 @@
         <br><br>
     </p>
     <div class="mockup-code">
-    <pre data-prefix="$"><code ref="codeToCopy">ssh pi@exampledomain.duckdns.org<div @click="copyCode" class="absolute top-2 right-2 btn btn-ghost btn-sm"><font-awesome-icon icon="copy"/></div></code></pre>
+    <pre data-prefix="$"><code>ssh pi@exampledomain.duckdns.org<div @click="copyCodeToClipboard" class="absolute top-2 right-2 btn btn-ghost btn-sm"><font-awesome-icon icon="copy"/></div></code></pre>
     </div>
     <br>
     <a class="font-thin">A good site to find out how to port forward on your home router is <a href="https://portforward.com/" class="link">portforward.com</a></a>    
@@ -24,18 +24,4 @@
 
 <script setup>
 //
-import { ref } from 'vue'
-
-const codeToCopy = ref(null);
-const copyCode = () => {
-    if (codeToCopy.value) {
-        const range = document.createRange();
-        range.selectNode(codeToCopy.value);
-        window.getSelection().removeAllRanges();
-        window.getSelection().addRange(range);
-        document.execCommand("copy");
-        window.getSelection().removeAllRanges();
-    }
-};
-
 </script>

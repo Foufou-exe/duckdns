@@ -13,8 +13,12 @@ import '@styles/scrollbar.css'
 // Plugins
 import { RegisterPlugins } from '@/plugins'
 
+import { RegisterMixins } from "@/mixins";
+
 const app = createApp(App)
 
 RegisterPlugins(app)
+
+RegisterMixins(app)
 
 app.mount('#app')
