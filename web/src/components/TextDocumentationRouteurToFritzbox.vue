@@ -4,6 +4,12 @@
 <p class="font-thin mb-5">
     Here's a guide on how to set up DuckDNS with a Fritzbox router.
 </p>
+<a href="http://www.fritzbox.eu/en/index.php" class="flex justify-center mt-4 mb-4">
+    <button class="btn btn-primary btn-outline btn-wide">
+        <font-awesome-icon icon="question-circle" />
+        <span>Help Fritzbox</span>
+    </button>
+</a>
 
 <h2 class="text-2xl font-bold mb-4">Setting Up DuckDNS with Fritzbox</h2>
 
