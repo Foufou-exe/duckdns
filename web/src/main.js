@@ -9,6 +9,7 @@ import './app.css'
 
 // CSS Personnalisé
 import '@styles/scrollbar.css'
+import '@styles/global.css'
 
 // Plugins
 import { RegisterPlugins } from '@/plugins'

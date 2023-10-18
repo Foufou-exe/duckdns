@@ -13,7 +13,7 @@
         Then lets make a directory to put your files in, move into it and make our main script :
     </p>
     <div class="mockup-code mb-5">
-        <pre data-prefix="$"><code>mkdir duckdns<div @click="copyCodeToClipboard" class="absolute top-2 right-2 btn btn-ghost btn-sm"><font-awesome-icon icon="copy"/></div></code></pre>
+        <pre data-prefix="$"><code class="language-bash">mkdir duckdns<div @click="copyCodeToClipboard" class="absolute top-2 right-2 btn btn-ghost btn-sm"><font-awesome-icon icon="copy"/></div></code></pre>
         <pre data-prefix="$"><code>cd duckdns</code></pre>
         <pre data-prefix="$"><code>vi duck.sh</code></pre>
     </div>
@@ -23,7 +23,7 @@
         Hit <kbd class="kbd kbd-sm">ESC</kbd> then use use arrow keys to move the cursor <kbd class="kbd kbd-sm">x</kbd> deletes, i puts you back into insert mode
     </p>
     <div class="mockup-code mb-5">
-        <pre data-prefix="1"><code>#!/bin/bash<div @click="copyCodeToClipboard" class="absolute top-2 right-2 btn btn-ghost btn-sm"><font-awesome-icon icon="copy"/></div></code></pre>
+        <pre data-prefix="1"><code class="language-bash">#!/bin/bash<div @click="copyCodeToClipboard" class="absolute top-2 right-2 btn btn-ghost btn-sm"><font-awesome-icon icon="copy"/></div></code></pre>
         <pre data-prefix="2"><code>current=""</code></pre>
         <pre data-prefix="3"><code>while true; do</code></pre>
         <pre data-prefix="4"><code>latest=`ec2-metadata --public-ipv4`</code></pre>
@@ -40,9 +40,99 @@
         <pre data-prefix="15"><code>done</code></pre>
     </div>
 
+    <p class="font-thin mb-5">
+        Now save the file (in vi hit <kbd class="kbd kbd-sm">ESC</kbd> then <kbd class="kbd kbd-sm">:wq!</kbd> then <kbd class="kbd kbd-sm">ENTER</kbd>) . <br>
+        Now make the <b>duck.sh</b> file executeable and then create the next script file .
+    </p>
+
+    <div class="mockup-code mb-5">
+        <pre data-prefix="$"><code>chmod +x duck.sh<div @click="copyCodeToClipboard" class="absolute top-2 right-2 btn btn-ghost btn-sm"><font-awesome-icon icon="copy"/></div></code></pre>
+        <pre data-prefix="$"><code>vi duck_daemon.sh</code></pre>
+    </div>
+
+    <p class="font-thin mb-5">
+        Now copy this text and put it into the file (in vi you hit the <kbd class="kbd kbd-sm">i</kbd> key to insert, <kbd class="kbd kbd-sm">ESC</kbd> then <kbd class="kbd kbd-sm">u</kbd> to undo)
+    </p>
+
+    <div class="mockup-code mb-5">
+        <pre data-prefix="1"><code>#!/bin/bash<div @click="copyCodeToClipboard" class="absolute top-2 right-2 btn btn-ghost btn-sm"><font-awesome-icon icon="copy"/></div></code></pre>
+        <pre data-prefix="2"><code>su - ubuntu -c "nohup ~/duckdns/duck.sh > ~/duckdns/duck.log 2>&1&"</code></pre>
+    </div>
+
+    <p class="font-thin mb-5">
+        Now save the file (in vi hit <kbd class="kbd kbd-sm">ESC</kbd> then <kbd class="kbd kbd-sm">:wq!</kbd> then <kbd class="kbd kbd-sm">ENTER</kbd>) . <br>
+        Now make the <b>duck_daemon.sh</b> file executeable and change its permissions .
+    </p>
+
+    <div class="mockup-code mb-5">
+        <pre data-prefix="$"><code>chmod +x duck_daemon.sh<div @click="copyCodeToClipboard" class="absolute top-2 right-2 btn btn-ghost btn-sm"><font-awesome-icon icon="copy"/></div></code></pre>
+        <pre data-prefix="$"><code>sudo chown root duck_daemon.sh</code></pre>
+        <pre data-prefix="$"><code>sudo chmod 744 duck_daemon.sh</code></pre>
+    </div>
+
+    <p class="font-thin mb-5">
+        Now we can test the script by running it as root :
+    </p>
+
+    <div class="mockup-code mb-5">
+        <pre data-prefix="$"><code>sudo ./duck_daemon.sh<div @click="copyCodeToClipboard" class="absolute top-2 right-2 btn btn-ghost btn-sm"><font-awesome-icon icon="copy"/></div></code></pre>
+    </div>
+
+    <p class="font-thin mb-5">
+        This should simply return to a prompt . <br>
+        We can see it is running with :
+    </p>
+
+    <div class="mockup-code mb-5">
+        <pre data-prefix="$"><code>ps -ef | grep duck<div @click="copyCodeToClipboard" class="absolute top-2 right-2 btn btn-ghost btn-sm"><font-awesome-icon icon="copy"/></div></code></pre>
+    </div>
+
+    <p class="font-thin mb-5">
+        We can also see if the last attempt was successful (<b class="text-success">OK</b> or bad <b class="text-error">KO</b>) :
+    </p>
+
+    <div class="mockup-code mb-5">
+        <pre data-prefix="$"><code>cat duck.log<div @click="copyCodeToClipboard" class="absolute top-2 right-2 btn btn-ghost btn-sm"><font-awesome-icon icon="copy"/></div></code></pre>
+    </div>
+
+    <p class="font-thin mb-5">
+        If it is <b class="text-success">OK</b> then you can check your domain and it should be updated . <br>
+        If it is <b class="text-error">KO</b> check your <b>Token</b> and <b>Domain</b> is correct in the duck.sh script . <br>
+        Finally we make the duck daemon auto start on boot up :
+    </p>
+
+    <div class="mockup-code mb-5">
+        <pre data-prefix="$"><code>sudo ln -s ~/duckdns/duck_daemon.sh /etc/rc2.d/S10duckdns<div @click="copyCodeToClipboard" class="absolute top-2 right-2 btn btn-ghost btn-sm"><font-awesome-icon icon="copy"/></div></code></pre>
+    </div>
+
+    <p class="font-thin mb-5">
+        As you can see the script is all set to start as the instance boots .
+    </p>
+
+    <div class="mockup-code mb-5">
+        <pre data-prefix="$"><code>ls -la /etc/rc2.d/<div @click="copyCodeToClipboard" class="absolute top-2 right-2 btn btn-ghost btn-sm"><font-awesome-icon icon="copy"/></div></code></pre>
+    </div>
+
+    <p class="font-thin mb-5">
+        The final test is to kill the process running and start it as the bootup would :
+    </p>
+
+    <div class="mockup-code mb-5">
+        <pre data-prefix="$"><code>pkill duck<div @click="copyCodeToClipboard" class="absolute top-2 right-2 btn btn-ghost btn-sm"><font-awesome-icon icon="copy"/></div></code></pre>
+        <pre data-prefix="$"><code>sudo /etc/rc2.d/S10duckdns</code></pre>
+    </div>
+
+    <p class="font-thin mb-5">
+        We can now see if its running :
+    </p>
+
+    <div class="mockup-code mb-5">
+        <pre data-prefix="$"><code>ps -ef | grep duck<div @click="copyCodeToClipboard" class="absolute top-2 right-2 btn btn-ghost btn-sm"><font-awesome-icon icon="copy"/></div></code></pre>
+    </div>
+
+    
 </template>
 
 <script setup>
-
-
+//
 </script>

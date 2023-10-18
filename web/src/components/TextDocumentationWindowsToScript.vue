@@ -106,9 +106,3 @@
 //
 </script>
 
-<style>
-.mockup-code pre code {
-    word-wrap: break-word;  /* Permet au texte de se casser et de passer à la ligne */
-    white-space: pre-wrap;  /* Respecte les espaces et retours à la ligne dans le texte */
-}
-</style>

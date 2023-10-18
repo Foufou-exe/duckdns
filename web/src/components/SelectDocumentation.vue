@@ -19,6 +19,9 @@
         <div v-if="selectedSubtype" class="mb-5">
             <component :is="currentViewComponent" v-if="currentViewComponent"/>
         </div>
+        <div v-if="selectedType" class="mb-5">
+            <component :is="currentViewComponentCategorie" v-if="currentViewComponentCategorie"/>
+        </div>    
     </div>
 </template>
 
@@ -47,6 +50,10 @@ import TextDocumentationWindowsToScript from './TextDocumentationWindowsToScript
 // Raspberry components
 import TextDocumentationRaspberryPi from './TextDocumentationRaspberryPi.vue'
 import TextDocumentationRaspbmc from './TextDocumentationRaspbmc.vue'
+// Other components
+import TextDocumentationOtherToDotNet from './TextDocumentationOtherToDotNet.vue'
+import TextDocumentationOtherToMono from './TextDocumentationOtherMono.vue'
+
 // Routers components
 import TextDocumentationRouteurToAlliedTelesis from './TextDocumentationRouteurToAlliedTelesis.vue'
 import TextDocumentationRouteurToDdwrt from './TextDocumentationRouteurToDdwrt.vue'
@@ -68,7 +75,7 @@ import TextDocumentationStandardsToDynDNS from './TextDocumentationStandardsToDy
 import TextDocumentationStandardsToGnuDIP from './TextDocumentationStandardsToGnuDIP.vue'
 import TextDocumentationStandardsToInadyn from './TextDocumentationStandardsToInadyn.vue'
 
-
+// Operating Systems components
 const selectedCategory = ref('');
 const selectedType = ref('');
 const selectedSubtype = ref('');
@@ -76,6 +83,7 @@ const selectedSubtype = ref('');
 const typeOptions = ref([]);
 const subtypeOptions = ref([]);
 
+// Switch Type components
 const onCategoryChange = () => {
     selectedType.value = '';
     selectedSubtype.value = '';
@@ -94,7 +102,7 @@ const onCategoryChange = () => {
             break;
     }
 }
-
+// Switch SubType components
 const onTypeChange = () => {
     selectedSubtype.value = '';
     switch(selectedType.value) {
@@ -134,7 +142,6 @@ const componentsMap = {
     'IP Monitor': TextDocumentationMacOsToIpMonitor,
     'IOS RealDNS': TextDocumentationMacOsToIosRealDns,
     'OS': TextDocumentationAndroidToOs,
-    'Pi': TextDocumentationLinuxToEc2,
     'EC2': TextDocumentationLinuxToEc2,
     'Cron': TextDocumentationLinuxToCron,
     'Bsd Cron': TextDocumentationLinuxToBsdCron,
@@ -142,6 +149,15 @@ const componentsMap = {
     'GUI': TextDocumentationLinuxToGui,
     'Raspbmc': TextDocumentationRaspbmc,
     'Pi': TextDocumentationRaspberryPi,
+    'DotNet': TextDocumentationOtherToDotNet,
+    'Mono': TextDocumentationOtherToMono,
+}
+
+const currentViewComponent = computed(() => {
+    return componentsMap[selectedSubtype.value];
+});
+
+const componentsMapCategorie = {
     'Allied Telesis': TextDocumentationRouteurToAlliedTelesis,
     'Ddwrt': TextDocumentationRouteurToDdwrt,
     'Edge Router': TextDocumentationRouteurToEdgeRouter,
@@ -162,7 +178,7 @@ const componentsMap = {
     'Inadyn': TextDocumentationStandardsToInadyn,
 }
 
-const currentViewComponent = computed(() => {
-    return componentsMap[selectedSubtype.value];
+const currentViewComponentCategorie = computed(() => {
+    return componentsMapCategorie[selectedType.value];
 });
 </script>
