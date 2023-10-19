@@ -1,5 +1,5 @@
 <template>
-<h1 class="text-4xl font-extrabold mb-5">ZTE H108N <font-awesome-icon  icon="shield-halved" class="text-warning"/></h1>
+<h1 class="text-2xl md:text-3xl lg:text-4xl font-extrabold mb-5">ZTE H108N <font-awesome-icon  icon="shield-halved" class="text-warning"/></h1>
 
 <p class="font-thin mb-5">
     This guide is designed specifically for the ZTE H108N router.

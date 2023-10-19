@@ -1,5 +1,5 @@
 <template>
-    <h1 class="text-4xl font-extrabold mb-5">Android <font-awesome-icon :icon="['fab', 'android']" class="text-success"/></h1>
+    <h1 class="text-2xl md:text-3xl lg:text-4xl font-extrabold mb-5">Android <font-awesome-icon :icon="['fab', 'android']" class="text-success"/></h1>
 
     <p class="font-thin mb-5">
       These instructions are for people wanting to use an Android based OS to keep their duckdns record up-to date . <br>

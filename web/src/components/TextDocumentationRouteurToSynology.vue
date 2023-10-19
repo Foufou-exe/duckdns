@@ -1,5 +1,5 @@
 <template>
-<h1 class="text-4xl font-extrabold mb-5">Synology <font-awesome-icon  icon="shield-halved" class="text-warning"/></h1>
+<h1 class="text-2xl md:text-3xl lg:text-4xl font-extrabold mb-5">Synology <font-awesome-icon  icon="shield-halved" class="text-warning"/></h1>
 
 <p class="font-thin mb-5">
     This guide offers step-by-step instructions on setting up DuckDNS for the Synology DSM 6.1 setup. Remember to replace the placeholders for the domain and token with your own details before proceeding.

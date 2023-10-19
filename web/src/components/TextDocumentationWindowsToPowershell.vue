@@ -1,5 +1,5 @@
 <template>
-    <h1 class="text-4xl font-extrabold mb-5">Windows - Powershell <font-awesome-icon :icon="['fab', 'windows']" class="text-primary"/></h1>
+    <h1 class="text-2xl md:text-3xl lg:text-4xl font-extrabold mb-5">Windows - Powershell <font-awesome-icon :icon="['fab', 'windows']" class="text-primary"/></h1>
     <p class="font-thin mb-3">
         Powershell is a command line interface for Windows. It is a very powerful tool that can be used to automate tasks. <br>
         These scripts are for <b>Windows Powershell</b> :       

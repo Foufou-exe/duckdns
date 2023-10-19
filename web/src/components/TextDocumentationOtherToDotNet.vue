@@ -1,5 +1,5 @@
 <template>
-    <h1 class="text-4xl font-extrabold mb-5">DotNet Core Script</h1>
+    <h1 class="text-2xl md:text-3xl lg:text-4xl font-extrabold mb-5">DotNet Core Script</h1>
 
     <p class="font-thin mb-5">
         The DotNet Core Script is designed to be versatile, capable of running on a variety of platforms including Windows, OSX, and various Linux systems.

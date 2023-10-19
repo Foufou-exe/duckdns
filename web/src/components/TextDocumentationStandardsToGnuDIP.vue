@@ -20,7 +20,7 @@
     Once logged in, navigate to the "<b>Advanced Settings</b>" section and select the "DDNS" option.
 </p>
 
-<h2 class="text-2xl font-bold mb-4">DDNS Configuration Details</h2>
+<h2 class="text-2xl md:text-3xl lg:text-4xl font-extrabold mb-5">DDNS Configuration Details</h2>
 
 <div class="mockup-code mb-5">
     <pre data-prefix="1"><code>Service provider: Others<div @click="copyCodeToClipboard" class="absolute top-2 right-2 btn btn-ghost btn-sm"><font-awesome-icon icon="copy"/></div></code></pre>

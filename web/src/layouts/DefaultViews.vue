@@ -1,8 +1,8 @@
 <template>
-    <div class="flex min-h-screen items-center justify-center">
-        <div class="max-w-4xl mx-auto">
-            <router-view />
-        </div>
+    <div class="flex flex-col justify-center pl-10 pr-10 min-h-screen">
+      <div class="mx-auto">
+        <router-view />
+      </div>
     </div>
 </template>
   

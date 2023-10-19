@@ -1,5 +1,5 @@
 <template>
-    <h1 class="text-4xl font-extrabold mb-5">Windows - C# Visual Studio 2022 <font-awesome-icon :icon="['fab', 'windows']" class="text-primary"/></h1>
+    <h1 class="text-2xl md:text-3xl lg:text-4xl font-extrabold mb-5">Windows - C# Visual Studio 2022 <font-awesome-icon :icon="['fab', 'windows']" class="text-primary"/></h1>
     <p class="font-thin mb-5">
         This is an Open Source tray based service that was created by XWolfOverride.
         <div class="p-5 bg-neutral rounded text-white mt-2 mb-2">

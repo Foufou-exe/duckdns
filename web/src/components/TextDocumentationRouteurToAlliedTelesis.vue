@@ -1,5 +1,5 @@
 <template>
-<h1 class="text-4xl font-extrabold mb-5">Allied Telesis AT-AR450S <font-awesome-icon icon="shield-halved" class="text-warning"/></h1>
+<h1 class="v">Allied Telesis AT-AR450S <font-awesome-icon icon="shield-halved" class="text-warning"/></h1>
 
 <p class="font-thin mb-5">
     The following guide outlines the procedure to integrate DuckDNS with an allied telesis AT-AR450S router.

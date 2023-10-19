@@ -1,5 +1,5 @@
 <template>
-    <h1 class="text-4xl font-extrabold mb-5">Linux - Cron <font-awesome-icon :icon="['fab', 'linux']" class="text-secondary"/></h1>
+    <h1 class="text-2xl md:text-3xl lg:text-4xl font-extrabold mb-5">Linux - Cron <font-awesome-icon :icon="['fab', 'linux']" class="text-secondary"/></h1>
     <p class="font-thin mb-5">
         If your linux install is running a crontab, then you can use a cron job to keep updated . <br>
         We can see this with :
@@ -19,7 +19,7 @@
         Otherwise lets get started and make a directory to put your files in, move into it and make our main script :
     </p>
     <div class="mockup-code mb-5">
-        <pre data-prefix="$"><code>mkdir duckdns && cd duckdns && vi duck.sh</code></pre>
+        <pre data-prefix="$"><code>mkdir duckdns && cd duckdns && vi duck.sh<div @click="copyCodeToClipboard" class="absolute top-2 right-2 btn btn-ghost btn-sm"><font-awesome-icon icon="copy"/></div></code></pre>
     </div>
 
     <p class="font-thin mb-5">
@@ -42,7 +42,7 @@
     </p>
 
     <div class="mockup-code mb-5">
-        <pre data-prefix="$"><code>chmod +x duck.sh</code></pre>
+        <pre data-prefix="$"><code>chmod +x duck.sh<div @click="copyCodeToClipboard" class="absolute top-2 right-2 btn btn-ghost btn-sm"><font-awesome-icon icon="copy"/></div></code></pre>
     </div>
 
     <p class="font-thin mb-5">
@@ -50,7 +50,7 @@
     </p>
 
     <div class="mockup-code mb-5">
-        <pre data-prefix="$"><code>crontab -e</code></pre>
+        <pre data-prefix="$"><code>crontab -e<div @click="copyCodeToClipboard" class="absolute top-2 right-2 btn btn-ghost btn-sm"><font-awesome-icon icon="copy"/></div></code></pre>
     </div>
 
     <p class="font-thin mb-5">
@@ -58,7 +58,7 @@
     </p>
 
     <div class="mockup-code mb-5">
-        <pre data-prefix="1"><code>*/5 * * * * ~/duckdns/duck.sh >/dev/null 2>&1</code></pre>
+        <pre data-prefix="1"><code>*/5 * * * * ~/duckdns/duck.sh >/dev/null 2>&1<div @click="copyCodeToClipboard" class="absolute top-2 right-2 btn btn-ghost btn-sm"><font-awesome-icon icon="copy"/></div></code></pre>
     </div>
 
     <p class="font-thin mb-5">
@@ -67,7 +67,7 @@
     </p>
 
     <div class="mockup-code mb-5">
-        <pre data-prefix="$"><code>./duck.sh</code></pre>
+        <pre data-prefix="$"><code>./duck.sh<div @click="copyCodeToClipboard" class="absolute top-2 right-2 btn btn-ghost btn-sm"><font-awesome-icon icon="copy"/></div></code></pre>
     </div>
 
     <p class="font-thin mb-5">
@@ -76,7 +76,7 @@
     </p>
 
     <div class="mockup-code mb-5">
-        <pre data-prefix="$"><code>cat duck.log</code></pre>
+        <pre data-prefix="$"><code>cat duck.log<div @click="copyCodeToClipboard" class="absolute top-2 right-2 btn btn-ghost btn-sm"><font-awesome-icon icon="copy"/></div></code></pre>
     </div>
 
     <p class="font-thin mb-5">

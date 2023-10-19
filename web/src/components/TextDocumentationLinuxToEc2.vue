@@ -1,5 +1,5 @@
 <template>
-    <h1 class="text-4xl font-extrabold mb-5">Linux - EC2 <font-awesome-icon :icon="['fab', 'linux']" class="text-secondary"/></h1>
+    <h1 class="text-2xl md:text-3xl lg:text-4xl font-extrabold mb-5">Linux - EC2 <font-awesome-icon :icon="['fab', 'linux']" class="text-secondary"/></h1>
     <p class="font-thin mb-5">
         On ec2 the current ip can be found using the command <b>ec2-metadata --public-ipv4</b> . <br>
         This means that we only need to update your record when it does change. <br>

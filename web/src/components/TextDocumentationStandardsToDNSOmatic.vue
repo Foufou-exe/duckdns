@@ -1,5 +1,5 @@
 <template>
-<h1 class="text-4xl font-extrabold mb-5">DNSOmatic <font-awesome-icon :icon="['fas', 'cloud']" class="text-secondary"/></h1>
+<h1 class="text-2xl md:text-3xl lg:text-4xl font-extrabold mb-5">DNSOmatic <font-awesome-icon :icon="['fas', 'cloud']" class="text-secondary"/></h1>
 
 <p class="font-thin mb-5">
     <a href="https://dnsomatic.com/" class="text-blue-500 underline">dnsomatic.com</a> includes DuckDNS as one of their integrated options. DNSOmatic supports a diverse range of software and hardware for comprehensive DNS management.

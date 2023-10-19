@@ -39,7 +39,3 @@
         </nav>
   </footer>
 </template>
-
-<script setup>
-//
-</script>

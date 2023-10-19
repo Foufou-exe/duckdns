@@ -1,5 +1,5 @@
 <template>
-    <h1 class="text-4xl font-extrabold mb-5">FreeNAS <font-awesome-icon icon="shield-halved" class="text-warning"/></h1>
+    <h1 class="text-2xl md:text-3xl lg:text-4xl font-extrabold mb-5">FreeNAS <font-awesome-icon icon="shield-halved" class="text-warning"/></h1>
 
     <p class="font-thin mb-5">
         This guide provides instructions for FreeNAS installations. For a more detailed guide, refer to the online tutorial : <br> <a href="https://forums.freenas.org/index.php?threads/how-to-install-duckdns-org-a-how-to-guide.24170/" target="_blank" rel="noopener noreferrer" class="link">How to Install DuckDNS.org - A How-To Guide</a>.

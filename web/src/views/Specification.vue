@@ -1,7 +1,5 @@
 <template>
     <BaseSpecification />
-
-
 </template>
 
 <script setup>

@@ -1,5 +1,5 @@
 <template>
-    <h1 class="text-4xl font-extrabold mb-5">EdgeRouter <font-awesome-icon icon="shield-halved" class="text-warning"/></h1>
+    <h1 class="text-2xl md:text-3xl lg:text-4xl font-extrabold mb-5">EdgeRouter <font-awesome-icon icon="shield-halved" class="text-warning"/></h1>
 
     <p class="font-thin mb-5">
         This guide provides instructions for setting up DuckDNS on an EdgeRouter. For a comprehensive walkthrough, you can also refer to the online tutorial: <br><br><a href="https://loganmarchione.com/2017/04/duckdns-on-edgerouter/" target="_blank" rel="noopener noreferrer" class="link">DuckDNS on EdgeRouter</a> by Logan Marchione.

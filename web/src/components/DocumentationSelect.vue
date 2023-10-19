@@ -1,6 +1,6 @@
 <template>
-    <div class="mb-5">
-        <div class="join mb-10">
+    <div class="mb-5 mt-5">
+        <div class="join mb-10 flex flex-col md:flex-row">
             <select class="select select-bordered join-item" v-model="selectedCategory" @change="onCategoryChange">
                 <option disabled value="">Choose to categorie</option>
                 <option>Operating Systems</option>

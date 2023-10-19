@@ -1,5 +1,5 @@
     <template>
-    <h1 class="text-4xl font-extrabold mb-5">OSX <font-awesome-icon :icon="['fab', 'apple']" class="text-secondary"/></h1>
+    <h1 class="text-2xl md:text-3xl lg:text-4xl font-extrabold mb-5">OSX <font-awesome-icon :icon="['fab', 'apple']" class="text-secondary"/></h1>
     <p class="font-thin mb-5">
         If you are not familiar with using the terminal on OSX, consider using the JAR file (from the windows-gui) from <a href="http://www.etx.ca/" class="link">http://www.etx.ca/</a>.
     </p>

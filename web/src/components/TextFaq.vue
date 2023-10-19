@@ -1,5 +1,5 @@
 <template>
-    <h1 class="text-5xl font-extrabold mb-5">FAQ</h1>
+    <h1 class="text-3xl md:text-3xl lg:text-5xl font-extrabold mb-5">FAQ</h1>
     <p class="mb-3 font-thin">
         This page is dedicated to the question asked .
     </p>

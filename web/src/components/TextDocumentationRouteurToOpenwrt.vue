@@ -1,5 +1,5 @@
 <template>
-<h1 class="text-4xl font-extrabold mb-5">OpenWrt <font-awesome-icon icon="shield-halved" class="text-warning"/></h1>
+<h1 class="text-2xl md:text-3xl lg:text-4xl font-extrabold mb-5">OpenWrt <font-awesome-icon icon="shield-halved" class="text-warning"/></h1>
 
 <p class="font-thin mb-5">
     The OpenWrt instructions are split into two parts : a simpler setup for those comfortable with HTTP and a more secure setup for HTTPS users.
@@ -64,7 +64,7 @@
 </p>
 
 <div class="mockup-code mb-5">
-    <pre data-prefix="$"><code>/usr/lib/ddns/dynamic_dns_updater.sh duckdns</code></pre>
+    <pre data-prefix="$"><code>/usr/lib/ddns/dynamic_dns_updater.sh duckdns<div @click="copyCodeToClipboard" class="absolute top-2 right-2 btn btn-ghost btn-sm"><font-awesome-icon icon="copy"/></div></code></pre>
 </div>
 
 <h2 class="text-2xl font-bold mt-8 mb-4">Installation for HTTPS Users</h2>

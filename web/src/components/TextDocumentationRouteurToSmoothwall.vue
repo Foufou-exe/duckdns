@@ -1,5 +1,5 @@
 <template>
-    <h1 class="text-4xl font-extrabold mb-5">Smoothwall <font-awesome-icon icon="shield-halved" class="text-warning"/></h1>
+    <h1 class="text-2xl md:text-3xl lg:text-4xl font-extrabold mb-5">Smoothwall <font-awesome-icon icon="shield-halved" class="text-warning"/></h1>
 
     <p class="font-thin mb-5">
         The guide below provides instructions for setting up DuckDNS on a basic smoothwall install. smoothwall comes equipped with WGET by default, which is utilized in this script. Before proceeding, ensure to replace the placeholder values for the domain and token with your specific configuration.

@@ -1,8 +1,8 @@
 <template>
     <div class="navbar">
-        <GroupeNavbarStart />
-        <GroupeNavbarCenter />
-        <GroupeNavbarEnd />
+      <GroupeNavbarStart />
+      <GroupeNavbarCenter />
+      <GroupeNavbarEnd />
     </div>
 </template>
   

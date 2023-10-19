@@ -1,7 +1,5 @@
 <template>
-    <div class="max-sm:p-5 md:p-5 max-md:p-5">
-        <TextAbout />
-    </div>
+    <TextAbout />
 </template>
 
 <script setup>

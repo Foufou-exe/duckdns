@@ -1,5 +1,5 @@
 <template>
-<h1 class="text-4xl font-extrabold mb-5">Mono <font-awesome-icon :icon="['fas', 'code']" class="text-secondary"/></h1>
+<h1 class="text-2xl md:text-3xl lg:text-4xl font-extrabold mb-5">Mono <font-awesome-icon :icon="['fas', 'code']" class="text-secondary"/></h1>
 
 <p class="font-thin mb-5">
     Mono offers a client for both Windows and Linux platforms.

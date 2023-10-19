@@ -1,5 +1,5 @@
 <template>
-<h1 class="text-4xl font-extrabold mb-5">Inadyn <font-awesome-icon :icon="['fas', 'code']" class="text-secondary"/></h1>
+<h1 class="text-2xl md:text-3xl lg:text-4xl font-extrabold mb-5">Inadyn <font-awesome-icon :icon="['fas', 'code']" class="text-secondary"/></h1>
 
 <p class="font-thin mb-5">
     The <a href="http://troglobit.com/inadyn.html" class="text-blue-500 link">inadyn</a> client is a compact open-source software that is available in the majority of Linux package repositories. It utilizes the <a href="https://www.duckdns.org/install.jsp?tab=dyndns&domain=exampledomain" class="text-blue-500 link">dyndns endpoint</a>.

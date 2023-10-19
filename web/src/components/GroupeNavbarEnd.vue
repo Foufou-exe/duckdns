@@ -5,10 +5,10 @@
       <!-- Language switcher -->
       <NavbarButtonLanguageEnd />
       <!-- Connexion -->
-      <NavbarButtonConnexionEnd />
+      <!-- <NavbarButtonConnexionEnd /> -->
       
       <!-- After connexion -->
-      <!-- <NavbarDropdownProfileEnd /> -->
+      <NavbarDropdownProfileEnd />
     </div> 
 </template>
 
@@ -16,5 +16,5 @@
 import NavbarButtonThemeEnd from './NavbarButtonThemeEnd.vue'
 import NavbarButtonLanguageEnd from './NavbarButtonLanguageEnd.vue';
 import NavbarButtonConnexionEnd from './NavbarButtonConnexionEnd.vue'
-// import NavbarDropdownProfileEnd from './NavbarDropdownProfileEnd.vue'
+import NavbarDropdownProfileEnd from './NavbarDropdownProfileEnd.vue'
 </script>

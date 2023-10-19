@@ -1,5 +1,5 @@
 <template>
-    <h1 class="text-4xl font-extrabold mb-5">Hardware <font-awesome-icon icon="shield-halved" class="text-warning"/></h1>
+    <h1 class="text-2xl md:text-3xl lg:text-4xl font-extrabold mb-5">Hardware <font-awesome-icon icon="shield-halved" class="text-warning"/></h1>
 
     <p class="font-thin mb-5">
         For those who are enthusiastic about building hardware solutions using the Arduino platform and the ESP8266 core, you're in luck! A custom solution integrating DuckDNS with hardware and an accompanying web interface has been developed by Davide Gironi.

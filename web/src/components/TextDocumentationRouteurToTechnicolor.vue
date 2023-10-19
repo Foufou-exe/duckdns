@@ -1,5 +1,5 @@
 <template>
-<h1 class="text-4xl font-extrabold mb-5">Technicolor TG582n <font-awesome-icon icon="shield-halved" class="text-warning"/></h1>
+<h1 class="text-2xl md:text-3xl lg:text-4xl font-extrabold mb-5">Technicolor TG582n <font-awesome-icon icon="shield-halved" class="text-warning"/></h1>
 
 <p class="font-thin mb-5">
     This guide is tailored for the Technicolor TG582n router, though it may apply to other models as well.

@@ -60,6 +60,18 @@ const router = createRouter({
                     component: () => import('@components/TextNewsReddit.vue')
                 }
             ],
+        },
+        {
+            // Redirection for Profils User
+            path: '/profils',
+            name: 'profils',
+            component: () => import('@views/Profils.vue'),
+        },
+        {
+            // Redirection for Domains User
+            path: '/domains',
+            name: 'domains',
+            component: () => import('@views/Domains.vue'),
         }
 
     ]

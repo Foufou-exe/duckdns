@@ -1,5 +1,5 @@
 <template>
-    <h1 class="text-5xl font-extrabold mb-10">About</h1>
+    <h1 class="text-3xl md:text-3xl lg:text-5xl font-extrabold mb-5">About</h1>
     <div class="mb-5">
         <h3 class="text-xl font-bold mb-2">What does the service actually do ?</h3>
         <p class="font-thin">

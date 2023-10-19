@@ -1,5 +1,5 @@
 <template>
-    <h1 class="text-4xl font-extrabold mb-5">Linux - Bsd Cron <font-awesome-icon :icon="['fab', 'linux']" class="text-secondary"/></h1>
+    <h1 class="text-2xl md:text-3xl lg:text-4xl font-extrabold mb-5">Linux - Bsd Cron <font-awesome-icon :icon="['fab', 'linux']" class="text-secondary"/></h1>
     <p class="font-thin mb-5">
         If your linux install is running a crontab, then you can use a cron job to keep updated . <br>
         We can see this with :

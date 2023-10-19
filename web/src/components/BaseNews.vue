@@ -1,8 +1,5 @@
 <template>
-    <div class="max-sm:p-5 md:p-5 max-md:p-5">
-        <ListesNews />
-        <router-view/>
-    </div>
+    <ListesNews />
 </template>
 
 <script setup>
