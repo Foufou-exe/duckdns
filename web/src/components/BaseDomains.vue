@@ -1,7 +1,7 @@
 <template>
-    <PersonnalizationDomains />
+    <DomainsPersonnalization />
 </template>
 
 <script setup>
-import PersonnalizationDomains from './PersonnalizationDomains.vue';
+import DomainsPersonnalization from './DomainsPersonnalization.vue';
 </script>
