@@ -1,9 +1,9 @@
 <template>
-<div class="flex flex-col md:flex-row justify-center max-sm:mt-10 p-6 md:p-12 bg-[#090f1c] rounded shadow-2xl shadow-secondary">
+<div class="flex flex-col md:flex-row justify-center max-sm:mt-10 max-md:mt-10 p-6 bg-[#090f1c] rounded shadow-2xl shadow-secondary">
 
   <!-- Image Section -->
   <div class="m-4 md:m-10 flex flex-col justify-center items-center">
-    <img :src="imageSrc" alt="Profil" class="w-40 md:w-64 h-40 md:h-64 object-cover rounded-full ring ring-secondary mb-3 md:mb-5 hover-move" @mousemove="handleMouseMove" @mouseout="resetRotation" />
+    <img :src="selectedImage" alt="Profil" class="max-md:w-30 md:w-30 lg:w-64 max-md:h-30 md:h-30 lg:h-64 max-sm:w-30 max-sm:h-30 object-cover rounded-full ring ring-secondary mb-3 md:mb-5 hover-move" @mousemove="handleMouseMove" @mouseout="resetRotation" />
     <div class="shine"></div>
     <button onclick="ChoosePicture.showModal()" class="btn btn-secondary">Other picture</button>
     <ChoosePicture />
@@ -23,7 +23,7 @@
       <div class="text-white"><strong class="text-secondary">Token generated:</strong> {{ tokenGenerated }}</div>
       <strong class="text-secondary">
         Token: 
-        <div class="bg-neutral p-2 rounded">
+        <div class="bg-neutral p-4 rounded">
           <div v-if="showToken" class="text-white">
             {{ token }}
           </div>
@@ -39,51 +39,50 @@
 </template>
 
 <script setup>
+// Composant 
 import ChoosePicture from './ModalsChoosePicture.vue';
 
+// Plugin vue
+import { ref,computed } from 'vue';
+// Store pinia 
+import { useImageStore } from '@store/store.js'; // Importez votre store Pinia
 
-const imageSrc = 'images/connexion/duck1.png' ;
+// Exemple de
 const account =  'Foufou-exe@github';
 const type = 'free';
 const token = 'fb940a3d-8915-4fb3-81b6-9f5ab70080e9';
 const tokenGenerated = '1 month ago';
 const createdDate = '11 Sep 2023, 18:17:53';
 
+// Use 
+const imageStore = useImageStore();
+const selectedImage = computed(() => imageStore.getSelectedImage);
+
+
+const showToken = ref(false);
+
+const handleMouseMove = (event) => {
+  const width = event.target.offsetWidth;
+  const height = event.target.offsetHeight;
+
+  // Calculez la distance par rapport au centre de l'image
+  const offsetX = (event.offsetX / width) - 0.5;
+  const offsetY = (event.offsetY / height) - 0.5;
+
+  // Convertissez cette distance en degrés de rotation. 
+  const rotateY = offsetX * 30;
+  const rotateX = -offsetY * 30;
+
+  event.target.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+};
+
+const resetRotation = (event) => {
+  event.target.style.transform = 'rotateX(0) rotateY(0)';
+};
+
+const toggleToken = () => {
+  showToken.value = !showToken.value;
+};
 </script>
 
-<script>
-export default {
-  data() {
-    return {
-      token: "YOUR_TOKEN_VALUE",
-      showToken: false
-    };
-  },
- 
-  methods: {
-    handleMouseMove(event) {
-      const width = event.target.offsetWidth;
-      const height = event.target.offsetHeight;
-
-      // Calculez la distance par rapport au centre de l'image
-      const offsetX = (event.offsetX / width) - 0.5;
-      const offsetY = (event.offsetY / height) - 0.5;
-
-      // Convertissez cette distance en degrés de rotation. Vous pouvez ajuster la valeur '20' pour un effet plus ou moins prononcé.
-      const rotateY = offsetX * 30;
-      const rotateX = -offsetY * 30;
-
-      event.target.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-      
-    },
-    resetRotation(event) {
-    event.target.style.transform = 'rotateX(0) rotateY(0)';
-    },
-    toggleToken() {
-      this.showToken = !this.showToken;
-    },
-
-  }
-}
-</script>
 

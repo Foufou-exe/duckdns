@@ -8,7 +8,13 @@
 import router from '../router'
 import FontAwesomeIcon from './fontAwesome'
 import Vue3Lottie from './lottie'
-import pinia from '../store'
+
+// Pinia
+import { createPinia } from 'pinia'
+
+
+
+const pinia = createPinia()
 
 export function RegisterPlugins(app) {
     app

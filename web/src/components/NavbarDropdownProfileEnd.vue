@@ -2,7 +2,7 @@
     <div class="dropdown dropdown-end">
       <label tabindex="0" class="btn btn-ghost btn-circle avatar">
         <div class="w-10 rounded-full ring ring-secondary">
-          <img src="/images/connexion/duck1.png" />
+          <img :src="selectedImage" />
         </div>
       </label>
       <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-3 shadow bg-base-200 rounded-box w-52">
@@ -33,5 +33,10 @@
 </template>
 
 <script setup>
-//
+// Plugin vue
+import { computed } from 'vue';
+// Store pinia 
+import { useImageStore } from '@store/store.js'; // Importez votre store Pinia
+// Use Store Image
+const selectedImage = computed(() => useImageStore().selectedImage);
 </script>
