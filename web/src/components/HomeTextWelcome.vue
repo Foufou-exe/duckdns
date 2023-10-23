@@ -19,19 +19,8 @@
 
 </template>
 
-<script>
-import DuckJSON from '@assets/json/duck.json';
-export default {
-    data() {
-        return {
-            duck: DuckJSON,
-        }
-    },
-}
-
-</script>
-
 <script setup>
 import HomeNews from './HomeNews.vue';
+import DuckJSON from '@assets/json/duck.json';
 </script>
 

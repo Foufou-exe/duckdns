@@ -3,8 +3,7 @@
 
   <!-- Image Section -->
   <div class="m-4 md:m-10 flex flex-col justify-center items-center">
-    <img :src="selectedImage" alt="Profil" class="max-md:w-30 md:w-30 lg:w-64 max-md:h-30 md:h-30 lg:h-64 max-sm:w-30 max-sm:h-30 object-cover rounded-full ring ring-secondary mb-3 md:mb-5 hover-move" @mousemove="handleMouseMove" @mouseout="resetRotation" />
-    <div class="shine"></div>
+    <img :src="selectedImage" alt="Profil" ref="tilt" class="max-md:w-30 md:w-30 lg:w-64 max-md:h-30 md:h-30 lg:h-64 max-sm:w-30 max-sm:h-30 object-cover rounded-full ring ring-secondary mb-3 md:mb-5 hover-move"/>
     <button onclick="ChoosePicture.showModal()" class="btn btn-secondary">Other picture</button>
     <ChoosePicture />
   </div>
@@ -23,15 +22,14 @@
       <div class="text-white"><strong class="text-secondary">Token generated:</strong> {{ tokenGenerated }}</div>
       <strong class="text-secondary">
         Token: 
-        <div class="bg-neutral p-4 rounded">
-          <div v-if="showToken" class="text-white">
-            {{ token }}
-          </div>
+        <div class="bg-black p-2 rounded">
+          <div v-if="showToken" class="text-white">{{ token }}</div>
+          <div v-else class="text-white">••••••••••••••••••••••••••••••••••••••••••••••</div>
         </div>
       </strong>
       
     </div>
-    <button class="btn btn-secondary btn-outline btn-normal" @click="toggleToken">Show Token</button>
+    <button class="btn btn-secondary btn-outline btn-normal" @click="toggleTokenVisibility">{{ showToken ? 'Cacher' : 'Montrer' }}Show Token</button>
   </div>
 </div>
 
@@ -39,15 +37,17 @@
 </template>
 
 <script setup>
+import VanillaTilt from 'vanilla-tilt';
+
 // Composant 
 import ChoosePicture from './ModalsChoosePicture.vue';
 
 // Plugin vue
-import { ref,computed } from 'vue';
+import { ref,computed,onMounted, onBeforeUnmount  } from 'vue';
 // Store pinia 
 import { useImageStore } from '@store/store.js'; // Importez votre store Pinia
 
-// Exemple de
+// Exemple
 const account =  'Foufou-exe@github';
 const type = 'free';
 const token = 'fb940a3d-8915-4fb3-81b6-9f5ab70080e9';
@@ -58,31 +58,34 @@ const createdDate = '11 Sep 2023, 18:17:53';
 const imageStore = useImageStore();
 const selectedImage = computed(() => imageStore.getSelectedImage);
 
+const props = defineProps(['token']);
 
 const showToken = ref(false);
 
-const handleMouseMove = (event) => {
-  const width = event.target.offsetWidth;
-  const height = event.target.offsetHeight;
-
-  // Calculez la distance par rapport au centre de l'image
-  const offsetX = (event.offsetX / width) - 0.5;
-  const offsetY = (event.offsetY / height) - 0.5;
-
-  // Convertissez cette distance en degrés de rotation. 
-  const rotateY = offsetX * 30;
-  const rotateX = -offsetY * 30;
-
-  event.target.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-};
-
-const resetRotation = (event) => {
-  event.target.style.transform = 'rotateX(0) rotateY(0)';
-};
-
-const toggleToken = () => {
+const toggleTokenVisibility = () => {
   showToken.value = !showToken.value;
-};
+}
+
+
+const tilt = ref(null);
+
+onMounted(() => {
+  if (tilt.value) {
+    VanillaTilt.init(tilt.value, {
+      max: 25,
+      speed: 400,
+      glare: true,
+      "max-glare": 1,
+      "glare-prerender": false,
+    });
+  }
+});
+
+onBeforeUnmount(() => {
+  if (tilt.value && tilt.value.vanillaTilt) {
+    tilt.value.vanillaTilt.destroy();
+  }
+});
+
+
 </script>
-
-
