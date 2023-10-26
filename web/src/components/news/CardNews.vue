@@ -2,32 +2,36 @@
   <div>
     <div v-for="news in filteredAndSortedNews" :key="news.id" class="card border border-secondary mb-4 bg-base-100 shadow-lg">
       <div class="card-body">
-        <h2 class="text-2xl inline-block mr-2 font-bold max-sm:text-xl">
-          {{ news.title }}
-          <div v-if="news.id === latestNewsId" class="badge inline-block badge-primary badge-outline font-semibold">Last News</div>
-        </h2>
-        <div class="flex flex-wrap gap-1">
-          <div v-for="categorie in news.categorie" :key="categorie" :class="getBadgeClass(categorie)" class="badge inline-block badge-outline font-semibold badge-lg max-sm:text-xs text-sm">
-            {{ getBadgeText(categorie) }}
+        <router-link :to="{ name: 'baseNews', params: { id: news.id, viewName: news.viewName } }">
+          <h2 class="text-2xl inline-block mr-2 font-bold max-sm:text-xl">
+            {{ news.title }}
+            <div v-if="news.id === latestNewsId" class="badge inline-block badge-primary badge-outline font-semibold">Last News</div>
+          </h2>
+          <div class="flex flex-wrap gap-1 mt-2">
+            <div v-for="categorie in news.categorie" :key="categorie" :class="getBadgeClass(categorie)" class="badge inline-block badge-outline font-semibold badge-lg max-sm:text-xs text-sm">
+              {{ getBadgeText(categorie) }}
+            </div>
           </div>
-        </div>
-        <p class="text-gray-500 mt-2">{{ news.content }}</p>
-        <span class="text-gray-500">{{ formatDate(news.date) }}</span>
+          <p class="text-gray-500 mt-2 mb-5">{{ news.content }}</p>
+          <span class="text-gray-500">{{ formatDate(news.date) }}</span>
+        </router-link>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { onMounted, ref, computed, defineProps } from 'vue';
+import { onMounted, shallowRef , computed, defineProps } from 'vue';
 import newsData from '@data/newsData.json'
 import { formatDate } from '@js/formatDate';
-const newsList = ref(newsData);
-const latestNewsId = ref(null);
+const newsList = shallowRef(newsData);
+const latestNewsId = shallowRef(null);
 
 const props = defineProps({
   filterOption: String,
-  sortOption: String
+  sortOption: String,
+  viewName: String,
+  id: String
 });
 
 onMounted(() => {
@@ -59,7 +63,6 @@ const filteredAndSortedNews = computed(() => {
   return result;
 });
 
-console.log('Nouvelles filtrées:', filteredAndSortedNews.value);
 
 const getBadgeClass = (categorie) => {
   const classes = {

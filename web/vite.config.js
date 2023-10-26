@@ -30,6 +30,7 @@ export default defineConfig({
       '@utils': fileURLToPath(new URL('./src/utils',import.meta.url)) ,
       '@api': fileURLToPath(new URL('./src/api',import.meta.url)) ,
       '@data': fileURLToPath(new URL('./src/assets/data',import.meta.url)) ,
+      '@Imageconnexion': fileURLToPath(new URL('./src/assets/images/connexion',import.meta.url)) ,
     }
   },
   extensions: ['.js', '.vue', '.json', '.ts', '.tsx', '.mjs'],

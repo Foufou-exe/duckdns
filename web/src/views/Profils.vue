@@ -59,7 +59,7 @@ const imageStore = useImageStore();
 const selectedImage = computed(() => imageStore.getSelectedImage);
 
 
-const hide = '***************************'
+const hide = '****************************************'
 
 const showToken = ref(false);
 

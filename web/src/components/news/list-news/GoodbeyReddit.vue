@@ -67,4 +67,5 @@
 
 <script setup>
 import TheButtonsNavigations from '@components/TheButtonsNavigations.vue';
+
 </script>

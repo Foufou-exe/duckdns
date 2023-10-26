@@ -14,39 +14,39 @@
         <div id="imageGallery" class="grid grid-cols-4 gap-5 mb-5 text-center max-sm:grid-cols-1 max-sm:justify-center">
           <!-- Images stockées par défaut -->
           <div class="flex flex-col items-center " >
-            <img src="images/connexion/duck1.png" alt="Image 1" class="max-sm:w-40 max-sm:h-40 w-20h-20 object-cover rounded-full mb-3 hover:ring hover:ring-5 hover:ring-secondary" @click="selectImage(1)" />
+            <img src="/images/connexion/duck1.png" alt="Image 1" class="max-sm:w-40 max-sm:h-40 w-20h-20 object-cover rounded-full mb-3 hover:ring hover:ring-5 hover:ring-secondary" @click="selectImage(1)" />
             <span >{{SubTitle1}}</span>
           </div>
           <div class="flex flex-col items-center">
-            <img src="images/connexion/duck2.png" alt="Image 2" class="max-sm:w-40 max-sm:h-40 w-20h-20 object-cover rounded-full mb-3 hover:ring hover:ring-5 hover:ring-primary" @click="selectImage(2)" />
+            <img src="/images/connexion/duck2.png" alt="Image 2" class="max-sm:w-40 max-sm:h-40 w-20h-20 object-cover rounded-full mb-3 hover:ring hover:ring-5 hover:ring-primary" @click="selectImage(2)" />
             <span >{{SubTitle2}}</span>
           </div>
           <div class="flex flex-col items-center">
-            <img src="images/connexion/duck3.png" alt="Image 3" class="max-sm:w-40 max-sm:h-40 w-20h-20 object-cover rounded-full mb-3 hover:ring hover:ring-5 hover:ring-warning" @click="selectImage(3)" />
+            <img src="/images/connexion/duck3.png" alt="Image 3" class="max-sm:w-40 max-sm:h-40 w-20h-20 object-cover rounded-full mb-3 hover:ring hover:ring-5 hover:ring-warning" @click="selectImage(3)" />
             <span >{{SubTitle3}}</span>
           </div>
           <div class="flex flex-col items-center">
-            <img src="images/connexion/duck4.png" alt="Image 4" class="max-sm:w-40 max-sm:h-40 w-20h-20 object-cover rounded-full mb-3 hover:ring hover:ring-5 hover:ring-error" @click="selectImage(4)" />
+            <img src="/images/connexion/duck4.png" alt="Image 4" class="max-sm:w-40 max-sm:h-40 w-20h-20 object-cover rounded-full mb-3 hover:ring hover:ring-5 hover:ring-error" @click="selectImage(4)" />
             <span >{{SubTitle4}}</span>
           </div>
           <div class="flex flex-col items-center">
-            <img src="images/connexion/duck5.png" alt="Image 5" class="max-sm:w-40 max-sm:h-40 w-20h-20 object-cover rounded-full mb-3 hover:ring hover:ring-5 hover:ring-warning" @click="selectImage(5)" />
+            <img src="/images/connexion/duck5.png" alt="Image 5" class="max-sm:w-40 max-sm:h-40 w-20h-20 object-cover rounded-full mb-3 hover:ring hover:ring-5 hover:ring-warning" @click="selectImage(5)" />
             <span >{{SubTitle5}}</span>
           </div>
           <div class="flex flex-col items-center">
-            <img src="images/connexion/duck6.png" alt="Image 3" class="max-sm:w-40 max-sm:h-40 w-20h-20 object-cover rounded-full mb-3 hover:ring hover:ring-5 hover:ring-warning" @click="selectImage(6)" />
+            <img src="/images/connexion/duck6.png" alt="Image 3" class="max-sm:w-40 max-sm:h-40 w-20h-20 object-cover rounded-full mb-3 hover:ring hover:ring-5 hover:ring-warning" @click="selectImage(6)" />
             <span >{{SubTitle6}}</span>
           </div>
           <div class="flex flex-col items-center">
-            <img src="images/connexion/duck7.png" alt="Image 3" class="max-sm:w-40 max-sm:h-40 w-20h-20 object-cover rounded-full mb-3 hover:ring hover:ring-5 hover:ring-secondary" @click="selectImage(7)" />
+            <img src="/images/connexion/duck7.png" alt="Image 3" class="max-sm:w-40 max-sm:h-40 w-20h-20 object-cover rounded-full mb-3 hover:ring hover:ring-5 hover:ring-secondary" @click="selectImage(7)" />
             <span >{{SubTitle7}}</span>
           </div>
           <div class="flex flex-col items-center">
-            <img src="images/connexion/duck8.png" alt="Image 3" class="max-sm:w-40 max-sm:h-40 w-20h-20 object-cover rounded-full mb-3 hover:ring hover:ring-5 hover:ring-info" @click="selectImage(8)" />
+            <img src="/images/connexion/duck8.png" alt="Image 3" class="max-sm:w-40 max-sm:h-40 w-20h-20 object-cover rounded-full mb-3 hover:ring hover:ring-5 hover:ring-info" @click="selectImage(8)" />
             <span >{{SubTitle8}}</span>
           </div>
           <div class="flex flex-col items-center">
-            <img src="images/connexion/duck9.png" alt="Image 3" class="max-sm:w-40 max-sm:h-40 w-20h-20 object-cover rounded-full mb-3 hover:ring hover:ring-5 hover:ring-success" @click="selectImage(9)" />
+            <img src="/images/connexion/duck9.png" alt="Image 3" class="max-sm:w-40 max-sm:h-40 w-20h-20 object-cover rounded-full mb-3 hover:ring hover:ring-5 hover:ring-success" @click="selectImage(9)" />
             <span >{{SubTitle9}}</span>
           </div>
         </div>
@@ -81,7 +81,7 @@ const saveButtonVisible = ref(false);
 let chosenImage = ref(null); // pour stocker temporairement l'image choisie
 
 function selectImage(imageIndex) {
-  chosenImage.value = `images/connexion/duck${imageIndex}.png`;
+  chosenImage.value = `/images/connexion/duck${imageIndex}.png`;
   saveButtonVisible.value = true;
 
   switch(imageIndex) {

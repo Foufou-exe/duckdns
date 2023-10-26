@@ -25,7 +25,7 @@
     <div class="min-h-screen">
         <Statistiques />
 
-        <h1 class="text-4xl font-extrabold mb-5">Why do I need DuckDNS or any DDNS service?</h1>
+        <h1 class="text-3xl md:text-3xl lg:text-5xl font-extrabold mb-5">Why do I need DuckDNS or any DDNS service?</h1>
         <p class="font-thin mb-5">
             Most connections to the internet are through a dynamic external IP address which changes quite often (weekly or even daily).
             <br> <br>

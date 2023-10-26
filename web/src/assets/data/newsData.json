@@ -3,7 +3,7 @@
         "id": 1,
         "title": "Goodbye Reddit ?",
         "date": "2023-10-05",
-        "content": "Lorem ipsum dolor sit amet...",
+        "content": "A brief introduction to exchanges with Reddit's legal team and the changes made as a result. The deadline for using Reddit oAuth has been extended to March 8, 2021, and users are encouraged to migrate to other login methods. A warning is given regarding the impossibility of recovering access in the event of token loss.",
         "viewName": "GoodbeyReddit",
         "categorie": ["Epic", "Information"]
     },

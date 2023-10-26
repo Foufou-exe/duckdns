@@ -1,7 +1,7 @@
 <template>
   <div class="mb-6">
-    <h1 class="text-4xl font-extrabold mb-5">Statistics</h1>
-    <div class="stats shadow">
+    <h1 class="text-3xl md:text-3xl lg:text-5xl font-extrabold mb-5">Statistics</h1>
+    <div class="stats">
       
       <div class="stat">
         <div class="stat-figure text-primary">

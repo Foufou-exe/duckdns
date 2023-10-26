@@ -53,15 +53,10 @@ const router = createRouter({
             component: () => import('@views/News.vue'),
         },
         {
-            // Redirection for News
-            path: '/news/:category',
-            name: 'newsCategory',
+            path: '/news/:id/:viewName',
+            name: 'baseNews',
             props: true,
-        },
-        {
-            path: '/news/:category/:id/:title',
-            name: 'newsTitle',
-            props: true,
+            component: () => import('@components/news/BaseNews.vue')
         },
         {
             // Redirection for Profils User
