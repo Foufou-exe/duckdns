@@ -22,10 +22,10 @@
 </template>
 
 <script setup>
-import ButtonPersona from '@components/ConnexionModelsButtonPersona.vue';
-import ButtonReddit from '@components/ConnexionModelsButtonReddit.vue';
-import ButtonTwitter from '@components/ConnexionModelsButtonTwitter.vue';
-import ButtonGithub from '@components/ConnexionModelsButtonGithub.vue';
-import ButtonGoogle from '@components/ConnexionModelsButtonGoogle.vue';
+import ButtonPersona from './ButtonPersona.vue';
+import ButtonReddit from './ButtonReddit.vue';
+import ButtonTwitter from './ButtonTwitter.vue';
+import ButtonGithub from './ButtonGithub.vue';
+import ButtonGoogle from './ButtonGoogle.vue';
 
 </script>

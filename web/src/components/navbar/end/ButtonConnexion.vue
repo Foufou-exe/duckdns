@@ -9,5 +9,5 @@
 </template>
 
 <script setup>
-    import TheModalsConnexion from './TheModalsConnexion.vue';
+    import TheModalsConnexion from '@components/connexion/TheModalsConnexion.vue';
 </script>

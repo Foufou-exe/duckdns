@@ -10,17 +10,17 @@
           <h1 class="text-sm font-bold flex justify-center">Foufou-exe@github</h1>
         </li>
         <li>
-          <a>
+          <router-link :to="{ name: 'profils' }">
             <font-awesome-icon icon="user" />
             Profile
-          </a>
+          </router-link >
         </li>
   
         <li>
-          <a>
+          <router-link :to="{ name: 'domains' }">
             <font-awesome-icon icon="earth-americas" />
             Domains
-          </a>
+          </router-link>
         </li>
         <li>
           <a>

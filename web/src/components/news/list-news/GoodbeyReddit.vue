@@ -66,5 +66,5 @@
 </template>
 
 <script setup>
-import TheButtonsNavigations from './TheButtonsNavigations.vue';
+import TheButtonsNavigations from '@components/TheButtonsNavigations.vue';
 </script>

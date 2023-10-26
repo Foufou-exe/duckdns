@@ -1,47 +1,47 @@
 // Linux components
-import TextDocumentationLinuxToEc2 from '@components/TextDocumentationLinuxToEc2.vue'
-import TextDocumentationLinuxToCron from '@components/TextDocumentationLinuxToCron.vue'
-import TextDocumentationLinuxToBsdCron from '@components/TextDocumentationLinuxToBsdCron.vue'
-import TextDocumentationLinuxToNetcatCron from '@components/TextDocumentationLinuxToNetcatCron.vue'
-import TextDocumentationLinuxToGui from '@components/TextDocumentationLinuxToGui.vue'
+import TheLinuxToEc2 from '@components/documentation/systems/TheLinuxToEc2.vue'
+import TheLinuxToCron from '@components/documentation/systems/TheLinuxToCron.vue'
+import TheLinuxToBsdCron from '@components/documentation/systems/TheLinuxToBsdCron.vue'
+import TheLinuxToNetcatCron from '@components/documentation/systems/TheLinuxToNetcatCron.vue'
+import TheLinuxToGui from '@components/documentation/systems/TheLinuxToGui.vue'
 // Android components
-import TextDocumentationAndroidToOs from '@components/TextDocumentationAndroid.vue'
+import TheAndroidToOs from '@components/documentation/systems/TheAndroid.vue'
 // MacOs components
-import TextDocumentationMacOs from '@components/TextDocumentationMacOs.vue'
-import TextDocumentationMacOsToHomebrew from '@components/TextDocumentationMacOsToHomebrew.vue'
-import TextDocumentationMacOsToIpMonitor from '@components/TextDocumentationMacOsIpMonitor.vue'
-import TextDocumentationMacOsToIosRealDns from '@components/TextDocumentationMacOsIosRealDns.vue'
+import TheMacOs from '@components/documentation/systems/TheMacOs.vue'
+import TheMacOsToHomebrew from '@components/documentation/systems/TheMacOsToHomebrew.vue'
+import TheMacOsToIpMonitor from '@components/documentation/systems/TheMacOsIpMonitor.vue'
+import TheMacOsToIosRealDns from '@components/documentation/systems/TheMacOsIosRealDns.vue'
 // Windows components
-import TextDocumentationWindowsToC from '@components/TextDocumentationWindowsToC.vue'
-import TextDocumentationWindowsToPowershell from '@components/TextDocumentationWindowsToPowershell.vue'
-import TextDocumentationWindowsToGui from '@components/TextDocumentationWindowsToGui.vue'
-import TextDocumentationWindowsToScript from '@components/TextDocumentationWindowsToScript.vue'
+import TheWindowsToC from '@components/documentation/systems/TheWindowsToC.vue'
+import TheWindowsToPowershell from '@components/documentation/systems/TheWindowsToPowershell.vue'
+import TheWindowsToGui from '@components/documentation/systems/TheWindowsToGui.vue'
+import TheWindowsToScript from '@components/documentation/systems/TheWindowsToScript.vue'
 // Raspberry components
-import TextDocumentationRaspberryPi from '@components/TextDocumentationRaspberryPi.vue'
-import TextDocumentationRaspbmc from '@components/TextDocumentationRaspbmc.vue'
+import TheRaspberryPi from '@components/documentation/systems/TheRaspberryPi.vue'
+import TheRaspbmc from '@components/documentation/systems/TheRaspbmc.vue'
 // Other components
-import TextDocumentationOtherToDotNet from '@components/TextDocumentationOtherToDotNet.vue'
-import TextDocumentationOtherToMono from '@components/TextDocumentationOtherMono.vue'
+import TheOtherToDotNet from '@components/documentation/systems/TheOtherToDotNet.vue'
+import TheOtherToMono from '@components/documentation/systems/TheOtherMono.vue'
 // Routers components
-import TextDocumentationRouteurToAlliedTelesis from '@components/TextDocumentationRouteurToAlliedTelesis.vue'
-import TextDocumentationRouteurToDdwrt from '@components/TextDocumentationRouteurToDdwrt.vue'
-import TextDocumentationRouteurToEdgeRouter from '@components/TextDocumentationRouteurToEdgeRouter.vue'
-import TextDocumentationRouteurToFreenas from '@components/TextDocumentationRouteurToFreenas.vue'
-import TextDocumentationRouteurToFritzbox from '@components/TextDocumentationRouteurToFritzbox.vue'
-import TextDocumentationRouteurToMikrotik from '@components/TextDocumentationRouteurToMikrotik.vue'
-import TextDocumentationRouteurToHardware from '@components/TextDocumentationRouteurToHardware.vue'
-import TextDocumentationRouteurToOpenwrt from '@components/TextDocumentationRouteurToOpenwrt.vue'
-import TextDocumentationRouteurToPfsense from '@components/TextDocumentationRouteurToPfsense.vue'
-import TextDocumentationRouteurToSynology from '@components/TextDocumentationRouteurToSynology.vue'
-import TextDocumentationRouteurToSmoothwall from '@components/TextDocumentationRouteurToSmoothwall.vue'
-import TextDocumentationRouteurToTechnicolor from '@components/TextDocumentationRouteurToTechnicolor.vue'
-import TextDocumentationRouteurToTomotoUsb from '@components/TextDocumentationRouteurToTomotoUsb.vue'
-import TextDocumentationRouteurToZteh108n from '@components/TextDocumentationRouteurToZteh108n.vue'
+import TheRouteurToAlliedTelesis from '@components/documentation/routeur/TheRouteurToAlliedTelesis.vue'
+import TheRouteurToDdwrt from '@components/documentation/routeur/TheRouteurToDdwrt.vue'
+import TheRouteurToEdgeRouter from '@components/documentation/routeur/TheRouteurToEdgeRouter.vue'
+import TheRouteurToFreenas from '@components/documentation/routeur/TheRouteurToFreenas.vue'
+import TheRouteurToFritzbox from '@components/documentation/routeur/TheRouteurToFritzbox.vue'
+import TheRouteurToMikrotik from '@components/documentation/routeur/TheRouteurToMikrotik.vue'
+import TheRouteurToHardware from '@components/documentation/routeur/TheRouteurToHardware.vue'
+import TheRouteurToOpenwrt from '@components/documentation/routeur/TheRouteurToOpenwrt.vue'
+import TheRouteurToPfsense from '@components/documentation/routeur/TheRouteurToPfsense.vue'
+import TheRouteurToSynology from '@components/documentation/routeur/TheRouteurToSynology.vue'
+import TheRouteurToSmoothwall from '@components/documentation/routeur/TheRouteurToSmoothwall.vue'
+import TheRouteurToTechnicolor from '@components/documentation/routeur/TheRouteurToTechnicolor.vue'
+import TheRouteurToTomotoUsb from '@components/documentation/routeur/TheRouteurToTomotoUsb.vue'
+import TheRouteurToZteh108n from '@components/documentation/routeur/TheRouteurToZteh108n.vue'
 // Standards components
-import TextDocumentationStandardsToDNSOmatic from '@components/TextDocumentationStandardsToDNSOmatic.vue'
-import TextDocumentationStandardsToDynDNS from '@components/TextDocumentationStandardsToDynDNS.vue'
-import TextDocumentationStandardsToGnuDIP from '@components/TextDocumentationStandardsToGnuDIP.vue'
-import TextDocumentationStandardsToInadyn from '@components/TextDocumentationStandardsToInadyn.vue'
+import TheStandardsToDNSOmatic from '@components/documentation/standards/TheStandardsToDNSOmatic.vue'
+import TheStandardsToDynDNS from '@components/documentation/standards/TheStandardsToDynDNS.vue'
+import TheStandardsToGnuDIP from '@components/documentation/standards/TheStandardsToGnuDIP.vue'
+import TheStandardsToInadyn from '@components/documentation/standards/TheStandardsToInadyn.vue'
 
 // Export different variable
 export default {
@@ -56,41 +56,41 @@ export default {
       // ... Autres types ici
     },
     components: {
-        'Powershell': TextDocumentationWindowsToPowershell,
-        'Script': TextDocumentationWindowsToScript,
-        'Gui': TextDocumentationWindowsToGui,
-        'C#': TextDocumentationWindowsToC,
-        'OSX': TextDocumentationMacOs,
-        'Homebrew': TextDocumentationMacOsToHomebrew,
-        'IP Monitor': TextDocumentationMacOsToIpMonitor,
-        'IOS RealDNS': TextDocumentationMacOsToIosRealDns,
-        'OS': TextDocumentationAndroidToOs,
-        'EC2': TextDocumentationLinuxToEc2,
-        'Cron': TextDocumentationLinuxToCron,
-        'Bsd Cron': TextDocumentationLinuxToBsdCron,
-        'Netcat Cron': TextDocumentationLinuxToNetcatCron,
-        'GUI': TextDocumentationLinuxToGui,
-        'Raspbmc': TextDocumentationRaspbmc,
-        'Pi': TextDocumentationRaspberryPi,
-        'DotNet': TextDocumentationOtherToDotNet,
-        'Mono': TextDocumentationOtherToMono,
-        'Allied Telesis': TextDocumentationRouteurToAlliedTelesis,
-        'Ddwrt': TextDocumentationRouteurToDdwrt,
-        'Edge Router': TextDocumentationRouteurToEdgeRouter,
-        'Freenas': TextDocumentationRouteurToFreenas,
-        'Fritzbox': TextDocumentationRouteurToFritzbox,
-        'Mikrotik': TextDocumentationRouteurToMikrotik,
-        'Hardware': TextDocumentationRouteurToHardware,
-        'Openwrt': TextDocumentationRouteurToOpenwrt,
-        'Pfsense': TextDocumentationRouteurToPfsense,
-        'Synology': TextDocumentationRouteurToSynology,
-        'Smoothwall': TextDocumentationRouteurToSmoothwall,
-        'Technicolor': TextDocumentationRouteurToTechnicolor,
-        'Tomoto USB': TextDocumentationRouteurToTomotoUsb,
-        'Zteh108n': TextDocumentationRouteurToZteh108n,
-        'DNS Omatic': TextDocumentationStandardsToDNSOmatic,
-        'DynDNS': TextDocumentationStandardsToDynDNS,
-        'GnuDIP': TextDocumentationStandardsToGnuDIP,
-        'Inadyn': TextDocumentationStandardsToInadyn,
+        'Powershell': TheWindowsToPowershell,
+        'Script': TheWindowsToScript,
+        'Gui': TheWindowsToGui,
+        'C#': TheWindowsToC,
+        'OSX': TheMacOs,
+        'Homebrew': TheMacOsToHomebrew,
+        'IP Monitor': TheMacOsToIpMonitor,
+        'IOS RealDNS': TheMacOsToIosRealDns,
+        'OS': TheAndroidToOs,
+        'EC2': TheLinuxToEc2,
+        'Cron': TheLinuxToCron,
+        'Bsd Cron': TheLinuxToBsdCron,
+        'Netcat Cron': TheLinuxToNetcatCron,
+        'GUI': TheLinuxToGui,
+        'Raspbmc': TheRaspbmc,
+        'Pi': TheRaspberryPi,
+        'DotNet': TheOtherToDotNet,
+        'Mono': TheOtherToMono,
+        'Allied Telesis': TheRouteurToAlliedTelesis,
+        'Ddwrt': TheRouteurToDdwrt,
+        'Edge Router': TheRouteurToEdgeRouter,
+        'Freenas': TheRouteurToFreenas,
+        'Fritzbox': TheRouteurToFritzbox,
+        'Mikrotik': TheRouteurToMikrotik,
+        'Hardware': TheRouteurToHardware,
+        'Openwrt': TheRouteurToOpenwrt,
+        'Pfsense': TheRouteurToPfsense,
+        'Synology': TheRouteurToSynology,
+        'Smoothwall': TheRouteurToSmoothwall,
+        'Technicolor': TheRouteurToTechnicolor,
+        'Tomoto USB': TheRouteurToTomotoUsb,
+        'Zteh108n': TheRouteurToZteh108n,
+        'DNS Omatic': TheStandardsToDNSOmatic,
+        'DynDNS': TheStandardsToDynDNS,
+        'GnuDIP': TheStandardsToGnuDIP,
+        'Inadyn': TheStandardsToInadyn,
     }
 }

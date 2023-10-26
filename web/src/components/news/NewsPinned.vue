@@ -7,11 +7,7 @@
       <div class="text-xs sm:text-sm">Login with Reddit is no more - Legal request</div>
     </div>
     
-    <router-link :to="{ name: 'NewsReddit' }" class="btn btn-sm btn-ghost text-xs sm:text-sm ml-5">Link News</router-link>
+    <a class="btn btn-sm btn-ghost text-xs sm:text-sm ml-5">Link News</a>
 </div>
 
 </template>
-
-<script setup>
-//
-</script>

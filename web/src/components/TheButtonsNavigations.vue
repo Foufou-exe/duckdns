@@ -12,7 +12,3 @@
         </router-link>
     </div>
 </template>
-
-<script setup>
-//
-</script>

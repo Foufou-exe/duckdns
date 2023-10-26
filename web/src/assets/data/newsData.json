@@ -1,0 +1,18 @@
+[
+    {
+        "id": 1,
+        "title": "Goodbye Reddit ?",
+        "date": "2023-10-05",
+        "content": "Lorem ipsum dolor sit amet...",
+        "viewName": "GoodbeyReddit",
+        "categorie": ["Epic", "Information"]
+    },
+    {
+        "id": 2,
+        "title": "Rejuvenation Website !",
+        "date": "2023-10-25",
+        "content": "Lorem ipsum dolor sit amet...",
+        "viewName": "RedesignWebsite",
+        "categorie": ["Release"]
+    }
+]

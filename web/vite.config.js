@@ -27,6 +27,9 @@ export default defineConfig({
       '@store': fileURLToPath(new URL('./src/store',import.meta.url)) ,
       '@layouts': fileURLToPath(new URL('./src/layouts',import.meta.url)) ,
       '@styles': fileURLToPath(new URL('./src/styles',import.meta.url)) ,
+      '@utils': fileURLToPath(new URL('./src/utils',import.meta.url)) ,
+      '@api': fileURLToPath(new URL('./src/api',import.meta.url)) ,
+      '@data': fileURLToPath(new URL('./src/assets/data',import.meta.url)) ,
     }
   },
   extensions: ['.js', '.vue', '.json', '.ts', '.tsx', '.mjs'],

@@ -1,6 +1,5 @@
 // Import Vue Router
 import { createRouter, createWebHistory } from 'vue-router';
-
 // Create a Vue Router
 const router = createRouter({
     history: createWebHistory(process.env.BASE_URL),
@@ -52,14 +51,17 @@ const router = createRouter({
             path: '/news',
             name: 'news',
             component: () => import('@views/News.vue'),
-            children: [
-                {
-                    // Redirection news page Reddit
-                    path: 'NewsReddit',
-                    name: 'NewsReddit',
-                    component: () => import('@components/TextNewsReddit.vue')
-                }
-            ],
+        },
+        {
+            // Redirection for News
+            path: '/news/:category',
+            name: 'newsCategory',
+            props: true,
+        },
+        {
+            path: '/news/:category/:id/:title',
+            name: 'newsTitle',
+            props: true,
         },
         {
             // Redirection for Profils User

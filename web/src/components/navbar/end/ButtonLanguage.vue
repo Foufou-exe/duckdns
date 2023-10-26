@@ -41,7 +41,3 @@
         </ul>
     </details>
 </template>
-
-<script setup>
-
-</script>
