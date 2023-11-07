@@ -53,7 +53,10 @@ export default {
     types: {
       'Windows': ['Powershell', 'Script', 'Gui', 'C#'],
       'Linux': ['EC2', 'Cron', 'Bsd Cron', 'Netcat Cron', 'GUI'],
-      // ... Autres types ici
+      'MacOS': ['Homebrew', 'IP Monitor', 'IOS RealDNS', 'OS'],
+      'Android': ['OS'],
+      'Raspberry': ['Raspbmc', 'Pi'],
+      'Other': ['DotNet', 'Mono'],
     },
     components: {
         'Powershell': TheWindowsToPowershell,

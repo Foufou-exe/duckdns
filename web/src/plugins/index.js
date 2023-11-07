@@ -1,8 +1,9 @@
-/**
+/*
+ *
  * plugins/index.js
  *
  * Automatically included in `./src/main.js`
- */
+*/
 
 // Plugins
 import router from '../router'
@@ -11,10 +12,8 @@ import Vue3Lottie from './lottie'
 
 // Pinia
 import { createPinia } from 'pinia'
-
-
-
 const pinia = createPinia()
+
 
 export function RegisterPlugins(app) {
     app

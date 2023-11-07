@@ -1,10 +1,14 @@
 <template>
     <div :id="id" :name="viewName">
-        <component :is="dynamicComponent" />
+      <component :is="dynamicComponent" />
+      <TheButtonsNavigations/>
     </div>
 </template>
 
 <script setup>
+import TheButtonsNavigations from '@components/TheButtonsNavigations.vue';
+
+
 import { shallowRef , onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { defineProps } from 'vue'
