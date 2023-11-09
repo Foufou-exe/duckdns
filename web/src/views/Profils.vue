@@ -1,6 +1,6 @@
 <template>
     <div
-        class="mx-auto flex flex-col md:flex-row justify-center max-sm:mt-10 max-md:mt-10 p-6 bg-[#090f1c] rounded shadow-2xl shadow-secondary">
+        class="flex flex-col md:flex-row justify-center max-sm:mt-10 max-md:mt-10 p-10 bg-[#090f1c] rounded shadow-2xl shadow-secondary">
         <!-- Image Section -->
         <div class="m-4 md:m-10 flex flex-col justify-center items-center">
             <img :src="selectedImage" alt="Profil" ref="tilt"
@@ -46,7 +46,11 @@
 </template>
 
 <script setup>
+// Librairie
 import VanillaTilt from "vanilla-tilt";
+import { useToast } from "vue-toastification";
+import "vue-toastification/dist/index.css";
+
 
 // Composant
 import ChoosePicture from "@components/profils/ModalsChoosePicture.vue";
@@ -59,17 +63,31 @@ import { useImageStore } from "@store/store.js"; // Importez votre store Pinia
 // Exemple
 const account = "Foufou-exe@github";
 const type = "free";
-const token = "fb940a3d-8915-4fb3-81b6-9f5ab70080e9";
-const tokenGenerated = "1 month ago";
+const token = "833a7a1a-7f3d-11ee-9aba-4aeaeb2aef9e";
 const createdDate = "11 Sep 2023, 18:17:53";
 
 // Use
 const imageStore = useImageStore();
 const selectedImage = computed(() => imageStore.getSelectedImage);
-
 const hide = "****************";
-
 const showToken = ref(false);
+
+
+const toast = useToast( {
+    position: "top-right",
+    timeout: 5000,
+    closeOnClick: true,
+    pauseOnFocusLoss: true,
+    pauseOnHover: true,
+    draggable: true,
+    draggablePercent: 0.6,
+    showCloseButtonOnHover: false,
+    hideProgressBar: false,
+    closeButton: "button",
+    icon: true,
+    rtl: false,
+});
+
 
 const toggleTokenVisibility = () => {
     showToken.value = !showToken.value;
@@ -79,9 +97,9 @@ const tilt = ref(null);
 
 const copyToken = () => {
     navigator.clipboard.writeText(token).then(() => {
-        alert('Token copied to clipboard!');
+        return toast.success('Token copied successfully.');
     }, (err) => {
-        alert('Failed to copy token: ', err);
+        return toast.error('Failed to copy token.');
     });
 };
 

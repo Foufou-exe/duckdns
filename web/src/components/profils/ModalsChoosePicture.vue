@@ -2,16 +2,16 @@
 
 
 <template>
-  <dialog id="ChoosePicture" class="modal modal-bottom sm:modal-middle">
-    <div class="modal-box w-11/12 max-w-5xl">
-      <h3 class="font-bold text-2xl">Choose Picture :</h3>
+  <dialog id="ChoosePicture" class="modal modal-bottom sm:modal-middle overflow-y-hidden">
+    <div class="modal-box">
+      <h3 class="font-bold text-3xl">Choose Picture</h3>
       <div class="modal-action">
         <form method="dialog">
           <button @click="closeDialog" class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
         </form>
       </div>
-      <div class="p-5 ">
-        <div id="imageGallery" class="grid grid-cols-4 gap-5 mb-5 text-center max-sm:grid-cols-1 max-sm:justify-center">
+      <div class="p-5">
+        <div id="imageGallery" class="grid grid-cols-4 gap-5  text-center max-sm:grid-cols-1 max-sm:justify-center">
           <!-- Images stockées par défaut -->
           <div class="flex flex-col items-center " >
             <img src="/images/connexion/duck1.png" alt="Image 1" class="max-sm:w-40 max-sm:h-40 w-20h-20 object-cover rounded-full mb-3 hover:ring hover:ring-5 hover:ring-secondary" @click="selectImage(1)" />

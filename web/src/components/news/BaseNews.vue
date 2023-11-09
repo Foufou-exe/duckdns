@@ -7,27 +7,24 @@
 
 <script setup>
 import TheButtonsNavigations from '@components/TheButtonsNavigations.vue';
+import { shallowRef, onMounted } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+import { defineProps } from 'vue';
 
-
-import { shallowRef , onMounted } from 'vue'
-import { useRoute } from 'vue-router'
-import { defineProps } from 'vue'
-
-const props = defineProps(['id', 'viewName'])
-const route = useRoute()
-const dynamicComponent = shallowRef(null)
+const props = defineProps(['id', 'viewName']);
+const route = useRoute();
+const router = useRouter();
+const dynamicComponent = shallowRef(null);
 
 onMounted(async () => {
-  const viewName = route.params.viewName
+  const viewName = route.params.viewName;
   if (viewName) {
     try {
-      const component = await import(`@components/news/list-news/${viewName}.vue`)
-      dynamicComponent.value = component.default
+      const component = await import(`@components/news/list-news/${viewName}.vue`);
+      dynamicComponent.value = component.default;
     } catch (error) {
-      console.error("Erreur lors du chargement du composant:", error)
-      // Vous pouvez rediriger vers une page d'erreur ou afficher un message ici
+      router.push({ name: 'not-found' }); 
     }
   }
-})
+});
 </script>
-  

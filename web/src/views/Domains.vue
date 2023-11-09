@@ -61,10 +61,10 @@
             </table>
         </div>
 
-        <!-- Boutons de suppression -->
+        <!-- Delete buttons -->
         <div class="flex flex-wrap-reverse md:flex-nowrap justify-end mt-5 space-x-1 md:space-x-3 space-y-2 md:space-y-0">
             <button @click="deleteAll" class="btn bg-red-600 hover:bg-red-700 text-white" v-if="isAllSelected">
-                <font-awesome-icon :icon="['fas', 'trash']" /> All delete
+                <font-awesome-icon :icon="['fas', 'trash']" /> Delete All
             </button>
             <button @click="deleteSelected" class="btn bg-red-600 hover:bg-red-700 text-white" v-if="isAnySelected">
                 <font-awesome-icon :icon="['fas', 'trash']" /> Delete

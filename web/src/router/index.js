@@ -69,7 +69,14 @@ const router = createRouter({
             path: '/domains',
             name: 'domains',
             component: () => import('@views/Domains.vue'),
-        }
+        },
+
+        {
+            // Redirection Error 404 page
+            path: '/:pathMatch(.*)*',
+            name: 'not-found',
+            component: () => import('@views/NotFound.vue')
+        },
 
     ]
 
