@@ -9,9 +9,9 @@
         <div class="space-y-5">
             <h1 class="text-3xl md:text-3xl lg:text-5xl font-extrabold mb-5">Welcome to Duck DNS</h1>
             <span class="lg:text-xl">Free Dynamic DNS hosted on AWS</span>
-            <NewsPinned />
+            <!-- <NewsPinned /> -->
             <div class="flex justify-center">
-                <button class="btn btn-secondary animate-bounce" @click="scrollToInfo"><font-awesome-icon
+                <button class="btn btn-secondary" @click="scrollToInfo"><font-awesome-icon
                         icon="arrow-down" />See More</button>
             </div>
 
@@ -95,7 +95,7 @@
 </template>
 
 <script setup>
-import NewsPinned from '@components/news/NewsPinned.vue';
+//import NewsPinned from '@components/news/NewsPinned.vue';
 import DuckJSON from '@assets/json/duck.json';
 
 // Function for scrolling to the info section

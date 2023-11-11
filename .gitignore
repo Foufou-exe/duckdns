@@ -1,6 +1,20 @@
 # File created using '.gitignore Generator' for Visual Studio Code: https://bit.ly/vscode-gig
-# Created by https://www.toptal.com/developers/gitignore/api/windows,visualstudiocode,node
-# Edit at https://www.toptal.com/developers/gitignore?templates=windows,visualstudiocode,node
+# Created by https://www.toptal.com/developers/gitignore/api/windows,visualstudiocode,node,direnv,dotenv,jenv,venv,virtualenv,vuejs
+# Edit at https://www.toptal.com/developers/gitignore?templates=windows,visualstudiocode,node,direnv,dotenv,jenv,venv,virtualenv,vuejs
+
+### direnv ###
+.direnv
+.envrc
+
+### dotenv ###
+.env
+
+### JEnv ###
+# JEnv local Java version configuration file
+.java-version
+
+# Used by previous versions of JEnv
+.jenv-version
 
 ### Node ###
 # Logs
@@ -78,7 +92,6 @@ web_modules/
 .yarn-integrity
 
 # dotenv environment variable files
-.env
 .env.development.local
 .env.test.local
 .env.production.local
@@ -142,6 +155,24 @@ dist
 # SvelteKit build / generate output
 .svelte-kit
 
+### venv ###
+# Virtualenv
+# http://iamzed.com/2009/05/07/a-primer-on-virtualenv/
+.Python
+[Bb]in
+[Ii]nclude
+[Ll]ib
+[Ll]ib64
+[Ll]ocal
+[Ss]cripts
+pyvenv.cfg
+.venv
+pip-selfcheck.json
+
+### VirtualEnv ###
+# Virtualenv
+# http://iamzed.com/2009/05/07/a-primer-on-virtualenv/
+
 ### VisualStudioCode ###
 .vscode/*
 !.vscode/settings.json
@@ -160,6 +191,13 @@ dist
 # Ignore all local history of files
 .history
 .ionide
+
+### Vuejs ###
+# Recommended template: Node.gitignore
+
+dist/
+npm-debug.log
+yarn-error.log
 
 ### Windows ###
 # Windows thumbnail cache files
@@ -187,7 +225,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.toptal.com/developers/gitignore/api/windows,visualstudiocode,node
+# End of https://www.toptal.com/developers/gitignore/api/windows,visualstudiocode,node,direnv,dotenv,jenv,venv,virtualenv,vuejs
 
 # Custom rules (everything added below won't be overriden by 'Generate .gitignore File' if you use 'Update' option)
 

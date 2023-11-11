@@ -1,9 +1,9 @@
 
 <template>
-    <!-- INFO : Modal clique -->
+    <!-- TODO: Modals clicks -->
     <button onclick="login.showModal()" class="btn btn-active btn-secondary ml-2 text-white text-xs">
         <font-awesome-icon icon="right-to-bracket" />
-        Se connecter
+        Login
     </button>
     <TheModalsConnexion />
 </template>

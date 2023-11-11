@@ -1,0 +1,87 @@
+{
+  "root": {
+    "navbar": {
+      "start": {
+        "menu": {
+          "home": "Home",
+          "about": "About",
+          "documentation": "Documentation",
+          "faq": "Faq",
+          "news": "News",
+          "specification": "Specifications"
+        }
+      },
+      "center": {
+        "menu": {
+            "home": "Home",
+            "about": "About",
+            "documentation": "Documentation",
+            "faq": "Faq",
+            "news": "News",
+            "specification": "Spécifications"
+        }
+      },
+      "end": {
+        "buttonConnexion": "Login",
+        "dropdownProfile": {
+          "profil": "Profil",
+          "domains": "Domains",
+          "logout": "Logout"
+        }
+      }
+    },
+    "footer": {
+      "dateCreation": "Providing reliable tech since 2013",
+      "termsOfUse": "Terms of use",
+      "privacyStatements": "Privacy statements",
+      "donation": "We accept donations in the following ways :"
+    },
+    "modalsConnexion": {
+        "h3": "Login/Sign up",
+        "div": "OR",
+        "buttonGithub": "connect with Github",
+        "buttonGoogle": "connect with Google",
+        "buttonX": "connect with X",
+        "buttonReddit": {
+            "buttonName": "connect with Reddit",
+            "login": "Reddit Login",
+            "span1": "Please consider moving off Reddit Login, by deleting your domains and re-adding them to another login.",
+            "span2": "Reddit Legal has requested that we stop using the Reddit oAuth API to allow you to login to this site",
+            "span3": "If you lose your token or forget your token, we have no-way of giving you access.",
+            "form": {
+                "label1": "Reddit Username",
+                "label2": "Your Token",
+                "buttonLogin": "Login",
+                "buttonBack": "Back"
+            }
+        },
+        "buttonPersona": {
+            "buttonName": "connect with Persona",
+            "login": "Persona Login",
+            "span1": "Please consider moving off Persona, by deleting your domains and re-adding them to another login.",
+            "span2": "Persona is now discontinued, however we still allow you to login with your email address and account token.",
+            "span3": "If you lose your token or forget your token, we have no-way of giving you access.",
+            "form": {
+                "label1": "Your Email",
+                "label2": "Your Token",
+                "buttonLogin": "Login",
+                "buttonBack": "Back"
+            }
+        }
+
+    },
+    "home": {
+        "h1": "Welcome to Duck DNS",
+        "p1": "Free Dynamic DNS hosted on Amazon VPC",
+        "buttonSee": "See more"
+    },
+    "about": {},
+    "faq": {},
+    "news": {},
+    "profils": {},
+    "specification": {},
+    "termsOfUse": {},
+    "privacyStatements": {},
+    "notFound": {}
+  }
+}

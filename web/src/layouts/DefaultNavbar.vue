@@ -1,23 +1,22 @@
 <template>
   <div class="navbar">
     <div class="navbar-start">
-        <MenuDropdown />
-        <ButtonDuckDns />
+      <MenuDropdown />
+      <ButtonDuckDns />
     </div>
     <div class="navbar-center hidden lg:flex" id="app">
-        <Menu />
+      <Menu />
     </div>
     <div class="navbar-end space-x-2" id="app">
       <!-- Switch theme -->
       <ButtonTheme />
       <!-- Language switcher -->
       <ButtonLanguage />
-      <!-- Connexion -->
-      <!-- <ButtonConnexion /> -->
-      
-      <!-- After connexion -->
+      <!-- Login -->
+      <ButtonConnexion />
+      <!-- After login -->
       <DropdownProfile />
-    </div> 
+    </div>
   </div>
 </template>
 
@@ -33,7 +32,7 @@ import Menu from '@components/navbar/center/Menu.vue'
 // End Navbar
 import ButtonTheme from '@components/navbar/end/ButtonTheme.vue'
 import ButtonLanguage from '@components/navbar/end/ButtonLanguage.vue';
-// import ButtonConnexion from '@components/navbar/end/ButtonConnexion.vue'
+import ButtonConnexion from '@components/navbar/end/ButtonConnexion.vue'
 import DropdownProfile from '@components/navbar/end/DropdownProfile.vue'
 
 </script>

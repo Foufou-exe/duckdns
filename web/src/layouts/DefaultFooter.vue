@@ -8,8 +8,8 @@
                 <div class="swap-on"><img src="@/assets/images/duckdns.png" class="w-14 mr-2" /></div>
                 <div class="swap-off"><img src="@/assets/images/duck.png" class="w-14 mr-2" /></div>
             </label>
-            <!-- <img src="/duck.png" class="w-14 mr-2" /> -->
-            <p>Duck DNS<br/>Providing reliable tech since 2013</p>
+            <p>Duck DNS</p>
+            <p>Providing reliable tech since 2013</p>
         </aside> 
         <nav>
             <header class="footer-title">Legal</header> 
