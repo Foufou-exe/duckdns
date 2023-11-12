@@ -138,11 +138,13 @@ function addDomain() {
 function deleteSelected() {
     domains.value = domains.value.filter(domain => !domain.selected);
     updateSelectionStatus();
+    return toast.success('Domain deleted successfully. 🗑️');
 }
 
 function deleteAll() {
     domains.value = [];
     updateSelectionStatus();
+    return toast.success('All domains deleted successfully. 🗑️');
 }
 
 function toggleAll() {

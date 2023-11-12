@@ -56,7 +56,7 @@ const router = createRouter({
       component: () => import("@views/Documentation.vue"),
     },
     {
-      // Redirection for News
+      // Redirect for News
       path: "/news",
       name: "news",
       component: () => import("@views/News.vue"),
@@ -68,24 +68,35 @@ const router = createRouter({
       component: () => import("@components/news/BaseNews.vue"),
     },
     {
-      // Redirection for Profils User
+      // Redirect for Profils User
       path: "/profils",
       name: "profils",
       component: () => import("@views/Profils.vue"),
     },
     {
-      // Redirection for Domains User
+      // Redirect for Domains User
       path: "/domains",
       name: "domains",
       component: () => import("@views/Domains.vue"),
     },
-
     {
-      // Redirection Error 404 page
+      // Redirect Error 404 page
       path: "/:pathMatch(.*)*",
       name: "not-found",
       component: () => import("@views/NotFound.vue"),
     },
+    {
+      // Redirect to Panel Admin
+      path: "/admin",
+      name: "admin",
+      component: () => import("@views/Admin.vue"),
+    },
+    {
+      // Redirect to Dasgboard Admin after login
+      path: "/admin/dashboard",
+      name: "dashboard",
+      component: () => import("@views/Dashboard.vue"),
+    }
   ],
 });
 
@@ -157,7 +168,7 @@ export default router;
 //           component: () => import("@views/Documentation.vue"),
 //         },
 //         {
-//           // Redirection for News
+//           // Redirect for News
 //           path: "/news",
 //           name: "news",
 //           component: () => import("@views/News.vue"),
@@ -169,13 +180,13 @@ export default router;
 //           component: () => import("@components/news/BaseNews.vue"),
 //         },
 //         {
-//           // Redirection for Profils User
+//           // Redirect for Profils User
 //           path: "/profils",
 //           name: "profils",
 //           component: () => import("@views/Profils.vue"),
 //         },
 //         {
-//           // Redirection for Domains User
+//           // Redirect for Domains User
 //           path: "/domains",
 //           name: "domains",
 //           component: () => import("@views/Domains.vue"),
@@ -183,7 +194,7 @@ export default router;
 //       ]
 //     },
 //     {
-//       // Redirection Error 404 page
+//       // Redirect Error 404 page
 //       path: "/:pathMatch(.*)*",
 //       name: "not-found",
 //       component: () => import("@views/NotFound.vue"),

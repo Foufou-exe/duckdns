@@ -1,8 +1,8 @@
 <template>
-    <div :id="id" :name="viewName">
-      <component :is="dynamicComponent" />
-      <TheButtonsNavigations/>
-    </div>
+  <div :id="id" :name="viewName">
+    <component :is="dynamicComponent" />
+    <TheButtonsNavigations />
+  </div>
 </template>
 
 <script setup>
@@ -23,7 +23,7 @@ onMounted(async () => {
       const component = await import(`@components/news/list-news/${viewName}.vue`);
       dynamicComponent.value = component.default;
     } catch (error) {
-      router.push({ name: 'not-found' }); 
+      router.push({ name: 'not-found' });
     }
   }
 });

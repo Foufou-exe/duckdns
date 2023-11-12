@@ -24,7 +24,7 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue';
+import { ref } from 'vue';
 import CardNews from '@components/news/CardNews.vue';
 
 const filterOption = ref('all');

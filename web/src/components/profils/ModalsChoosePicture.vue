@@ -52,7 +52,7 @@
         </div>
         <div class="divider"></div>
         <div class="flex items-center max-sm:flex-col">        
-          <button @click="saveImage" class="btn btn-primary mr-5" :style="{ display: saveButtonVisible ? 'block' : 'none' }">Sauvegarder</button>
+          <button @click="saveImage" class="btn btn-primary mr-5" :style="{ display: saveButtonVisible ? 'block' : 'none' }">Save</button>
           <span class="max-sm:mt-2">You have select the picture : <strong> {{ NamePicture }} </strong></span>
         </div>
       </div>
