@@ -14,7 +14,7 @@ import en from '@locales/en.json';
 const translate = createI18n({
   locale: 'en', // set the default language
   fallbackLocale: 'en', // defining the fallback language
-  root: {
+  texte: {
     en,
     fr,
     // de,
