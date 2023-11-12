@@ -1,0 +1,16 @@
+/* 
+    Path: web/src/styles/global.css 
+*/
+
+
+/* Responsif mecode */
+.mockup-code pre code {
+    word-wrap: break-word;  /* Permet au texte de se casser et de passer à la ligne */
+    white-space: pre-wrap;  /* Respecte les espaces et retours à la ligne dans le texte */
+}
+
+/* Effect 3D on picture  */
+.hover-move {
+    transition: transform 0.1s;
+    transform-style: preserve-3d;
+}

@@ -1,0 +1,49 @@
+{
+  "root": {
+    "navbar": {
+      "start": {
+        "menu": {
+          "home": "Accueil",
+          "about": "Informations",
+          "documentation": "Documentation",
+          "faq": "Questions",
+          "news": "Nouveautés",
+          "specification": "Specifications"
+        }
+      },
+      "center": {
+        "menu": {
+          "home": "Accueil",
+          "about": "Informations",
+          "documentation": "Documentation",
+          "faq": "Questions",
+          "news": "Nouveautés",
+          "specification": "Specifications"
+        }
+      },
+      "end": {
+        "buttonConnexion": "Se Connecter",
+        "dropdownProfile": {
+          "profil": "Profile",
+          "domains": "Domaines",
+          "logout": "Déconnexion"
+        }
+      }
+    },
+    "footer": {
+      "dateCreation": "Une technologie fiable depuis 2013",
+      "termsOfUse": "Conditions d'utilisation",
+      "privacyStatements": "Déclaration de confidentialité",
+      "donation": "Nous acceptons les dons de la manière suivante :"
+    },
+    "home": {},
+    "about": {},
+    "faq": {},
+    "news": {},
+    "profils": {},
+    "specification": {},
+    "termsOfUse": {},
+    "privacyStatements": {},
+    "notFound": {}
+  }
+}
