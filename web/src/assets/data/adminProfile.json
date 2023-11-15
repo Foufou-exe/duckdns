@@ -1,15 +1,12 @@
 {
-    "Users":
-        {
-            "Editor":
-                {
-                    "user":"Editor",
-                    "password":["TESTEditor", "EditorTEST"]
-                },
-            "Admin":
-                {
-                    "user":"Admin",
-                    "password":"TEST1"
-                }
-        }
+  "Users": {
+    "Editor": {
+      "user": "Editor",
+      "password": ["TESTEditor", "EditorTEST"]
+    },
+    "Admin": {
+      "user": "Admin",
+      "password": "TEST1"
+    }
+  }
 }
