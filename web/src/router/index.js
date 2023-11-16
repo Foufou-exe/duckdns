@@ -96,6 +96,29 @@ const router = createRouter({
       path: "/admin/dashboard",
       name: "dashboard",
       component: () => import("@views/Dashboard.vue"),
+      children: [
+        {
+          path: "support",
+          name: "support",
+          component: () => import("@components/dashboard/Support.vue"),
+        },
+        {
+          path: "create-news-article",
+          name: "create-news-article",
+          component: () => import("@components/dashboard/CreateNewArticle.vue"),
+        },
+        {
+          path: "list-article",
+          name: "list-article",
+          component: () => import("@components/dashboard/ListArticle.vue"),
+        },
+        {
+          path: '',
+          name: 'dashboard-home',
+          component: () => import("@components/dashboard/Home.vue"),
+        }
+
+      ]
     }
   ],
 });

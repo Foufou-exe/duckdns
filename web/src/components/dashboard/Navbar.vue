@@ -23,10 +23,10 @@
           class="menu menu-sm dropdown-content mt-3 z-[1] p-4 shadow bg-base-200 rounded-box w-60"
         >
           <li>
-            <a class="font-semibold">
+            <router-link to="/admin/dashboard" class="font-semibold">
                 <font-awesome-icon icon="home" />
                 Home
-            </a>
+            </router-link>
           </li>
           <li>
             <a class="font-semibold">
@@ -35,24 +35,24 @@
             </a>
             <ul class="p-2">
               <li>
-                <a class="font-semibold">
+                <router-link to="/admin/dashboard/list-article" class="font-semibold">
                     <font-awesome-icon icon="list" />
                     Article List
-                </a>
+                </router-link>
               </li>
               <li>
-                <a class="font-semibold">
+                <router-link to="/admin/dashboard/create-news-article" class="font-semibold">
                     <font-awesome-icon icon="pen-to-square" />
                     Create a New Article
-                </a>
+                </router-link>
               </li>
             </ul>
           </li>
           <li>
-            <a class="font-semibold">
+            <router-link to="/admin/dashboard/support" class="font-semibold">
                 <font-awesome-icon icon="circle-question" />
                 Support
-            </a>
+            </router-link>
           </li>
         </ul>
       </div>
@@ -64,10 +64,10 @@
     <div class="navbar-center hidden lg:flex space-x-2">
       <ul class="menu menu-horizontal px-1">
         <li>
-            <a class="font-semibold">
+            <router-link to="/admin/dashboard" class="font-semibold">
                 <font-awesome-icon icon="home" />
                 Home
-            </a>
+            </router-link>
         </li>
         <li tabindex="0">
           <details>
@@ -77,25 +77,25 @@
             </summary>
             <ul class="menu menu-sm w-60 p-5 space-y-2 shadow-lg bg-base-200">
                 <li class="mt-2">
-                    <a class="font-semibold">
+                    <router-link to="/admin/dashboard/list-article" class="font-semibold">
                         <font-awesome-icon icon="list" />
                         Article List
-                    </a>
+                    </router-link>
                 </li>
                 <li class="pb-2">
-                    <a class="font-semibold">
+                    <router-link to="/admin/dashboard/create-news-article" class="font-semibold">
                         <font-awesome-icon icon="pen-to-square" />
-                        Create a New Article
-                    </a>
+                        Create New Article
+                    </router-link>
                 </li>
             </ul>
           </details>
         </li>
         <li>
-            <a class="font-semibold">
+            <router-link to="/admin/dashboard/support" class="font-semibold">
                 <font-awesome-icon icon="circle-question" />
                 Support
-            </a>
+            </router-link>
         </li>
       </ul>
     </div>
