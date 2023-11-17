@@ -57,12 +57,12 @@
         </ul>
       </div>
       <div class="flex btn btn-ghost">
-        <img src="@/assets/images/duck.png" class="lg:w-10 md:w-8 max-sm:w-8" alt="duckdns" />
+        <img src="@/assets/images/duck.png" class="max-lg:w-10 lg:w-10 max-md:w-8 max-sm:w-8" alt="duckdns" />
         <a class="lg:text-3xl font-extrabold sm:text-xl md:text-2xl">DASHBOARD</a>
       </div>
     </div>
-    <div class="navbar-center hidden lg:flex space-x-2">
-      <ul class="menu menu-horizontal px-1">
+    <div class="navbar-center hidden lg:flex">
+      <ul class="menu menu-horizontal px-1 space-x-2">
         <li>
             <router-link to="/admin/dashboard" class="font-semibold">
                 <font-awesome-icon icon="home" />
@@ -118,13 +118,13 @@
             </h1>
           </li>
           <li>
-            <a class="hover:font-bold">
+            <a class="font-semibold">
               <font-awesome-icon icon="user" />
               User settings
             </a>
           </li>
           <li>
-            <a class="hover:font-bold">
+            <a class="font-semibold">
               <font-awesome-icon icon="arrow-right-from-bracket" />
               Logout
             </a>
