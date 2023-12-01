@@ -49,7 +49,7 @@
             tabindex="0"
             class="dropdown-content z-[1] menu p-2 shadow bg-base-200 rounded-box w-52"
           >
-            <li>
+            <!-- <li>
               <routeur-link class="hover:font-bold"
                 ><span class="badge badge-outline badge-sm font-semibold"
                   >FR</span
@@ -62,7 +62,7 @@
                   >EN</span
                 >English</routeur-link
               >
-            </li>
+            </li> -->
           </ul>
         </details>
         <button :class="['btn text-white',btnClicked ? 'btn-green' : 'btn-purple']" @click="Connexion">

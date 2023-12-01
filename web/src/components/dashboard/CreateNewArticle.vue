@@ -178,26 +178,13 @@
 </template>
 
 <script setup>
-import dataArticles from '@data/newsData.json'
+
 import { ref, onMounted, computed  } from "vue";
 import { formatDate } from '@js/formatDate';
 
 import { MdEditor, MdPreview } from 'md-editor-v3';
 import 'md-editor-v3/lib/style.css';
 import 'md-editor-v3/lib/preview.css';
-
-
-const initialArticles = dataArticles;
-const article = ref(initialArticles);
-const selectedArticle = ref({});
-
-
-const addArticle = () => {
-  article.value.push({ ...selectedArticle.value });
-};
-
-
-const activeTab = ref('edit');
 
 const categories = [
   { name: "Feature", icon: "✨" },
@@ -207,10 +194,11 @@ const categories = [
 ];
 
 const toggleCategory = (categoryName) => {
+  if (!Array.isArray(article.value.categorie)) {
+    article.value.categorie = [];
+  }
   if (article.value.categorie.includes(categoryName)) {
-    article.value.categorie = article.value.categorie.filter(
-      (name) => name !== categoryName
-    );
+    article.value.categorie = article.value.categorie.filter((name) => name !== categoryName);
   } else {
     article.value.categorie.push(categoryName);
   }
@@ -241,38 +229,45 @@ const getBadgeText = (categorie) => {
 // Check Branch
 const currentBranch = ref('dev');
 
-
 // Part Editor
+const activeTab = ref('edit');
 const activeTab2 = ref('edit');
-const articleContent = ref(''); // Stocke le contenu de l'article
+const articleContent = ref(''); // Stores the content of the article
+const id = 'editor'; // Assurez-vous que cet ID est unique
 
-const articles = ref({
+const article = ref({
   id: null,
   title: '',
   date: '',
-  categorie: [],
+  categorie: [], // Initialisation en tant que tableau vide
   content: '',
   viewName: ''
 });
 
+
 onMounted(async () => {
   try {
-    const response = await fetch('../../assets/data/newsData.json');
+    const response = await fetch('http://localhost:3000/api/get-articles');
     if (!response.ok) {
       throw new Error('Failed to load articles');
     }
     const data = await response.json();
-    articles.value = data;
+    if (Array.isArray(data)) {
+      article.value = data;
+    } else {
+      // Gérer le cas où la réponse n'est pas un tableau
+      console.error('Response is not an array of articles');
+    }
   } catch (error) {
     console.error('Error loading articles:', error);
   }
 });
-const id = 'editor'; // Assurez-vous que cet ID est unique
+
 
 const addArticleToState = () => {
-  const maxId = articles.value.reduce((max, article) => article.id > max ? article.id : max, 0);
+  const maxId = article.value.reduce((max, article) => article.id > max ? article.id : max, 0) + 1;
   const newArticle = {
-    id: maxId, // Incrémentez le plus grand ID pour obtenir un nouvel ID unique
+    id: maxId,
     title: article.value.title,
     date: article.value.date,
     content: article.value.content,
@@ -280,37 +275,32 @@ const addArticleToState = () => {
     categorie: article.value.categorie
   };
 
-  // Ensuite, sauvegardez cette liste mise à jour dans votre fichier JSON
-  saveArticlesToJson(articles.value.push(newArticle));
+  article.value.push(newArticle);
+  saveArticlesToJson(newArticle);
 };
 
-const saveArticlesToJson = async (articles) => {
-  // Faire une requête API pour sauvegarder la liste des articles dans un fichier JSON sur le serveur
+// Sauvegarde des articles dans le fichier JSON
+const saveArticlesToJson = async (newArticle) => {
   try {
-    const response = await fetch('/api/save-articles', {
+    const response = await fetch('http://localhost:3000/api/save-articles', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ articles })
+      body: JSON.stringify(newArticle) // Assurez-vous que newArticle est un objet et non un tableau
     });
-
     if (!response.ok) throw new Error('Network response was not ok');
-    // Gérer la réponse ici
-    alert('Article créé avec succès !');
+    // Handle response here
   } catch (error) {
     console.error('Erreur lors de la sauvegarde du fichier JSON', error);
   }
 };
 
-const saveMarkdownFile = async (article) => {
-  // Convertir l'objet article en Markdown
-  const markdownContent = convertArticleToMarkdown(article);
 
-  // Faire une requête API pour sauvegarder le contenu Markdown dans un fichier sur le serveur
+const saveMarkdownFile = async (articleContent , nameArticle) => {
   try {
-    const response = await fetch('/api/save-markdown', {
+    const response = await fetch('http://localhost:3000/api/save-markdown', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ content: markdownContent, viewName: article.viewName })
+      body: JSON.stringify({ content: articleContent, viewName: nameArticle })
     });
 
     if (!response.ok) throw new Error('Network response was not ok');
@@ -322,13 +312,19 @@ const saveMarkdownFile = async (article) => {
 };
 
 const isFormValid = computed(() => {
-  return article.value.title && article.value.date && article.value.content && article.value.categorie.length > 0;
+  return article.value.title 
+  && article.value.date 
+  && article.value.content 
+  && Array.isArray(article.value.categorie) 
+  && article.value.categorie.length > 0
+  && articleContent.value;
 });
+
 
 const createArticle = () => {
   if (isFormValid.value) {
     addArticleToState();
-    saveMarkdownFile(articleContent);
+    saveMarkdownFile(articleContent.value, article.value.viewName);
   }
 };
 

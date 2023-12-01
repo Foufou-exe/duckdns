@@ -5,7 +5,7 @@
             <font-awesome-icon icon="chevron-down" class="text-xs hidden sm:block"></font-awesome-icon>
         </summary>
         <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-200 rounded-box w-52">
-            <li>
+            <!-- <li>
                 <routeur-link :to="{ path: '/fr' + $route.path.substr(3) }" class="hover:font-bold"><span
                         class="badge badge-outline badge-sm font-semibold">FR</span>Français</routeur-link>
             </li>
@@ -44,6 +44,6 @@
         <li>
             <routeur-link :to="{ path: '/ar' + $route.path.substr(3) }" class="hover:font-bold"><span
                     class="badge badge-outline badge-sm font-semibold">AR</span>عرب</routeur-link>
-        </li>
+        </li> -->
     </ul>
 </details></template>
