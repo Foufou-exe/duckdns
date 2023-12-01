@@ -1,11 +1,11 @@
 <template>
     <div
-        class="flex flex-col md:flex-row justify-center max-sm:mt-10 max-md:mt-10 p-10 bg-[#090f1c] rounded shadow-2xl shadow-secondary">
+        class="flex flex-col md:flex-row justify-center max-sm:mt-10 max-md:mt-10 p-10 bg-[#090f1c] rounded shadow-2xl shadow-warning">
         <!-- Image Section -->
         <div class="m-4 md:m-10 flex flex-col justify-center items-center">
             <img :src="selectedImage" alt="Profil" ref="tilt"
-                class="max-md:w-30 md:w-30 lg:w-64 max-md:h-30 md:h-30 lg:h-64 max-sm:w-30 max-sm:h-30 object-cover rounded-full ring ring-secondary mb-3 md:mb-5 hover-move" />
-            <button onclick="ChoosePicture.showModal()" class="btn btn-secondary">
+                class="max-md:w-30 md:w-30 lg:w-64 max-md:h-30 md:h-30 lg:h-64 max-sm:w-30 max-sm:h-30 object-cover rounded-full ring ring-warning mb-3 md:mb-5 hover-move" />
+            <button onclick="ChoosePicture.showModal()" class="btn btn-warning">
                 Other picture
             </button>
             <ChoosePicture />
@@ -18,26 +18,26 @@
             </h1>
             <div class="space-y-2 text-white">
                 <div>
-                    <strong class="text-secondary">Account:</strong> {{ account }}
+                    <strong class="text-warning">Account:</strong> {{ account }}
                 </div>
-                <div><strong class="text-secondary">Type:</strong> {{ type }}</div>
+                <div><strong class="text-warning">Type:</strong> {{ type }}</div>
                 <div>
-                    <strong class="text-secondary">Created date:</strong>
+                    <strong class="text-warning">Created date:</strong>
                     {{ createdDate }}
                 </div>
             </div>
             <div class="flex items-center space-x-2">
-                <strong class="text-secondary">Token:</strong>
+                <strong class="text-warning">Token:</strong>
                 <div class="join w-full">
                     <input v-if="showToken" readonly class="input bg-gray text-white w-full join-item" :value="token" />
                     <input v-else class="input bg-gray text-white w-full join-item" readonly :value="hide" />
 
-                    <button v-if="showToken" class="btn btn-secondary join-item" @click="copyToken">
+                    <button v-if="showToken" class="btn btn-warning join-item" @click="copyToken">
                         Copy
                     </button>
                 </div>
             </div>
-            <button class="btn btn-secondary" @click="toggleTokenVisibility">
+            <button class="btn btn-warning" @click="toggleTokenVisibility">
                 {{ showToken ? 'Hide' : 'Show' }} Token
             </button>
 

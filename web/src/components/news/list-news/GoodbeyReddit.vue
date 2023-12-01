@@ -57,7 +57,6 @@
                 Best,
                 <br> <br>
                 <a class="font-bold">Reddit Legal</a>
-
             </p>
         </div>
     </div>

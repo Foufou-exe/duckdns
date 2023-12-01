@@ -33,7 +33,7 @@
                 <th class="px-4 py-2">
                   <input
                     type="checkbox"
-                    class="checkbox checkbox-secondary"
+                    class="checkbox checkbox-warning"
                     v-model="selectAll"
                     @change="toggleSelectAll"
                   />
@@ -60,7 +60,7 @@
                 <td class="px-4 py-2">
                   <input
                     type="checkbox"
-                    class="checkbox checkbox-secondary"
+                    class="checkbox checkbox-warning"
                     v-model="selectedArticles"
                     :value="article.id"
                     @change="checkSelected"

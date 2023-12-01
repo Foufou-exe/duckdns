@@ -11,7 +11,7 @@
             <span class="lg:text-xl">Free Dynamic DNS hosted on AWS</span>
             <!-- <NewsPinned /> -->
             <div class="flex justify-center">
-                <button class="btn btn-secondary" @click="scrollToInfo"><font-awesome-icon
+                <button class="btn btn-warning" @click="scrollToInfo"><font-awesome-icon
                         icon="arrow-down" />See More</button>
             </div>
 
@@ -25,7 +25,7 @@
         <div class="flex justify-center mb-5">
             <div class="stats shadow">
                 <div class="stat">
-                    <div class="stat-figure text-secondary">
+                    <div class="stat-figure text-warning">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             class="inline-block w-8 h-8 stroke-current">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -33,11 +33,11 @@
                         </svg>
                     </div>
                     <div class="stat-title">Page Views</div>
-                    <div class="stat-value text-secondary">2.6M</div>
+                    <div class="stat-value text-warning">2.6M</div>
                     <div class="stat-desc">21% more than last month</div>
                 </div>
                 <div class="stat">
-                    <div class="stat-figure text-secondary">
+                    <div class="stat-figure text-warning">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             class="inline-block w-8 h-8 stroke-current">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -51,7 +51,7 @@
                 </div>
 
                 <div class="stat">
-                    <div class="stat-figure text-secondary">
+                    <div class="stat-figure text-warning">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             class="inline-block w-8 h-8 stroke-current">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

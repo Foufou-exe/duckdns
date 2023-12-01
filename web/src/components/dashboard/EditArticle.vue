@@ -1,8 +1,8 @@
 <template>
   <div class="p-5">
-    <div class="p-5 rounded-lg">
+    <div class="p-5 rounded-lg bg-white">
       <div class="flex justify-between mb-1">
-        <div class="text-white breadcrumbs">
+        <div class="text-black breadcrumbs">
           <ul class="ml-2">
             <li>
               <a class="font-semibold text-secondary">
@@ -47,11 +47,12 @@
               <div>
                 <input
                   type="text"
-                  class="input input-secondary w-full max-w-xs text-secondary"
-                  value="README"
+                  class="input input-secondary w-full max-w-xs text-secondary bg-white font-bold"
+                  v-model="article.viewName"
                 />
               </div>
-              <div class="p-3 space-x-2">
+              <span class="text-secondary ml-1 font-semibold">.vue</span>
+              <div class="p-2 space-x-2">
                 <span class="text-current">in</span>
                 <div class="badge badge-primary badge-outline font-bold">
                   main
@@ -81,7 +82,7 @@
               Preview
             </a>
           </div>
-          <div class="flex justify-end btn btn-primary">
+          <div class="flex justify-end btn btn-secondary">
             <font-awesome-icon icon="newspaper" />
             Article Preview
           </div>
@@ -95,7 +96,7 @@
               <input
                 type="text"
                 v-model="article.title"
-                class="input input-bordered w-full max-w-xs"
+                class="input input-bordered w-full max-w-xs bg-white text-black"
               />
             </div>
 
@@ -107,7 +108,7 @@
                 id="date"
                 type="date"
                 v-model="article.date"
-                class="input input-bordered w-full max-w-xs"
+                class="input input-bordered w-full max-w-xs bg-white text-black"
               />
             </div>
 
@@ -120,21 +121,10 @@
                 tabindex="0"
                 class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
               >
-                <li
-                  class="form-control"
-                  v-for="category in categories"
-                  :key="category.name"
-                >
+              <li class="form-control" v-for="category in categories" :key="category.name">
                   <label class="label">
-                    <input
-                      type="checkbox"
-                      :checked="article.categorie.includes(category.name)"
-                      class="checkbox checkbox-accent"
-                      @change="toggleCategory(category.name)"
-                    />
-                    <span class="label-text font-semibold"
-                      >{{ category.icon }}{{ category.name }}</span
-                    >
+                    <input type="checkbox" class="checkbox checkbox-warning" @change="toggleCategory(category.name)" />
+                    <span class="label-text font-semibold">{{ category.icon }}{{ category.name }}</span>
                   </label>
                 </li>
               </ul>
@@ -146,7 +136,7 @@
             </label>
             <textarea
               v-model="article.content"
-              class="textarea textarea-bordered w-full"
+              class="textarea textarea-bordered w-full bg-white text-black"
             ></textarea>
           </div>
         </div>
@@ -159,8 +149,9 @@
                     {{ article.title }}
                   </h2>
                   <div class="flex flex-wrap gap-1 mt-2">
-                    <div v-for="categorie in article.categorie" :key="categorie" :class="getBadgeClass(categorie)" class="badge inline-block badge-outline font-semibold badge-lg max-sm:text-xs text-sm">
-                      {{ getBadgeText(categorie) }}
+                    <div v-for="categoryName in article.categorie" :key="categoryName" :class="getBadgeClass(categoryName)" 
+                      class="badge inline-block badge-outline font-semibold badge-lg max-sm:text-xs text-sm">
+                      {{ getBadgeText(categoryName) }}
                     </div>
                   </div>
                   <p class="text-gray-500 mt-2 mb-5">{{ article.content }}</p>
@@ -172,69 +163,42 @@
         </div>
       </div>
 
-
-
-
-
-      <!-- Part Markdown -->
+      <!-- Part Editor -->
       <div class="flex justify-between px-2 py-3 border border-neutral rounded-t-lg">
-        <div class="tabs tabs-boxed p-2">
-          <a class="tab btn btn-sm font-bold" @click="activeTab2 = 'edit'" :class="{ 'tab-active': activeTab2 === 'edit' }">
+        <div role="tablist" class="tabs tabs-boxed p-3">
+          <a role="tab" class="tab btn btn-sm font-bold" :class="{ 'tab-active': activeTab2 === 'edit' }" @click="activeTab2 = 'edit'">
             <font-awesome-icon icon="pen-to-square" size="xs" />
             Edit
           </a>
-          <a class="tab btn btn-sm font-bold" @click="activeTab2 = 'preview'" :class="{ 'tab-active': activeTab2 === 'preview' }">
+          <a role="tab" class="tab btn btn-sm font-bold" :class="{ 'tab-active': activeTab2 === 'preview' }" @click="activeTab2 = 'preview'">
             <font-awesome-icon icon="eye" size="xs" />
             Preview
           </a>
         </div>
         <div class="flex justify-end space-x-2 mt-2">
-          <select class="select select-bordered select-sm w-1/4 max-w-xs">
-            <option disabled class="font-semibold">Indent mode</option>
-            <option selected>Spaces</option>
-            <option>Tabs</option>
-          </select>
-          <select class="select select-bordered select-sm w-1/6 max-w-xs">
-            <option disabled class="font-semibold">Indent size</option>
-            <option selected>2</option>
-            <option>4</option>
-            <option>8</option>
-          </select>
-          <select class="select select-bordered select-sm w-1/3 max-w-xs">
-            <option disabled class="font-semibold">Line wrap mode</option>
-            <option selected>No wrap</option>
-            <option>Soft wrap</option>
-          </select>
+          <div class="btn btn-secondary">
+            <font-awesome-icon icon="newspaper" />
+            Article Content
+          </div>
         </div>
       </div>
-      <div class="editor-container">
-        <!-- CodeMirror Editor -->
-        <codemirror
-          v-if="activeTab2 === 'edit'"
-          v-model="markdownContent"
-          :options="cmOptions"
-          :extensions="extensions"
-          @ready="handleReady"
-          @change="handleMarkdownChange"
-        />
 
-        <!-- Markdown Preview -->
-        <div v-if="activeTab2 === 'preview'" class="markdown-preview" v-html="compiledMarkdown" />
+      <div v-if="activeTab2 === 'edit'" class="border border-neutral rounded-b-lg">
+        
+      </div>
+
+      <div v-if="activeTab2 === 'preview'" class="border border-neutral rounded-b-lg">
+         
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, shallowRef, computed } from "vue";
+import { ref } from "vue";
 import { useRoute } from "vue-router";
 import NewsData from "@data/newsData.json";
 import { formatDate } from '@js/formatDate';
-
-import { Codemirror } from 'vue-codemirror';
-import { markdown } from '@codemirror/lang-markdown';
-import { oneDark } from '@codemirror/theme-one-dark';
-import { marked } from 'marked';
 
 
 const route = useRoute();
@@ -249,7 +213,7 @@ const categories = [
   { name: "Information", icon: "🔍" },
 ];
 
-// Cette fonction bascule la catégorie de l'article.
+// This function toggles the item category.
 const toggleCategory = (categoryName) => {
   if (article.value.categorie.includes(categoryName)) {
     article.value.categorie = article.value.categorie.filter(
@@ -260,7 +224,6 @@ const toggleCategory = (categoryName) => {
   }
 
 };
-
 
 const getBadgeClass = (categorie) => {
   const classes = {
@@ -282,27 +245,7 @@ const getBadgeText = (categorie) => {
   return texts[categorie] || categorie
 };
 
+// Part Editor
 const activeTab2 = ref('edit');
-
-const markdownContent = ref(''); // Markdown content
-const extensions = [markdown(), oneDark]; // Markdown language extension and theme
-const cmOptions = { lineNumbers: true }; // Add more CodeMirror options as needed
-
-const compiledMarkdown = computed(() => {
-  return marked(markdownContent.value); // Convert Markdown to HTML
-});
-
-// Codemirror EditorView instance ref
-const view = shallowRef();
-
-const handleReady = (payload) => {
-  view.value = payload.view;
-};
-
-const handleMarkdownChange = (value) => {
-  // Handle the change event
-  markdownContent.value = value;
-};
-
 
 </script>

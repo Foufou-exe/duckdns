@@ -16,5 +16,4 @@
 - [ ] Traduire les pages dans les langues définie
 - [ ] Ajouter une notification au début du site pour montrer la derniere News
 - [ ] Créer un panel Admin pour créer des articles en markdown
-- [ ] Transformer le systems de style markdown en CSS (Framework Daisy UI) pour qui puisse comprendre les balises prédefinis
 

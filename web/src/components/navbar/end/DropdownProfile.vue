@@ -1,7 +1,7 @@
 <template>
     <div class="dropdown dropdown-end">
       <label tabindex="0" class="btn btn-ghost btn-circle avatar">
-        <div class="w-10 rounded-full ring ring-secondary">
+        <div class="w-10 rounded-full ring ring-warning">
           <img :src="selectedImage" />
         </div>
       </label>

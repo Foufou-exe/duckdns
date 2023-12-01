@@ -1,11 +1,11 @@
 <template>
   <div>
-    <div v-for="news in filteredAndSortedNews" :key="news.id" class="card border border-secondary mb-4 bg-base-100 shadow-lg">
+    <div v-for="news in filteredAndSortedNews" :key="news.id" class="card border mb-4 bg-base-100 shadow-lg">
       <div class="card-body">
         <router-link :to="{ name: 'baseNews', params: { id: news.id, viewName: news.viewName } }">
           <h2 class="text-2xl inline-block mr-2 font-bold max-sm:text-xl">
             {{ news.title }}
-            <div v-if="news.id === latestNewsId" class="badge inline-block badge-primary badge-outline font-semibold">Last News</div>
+            <div v-if="news.id === latestNewsId" class="badge inline-block badge-primary badge-outline font-semibold badge-lg max-sm:text-xs text-sm">Last News</div>
           </h2>
           <div class="flex flex-wrap gap-1 mt-2">
             <div v-for="categorie in news.categorie" :key="categorie" :class="getBadgeClass(categorie)" class="badge inline-block badge-outline font-semibold badge-lg max-sm:text-xs text-sm">

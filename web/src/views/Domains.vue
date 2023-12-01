@@ -21,7 +21,7 @@
         <button class="btn bg-black text-white no-animation flex-shrink-0">
           .duckdns.org
         </button>
-        <button @click="addDomain" class="btn btn-secondary flex-shrink-0">
+        <button @click="addDomain" class="btn btn-warning flex-shrink-0">
           Add Domain
         </button>
       </div>
@@ -67,22 +67,22 @@
               <div class="join">
                 <input
                   class="input input-bordered join-item"
-                  :placeholder="domain.ip"
+                  :value="domain.ip"
                 />
-                <button class="btn join-item btn-secondary">Update ip</button>
+                <button class="btn join-item btn-warning">Update ip</button>
               </div>
             </td>
             <td>
               <div class="join">
                 <input
                   class="input input-bordered join-item"
-                  :placeholder="domain.ipv6"
+                  :value="domain.ipv6"
                 />
-                <button class="btn join-item btn-secondary">Update ipv6</button>
+                <button class="btn join-item btn-warning">Update ipv6</button>
               </div>
             </td>
             <th>
-              <span class="ml-2">{{ Time }} min</span>
+              <span>{{ timeSince(domain.time) }}</span>
             </th>
           </tr>
         </tbody>
@@ -128,7 +128,7 @@
 
 <script setup>
 // Importing view modules
-import { ref, watch } from "vue";
+import { ref, watch, onMounted, onUnmounted } from "vue";
 import { useToast } from "vue-toastification";
 import "vue-toastification/dist/index.css";
 
@@ -150,10 +150,26 @@ const toast = useToast({
 const newDomain = ref("");
 const domains = ref([]);
 const selectAll = ref(false);
-const Time = ref(5);
 
 const isAllSelected = ref(false);
 const isAnySelected = ref(false);
+
+
+function timeSince(timeStamp) {
+  const now = Date.now();
+  const secondsPast = (now - timeStamp) / 1000;
+
+  if (secondsPast < 60) {
+    return `${Math.round(secondsPast)} sec`;
+  } else if (secondsPast < 3600) {
+    return `${Math.round(secondsPast / 60)} min`;
+  } else if (secondsPast < 86400) {
+    return `${Math.round(secondsPast / 3600)} h`;
+  } else {
+    return `${Math.round(secondsPast / 86400)} d`;
+  }
+}
+
 
 function addDomain() {
   if (!newDomain.value.trim()) {
@@ -163,24 +179,23 @@ function addDomain() {
     return toast.warning("You can only add up to 5 domains. 🚫");
   }
   if (domains.value.some((domain) => domain.name === newDomain.value.trim())) {
-    return toast.error("This subdomain already exists. 🔍");
+    return toast.error(`This subdomain ${ newDomain.value.trim() }.duckdns.org already exists.🔍`);
   }
-
   domains.value.push({
     id: Date.now(),
+    time: Date.now(),
     name: newDomain.value.trim(),
-    ip: "Autodetected IP",
-    ipv6: "Autodetected IPv6",
+    ip: "Autodetect IPv4" ,
+    ipv6: "Autodetect IPv6", 
     selected: false,
   });
-  newDomain.value = "";
-  return toast.success("Subdomain added successfully.");
+  return toast.success(`Subdomain ${ newDomain.value.trim() }.duckdns.org added successfully. ✅`) && (newDomain.value = "");
 }
 
 function deleteSelected() {
   domains.value = domains.value.filter((domain) => !domain.selected);
   updateSelectionStatus();
-  return toast.success("Domain deleted successfully. 🗑️");
+  return toast.success(`Domain ${ newDomain.value.trim() }.duckdns.org deleted successfully. 🗑️`);
 }
 
 function deleteAll() {
@@ -209,6 +224,18 @@ watch(
   },
   { deep: true }
 );
+
+function updateDisplay() {
+  // Force Vue to update the component
+  domains.value = domains.value.map(domain => ({ ...domain }));
+}
+
+onMounted(() => {
+  const interval = setInterval(updateDisplay, 60000); // Updates every minute
+  onUnmounted(() => clearInterval(interval)); // Clears the gap when the component is destroyed
+});
+
+
 </script>
 
 <style scoped>
