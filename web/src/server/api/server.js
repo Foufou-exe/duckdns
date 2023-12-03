@@ -85,6 +85,46 @@ app.get("/api/get-articles", (req, res) => {
   });
 });
 
+app.delete("/api/delete-articles/:id", (req, res) => {
+  const articleId = req.params.id;
+  const { viewName } = req.body;
+  const jsonFilePath = path.join(__dirname, "../../assets/data/newsData.json");
+  const markdownFilePath = path.join(
+    __dirname,
+    "../../components/news/list-news",
+    `${viewName}.md`
+  );
+
+  // Supprimer l'article du fichier JSON
+  fs.readFile(jsonFilePath, "utf8", (err, data) => {
+    if (err) {
+      console.error("Erreur lors de la lecture du fichier JSON", err);
+      return res.status(500).send("Erreur lors de la lecture des articles");
+    }
+
+    let existingArticles = JSON.parse(data);
+    existingArticles = existingArticles.filter((article) => article.id !== parseInt(articleId));
+
+    fs.writeFile(jsonFilePath, JSON.stringify(existingArticles, null, 2), 'utf8', (writeErr) => {
+      if (writeErr) {
+        console.error("Erreur lors de l'écriture du fichier JSON", writeErr);
+        return res.status(500).send("Erreur lors de la sauvegarde des articles");
+      }
+
+      // Supprimer le fichier Markdown correspondant
+      fs.unlink(markdownFilePath, (unlinkErr) => {
+        if (unlinkErr) {
+          console.error("Erreur lors de la suppression du fichier Markdown", unlinkErr);
+          return res.status(500).send("Erreur lors de la suppression du fichier Markdown");
+        }
+        res.send("Article supprimé avec succès");
+      });
+    });
+  });
+});
+
+
+
 server.listen(port, ip, () => {
   console.log(`API disponible sur http://localhost:${port}/api/test`);
 });

@@ -10,4 +10,12 @@ library.add(fas, far, fab);
 // Tell FontAwesome to watch the DOM and add SVGs when it detects icon marking
 dom.watch();
 
+/**
+ * Represents a FontAwesomeIcon component.
+ * @typedef {Object} FontAwesomeIcon
+ * @property {string} icon - The name of the icon to display.
+ * @property {string} [size] - The size of the icon.
+ * @property {string} [color] - The color of the icon.
+ */
+
 export default  FontAwesomeIcon

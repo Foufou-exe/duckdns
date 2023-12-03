@@ -1,20 +1,27 @@
+/**
+ * Copies the code content within a .mockup-code element to the clipboard.
+ * 
+ * @param {Event} event - The event object triggered by the button click.
+ * @returns {Promise<void>} - A promise that resolves when the code content is successfully copied to the clipboard.
+ */
+
 const copyCodeToClipboard = async (event) => {
-    // On trouve le parent .mockup-code le plus proche du bouton sur lequel on a cliqué
-    const mockup = event.target.closest('.mockup-code');
-    const lines = mockup.querySelectorAll('code');
-    let codeContent = '';
+  // We find the .mockup-code parent closest to the button we clicked on
+  const mockup = event.target.closest(".mockup-code");
+  const lines = mockup.querySelectorAll("code");
+  let codeContent = "";
 
-    lines.forEach(line => {
-        // On retire les éventuelles balises HTML (comme les <a>) pour ne garder que le texte
-        codeContent += line.innerText + '\n';
-    });
+  lines.forEach((line) => {
+    // Remove any HTML tags (such as <a>) to keep only the text
+    codeContent += line.innerText + "\n";
+  });
 
-    // Utilisation de la Clipboard API pour copier le contenu formaté
-    try {
-        await navigator.clipboard.writeText(codeContent.trim());
-    } catch (err) {
-        console.error('Erreur lors de la copie :', err);
-    }
+  // Use the Clipboard API to copy formatted content
+  try {
+    await navigator.clipboard.writeText(codeContent.trim());
+  } catch (err) {
+    console.error("Erreur lors de la copie :", err);
+  }
 };
 
 export default copyCodeToClipboard;

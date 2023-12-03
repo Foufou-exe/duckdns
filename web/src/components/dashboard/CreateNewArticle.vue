@@ -166,11 +166,11 @@
       </div>
       <div class="border border-neutral rounded-b-lg">
         <div v-if="activeTab2 === 'edit'">
-          <MdEditor v-model="articleContent" :editorId="id" language="en-US" placeholder="# Write Article"  class="rounded-b-lg bg-current" />
+          <MdEditor v-model="articleContent" :editorId="id" language="en-US" placeholder="# Write Article"  class="rounded-b-lg bg-current" :theme="editorTheme"/>
         </div>
 
         <div v-if="activeTab2 === 'preview'">
-          <MdPreview v-model="articleContent" :editorId="id" class="rounded-b-lg" />
+          <MdPreview v-model="articleContent" :editorId="id" class="rounded-b-lg" :theme="editorTheme"/>
         </div>
       </div>
     </div>
@@ -178,21 +178,30 @@
 </template>
 
 <script setup>
-
+// Vue
 import { ref, onMounted, computed  } from "vue";
+// Format Date
 import { formatDate } from '@js/formatDate';
-
+// Markdown Editor
 import { MdEditor, MdPreview } from 'md-editor-v3';
 import 'md-editor-v3/lib/style.css';
 import 'md-editor-v3/lib/preview.css';
+// Toast
+import { useToast } from "vue-toastification";
+const toast = useToast();
+// Use Store for theme
+import { useThemeStore } from '@store/store.js';
+const themeStore = useThemeStore();
+const editorTheme = computed(() => themeStore.isDarkMode ? 'dark' : 'light');
 
+// Categories
 const categories = [
   { name: "Feature", icon: "✨" },
   { name: "Release", icon: "🎉" },
   { name: "Epic", icon: "🎈" },
   { name: "Information", icon: "🔍" },
 ];
-
+// Toggle Category
 const toggleCategory = (categoryName) => {
   if (!Array.isArray(article.value.categorie)) {
     article.value.categorie = [];
@@ -203,9 +212,7 @@ const toggleCategory = (categoryName) => {
     article.value.categorie.push(categoryName);
   }
 };
-
-
-
+// Get Badge Class
 const getBadgeClass = (categorie) => {
   const classes = {
     'Feature': 'badge-warning',
@@ -215,7 +222,7 @@ const getBadgeClass = (categorie) => {
   }
   return `badge ${classes[categorie] || 'badge-secondary'}`
 };
-
+// Get Badge Text
 const getBadgeText = (categorie) => {
   const texts = {
     'Feature': '✨Feature',
@@ -233,16 +240,29 @@ const currentBranch = ref('dev');
 const activeTab = ref('edit');
 const activeTab2 = ref('edit');
 const articleContent = ref(''); // Stores the content of the article
-const id = 'editor'; // Assurez-vous que cet ID est unique
+const id = 'editor'; 
 
 const article = ref({
   id: null,
   title: '',
   date: '',
-  categorie: [], // Initialisation en tant que tableau vide
+  categorie: [], // Initialise as an empty array
   content: '',
   viewName: ''
 });
+
+const resetArticleForm = () => {
+  article.value = {
+    id: null,
+    title: '',
+    date: '',
+    categorie: [],
+    content: '',
+    viewName: ''
+  };
+  articleContent.value = ''; // Réinitialise le contenu de l'éditeur Markdown
+};
+
 
 
 onMounted(async () => {
@@ -271,7 +291,7 @@ const addArticleToState = () => {
     title: article.value.title,
     date: article.value.date,
     content: article.value.content,
-    viewName: article.value.title.replace(/[^a-zA-Z0-9-_]/g, '').toLowerCase(),
+    viewName: article.value.viewName.replace(/[^a-zA-Z0-9-_]/g, '').toLowerCase(),
     categorie: article.value.categorie
   };
 
@@ -304,8 +324,7 @@ const saveMarkdownFile = async (articleContent , nameArticle) => {
     });
 
     if (!response.ok) throw new Error('Network response was not ok');
-    // Gérer la réponse ici
-    alert('Fichier Markdown créé avec succès !');
+    return toast.success(`Article ${ nameArticle } created successfully. ✅`);
   } catch (error) {
     console.error('Erreur lors de la sauvegarde du fichier Markdown', error);
   }
@@ -324,7 +343,8 @@ const isFormValid = computed(() => {
 const createArticle = () => {
   if (isFormValid.value) {
     addArticleToState();
-    saveMarkdownFile(articleContent.value, article.value.viewName);
+    saveMarkdownFile(articleContent.value, article.value.viewName.replace(/[^a-zA-Z0-9-_]/g, '').toLowerCase());
+    resetArticleForm();
   }
 };
 

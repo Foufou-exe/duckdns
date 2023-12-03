@@ -19,50 +19,5 @@
     "categorie": [
       "Release"
     ]
-  },
-  {
-    "id": 3,
-    "title": "test",
-    "date": "2023-12-08",
-    "content": "test",
-    "viewName": "test",
-    "categorie": [
-      "Epic",
-      "Release",
-      "Feature"
-    ]
-  },
-  {
-    "id": 4,
-    "title": "test",
-    "date": "2023-12-08",
-    "content": "test",
-    "viewName": "test",
-    "categorie": [
-      "Epic",
-      "Release",
-      "Feature"
-    ]
-  },
-  {
-    "id": 5,
-    "title": "'(ytz'(h-yet(jet(jtyryko!iu,yntbvrfcdxs",
-    "date": "2023-12-04",
-    "content": "rgzrthrzthzrth",
-    "viewName": "ytzh-yetjetjtyrykoiuyntbvrfcdxs",
-    "categorie": [
-      "Release",
-      "Epic"
-    ]
-  },
-  {
-    "id": 6,
-    "title": "zergerg",
-    "date": "2023-12-06",
-    "content": "regerg",
-    "viewName": "zergerg",
-    "categorie": [
-      "Release"
-    ]
   }
 ]

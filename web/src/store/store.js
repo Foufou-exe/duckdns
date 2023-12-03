@@ -10,7 +10,7 @@ function getRandomImage() {
 
 
 // Export Store
-export const useImageStore = defineStore('image', {
+const useImageStore = defineStore('image', {
   id: 'image',
   state: () => ({
     selectedImage: null,
@@ -38,3 +38,26 @@ export const useImageStore = defineStore('image', {
     }
   }
 });
+
+const useThemeStore = defineStore('theme', {
+  state: () => ({
+      isDarkMode: true, // Valeur par défaut
+  }),
+  actions: {
+      toggleTheme() {
+          this.isDarkMode = !this.isDarkMode;
+          const theme = this.isDarkMode ? 'dark' : 'light';
+          localStorage.setItem('user-theme', theme);
+          document.documentElement.setAttribute('data-theme', theme);
+      },
+      initializeTheme() {
+          const storedTheme = localStorage.getItem('user-theme');
+          this.isDarkMode = storedTheme === 'dark';
+      }
+  },
+});
+
+export { 
+  useImageStore, 
+  useThemeStore 
+};

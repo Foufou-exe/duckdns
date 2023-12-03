@@ -97,7 +97,7 @@
                   <button
                     class="btn btn-error"
                     v-if="isSelectedForDelete(article.id)"
-                    @click="deleteArticle(article.id)"
+                    @click="deleteArticle(article)"
                   >
                     <font-awesome-icon icon="trash" />
                     Delete
@@ -146,6 +146,12 @@
 import { ref, computed, watch } from 'vue';
 import NewsData from "@data/newsData.json";
 
+// Import toastification
+import { useToast } from 'vue-toastification';
+import 'vue-toastification/dist/index.css';
+// Use toastification
+const toast = useToast();
+// Pagination
 const pageSize = 25;
 const articles = ref(NewsData);
 const selectedArticles = ref([]);
@@ -221,12 +227,34 @@ const getBadgeText = (categorie) => {
 };
 
 
-const deleteArticle = (id) => {
-  // Create a new table by filtering the item to be deleted
-  articles.value = articles.value.filter((article) => article.id !== id);
+const deleteArticle = async (article) => {
+  try {
+    await fetch(`http://localhost:3000/api/delete-articles/${article.id}`, { 
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ viewName: article.viewName }) // Assurez-vous que 'viewName' est correctement défini dans vos données d'article
+    });
+    // Mise à jour de l'affichage après suppression
+    console.log("Article supprimé avec succès (id: " + article.id + "))");
+    articles.value = articles.value.filter((a) => a.id !== article.id);
+    return toast.success(`Article ${ article.viewName } supprimé avec succès`);
+  } catch (error) {
+    console.error("Erreur lors de la suppression de l'article", error);
+  }
 };
 
-const deleteSelectedArticles = () => {
-  // Handle bulk delete
+const deleteSelectedArticles = async () => {
+  try {
+    for (const articleId of selectedArticles.value) {
+      const articleToDelete = articles.value.find(article => article.id === articleId);
+      if (articleToDelete) {
+        await deleteArticle(articleToDelete);
+      }
+    }
+  } catch (error) {
+    console.error("Erreur lors de la suppression des articles sélectionnés", error);
+  }
 };
 </script>
