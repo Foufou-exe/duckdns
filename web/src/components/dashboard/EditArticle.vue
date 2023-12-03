@@ -56,7 +56,7 @@
           </ul>
         </div>
         <div class="space-x-5">
-          <button class="btn btn-neutral">Cancel</button>
+          <button @click="this.$router.go(-1)"  class="btn btn-neutral">Cancel</button>
           <button class="btn btn-success">Save Article</button>
         </div>
       </div>
@@ -105,7 +105,10 @@
               <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
                 <li class="form-control" v-for="category in categories" :key="category.name">
                   <label class="label">
-                    <input type="checkbox" class="checkbox checkbox-warning" @change="toggleCategory(category.name)" />
+                    <input type="checkbox" 
+                          class="checkbox checkbox-warning" 
+                          :checked="article.categorie.includes(category.name)"
+                          @change="toggleCategory(category.name)" />
                     <span class="label-text font-semibold">{{ category.icon }}{{ category.name }}</span>
                   </label>
                 </li>
@@ -179,7 +182,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, onMounted, watch } from "vue";
 import { useRoute } from "vue-router";
 import NewsData from "@data/newsData.json";
 import { formatDate } from '@js/formatDate';
@@ -210,15 +213,17 @@ const categories = [
 
 // This function toggles the item category.
 const toggleCategory = (categoryName) => {
-  if (article.value.categorie.includes(categoryName)) {
-    article.value.categorie = article.value.categorie.filter(
-      (name) => name !== categoryName
-    );
-  } else {
-    article.value.categorie.push(categoryName);
+  if (!article.value.categorie) {
+    article.value.categorie = [];
   }
-
+  const index = article.value.categorie.indexOf(categoryName);
+  if (index === -1) {
+    article.value.categorie.push(categoryName);
+  } else {
+    article.value.categorie.splice(index, 1);
+  }
 };
+
 
 const getBadgeClass = (categorie) => {
   const classes = {
@@ -245,4 +250,30 @@ const activeTab2 = ref('edit');
 const id = ref('editor');
 const articleContent = ref('');
 const currentBranch = ref('dev');
+
+onMounted(() => {
+  if (article.value.viewName) {
+    loadArticleContent(article.value.viewName);
+  }
+});
+
+// Requete API
+const loadArticleContent = async (viewName) => {
+  try {
+    const response = await fetch(`http://localhost:3000/api/markdown/get-markdown/${viewName}`);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const content = await response.text();
+    articleContent.value = content;
+  } catch (e) {
+    console.error("Erreur lors du chargement du contenu de l'article", e);
+  }
+};
+
+watch(() => article.value.viewName, (newViewName) => {
+  if (newViewName) {
+    loadArticleContent(newViewName);
+  }
+});
 </script>

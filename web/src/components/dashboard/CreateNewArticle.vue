@@ -267,7 +267,7 @@ const resetArticleForm = () => {
 
 onMounted(async () => {
   try {
-    const response = await fetch('http://localhost:3000/api/get-articles');
+    const response = await fetch('http://localhost:3000/api/article/get-articles');
     if (!response.ok) {
       throw new Error('Failed to load articles');
     }
@@ -302,7 +302,7 @@ const addArticleToState = () => {
 // Sauvegarde des articles dans le fichier JSON
 const saveArticlesToJson = async (newArticle) => {
   try {
-    const response = await fetch('http://localhost:3000/api/save-articles', {
+    const response = await fetch('http://localhost:3000/api/article/save-articles', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newArticle) // Assurez-vous que newArticle est un objet et non un tableau
@@ -317,7 +317,7 @@ const saveArticlesToJson = async (newArticle) => {
 
 const saveMarkdownFile = async (articleContent , nameArticle) => {
   try {
-    const response = await fetch('http://localhost:3000/api/save-markdown', {
+    const response = await fetch('http://localhost:3000/api/markdown/save-markdown', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ content: articleContent, viewName: nameArticle })

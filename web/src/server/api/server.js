@@ -29,7 +29,7 @@ app.get("/api/test", (req, res) => {
 });
 
 // Define the API routes
-app.post("/api/save-markdown", (req, res) => {
+app.post("/api/markdown/save-markdown", (req, res) => {
   const { content, viewName } = req.body;
   const filePath = path.join(
     __dirname,
@@ -46,7 +46,7 @@ app.post("/api/save-markdown", (req, res) => {
   });
 });
 
-app.post('/api/save-articles', (req, res) => {
+app.post('/api/article/save-articles', (req, res) => {
   const newArticle = req.body; // Make sure this is a single object, not an array
 
   const filePath = path.join(__dirname, "../../assets/data/newsData.json");
@@ -71,7 +71,7 @@ app.post('/api/save-articles', (req, res) => {
 });
 
 
-app.get("/api/get-articles", (req, res) => {
+app.get("/api/article/get-articles", (req, res) => {
   // Définissez le chemin vers votre fichier JSON
   const filePath = path.join(__dirname, "../../assets/data/newsData.json");
 
@@ -85,7 +85,7 @@ app.get("/api/get-articles", (req, res) => {
   });
 });
 
-app.delete("/api/delete-articles/:id", (req, res) => {
+app.delete("/api/article/delete-articles/:id", (req, res) => {
   const articleId = req.params.id;
   const { viewName } = req.body;
   const jsonFilePath = path.join(__dirname, "../../assets/data/newsData.json");
@@ -123,6 +123,23 @@ app.delete("/api/delete-articles/:id", (req, res) => {
   });
 });
 
+
+app.get("/api/markdown/get-markdown/:viewName", (req, res) => {
+  const { viewName } = req.params;
+  const filePath = path.join(
+    __dirname,
+    "../../components/news/list-news",
+    `${viewName}.md`
+  );
+
+  fs.readFile(filePath, "utf8", (err, data) => {
+    if (err) {
+      console.error("Erreur lors de la lecture du fichier Markdown", err);
+      return res.status(500).send("Erreur lors de la lecture du fichier");
+    }
+    res.send(data);
+  });
+});
 
 
 server.listen(port, ip, () => {
