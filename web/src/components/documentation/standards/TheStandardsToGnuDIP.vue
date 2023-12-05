@@ -41,7 +41,7 @@
 </p>
 
 <div class="flex justify-center">
-        <img src="images/capture/routeur/gnudip/gnudip-http.png" alt="">
+        <img src="/images/capture/routeur/gnudip/gnudip-http.png" alt="">
     </div>
 </template>
 

@@ -11,11 +11,12 @@
         IP Monitor is available from <a href="https://itunes.apple.com/us/app/ip-monitor/id1050307950?mt=8" class="link">Apple Mac App Store</a> around the world.
     </p>
 
-    <img src="images/capture/macos/ip-monitor-user-interface.png" alt="ip-monitor-user-interface">
+    <img :src="images1" alt="ip-monitor-user-interface">
 
-    <img src="images/capture/macos/ip-monitor-service-record.png" alt="ip-monitor-service-record">
+    <img :src="images2" alt="ip-monitor-service-record">
 </template>
 
 <script setup>
-//
+const images1 = '/images/capture/macos/ip-monitor-user-interface.png'
+const images2 = '/images/capture/macos/ip-monitor-service-record.png'
 </script>

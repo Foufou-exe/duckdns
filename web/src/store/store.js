@@ -8,8 +8,7 @@ function getRandomImage() {
   return `images/connexion/duck${randomIndex}.png`;
 }
 
-
-// Export Store
+// Store Image
 const useImageStore = defineStore('image', {
   id: 'image',
   state: () => ({
@@ -39,6 +38,7 @@ const useImageStore = defineStore('image', {
   }
 });
 
+// Store Theme
 const useThemeStore = defineStore('theme', {
   state: () => ({
       isDarkMode: true, // Valeur par défaut
@@ -57,6 +57,7 @@ const useThemeStore = defineStore('theme', {
   },
 });
 
+// Store Login
 const useLoginStore = defineStore('login', {
   state: () => ({
     isLogin: false,
@@ -76,7 +77,7 @@ const useLoginStore = defineStore('login', {
   }
 });
 
-
+// Store User
 const useUserStore = defineStore('user', {
   state: () => ({
     username: null,
@@ -90,6 +91,10 @@ const useUserStore = defineStore('user', {
       this.username = null;
       localStorage.removeItem('username');
     },
+    checkUser() {
+      const storedUsername = localStorage.getItem('username');
+      this.username = storedUsername;
+    }
   },
 });
 

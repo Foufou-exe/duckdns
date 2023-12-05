@@ -24,7 +24,7 @@
     <li class="mb-3">
         Choose either <strong>HTTP</strong> or <strong>HTTPS</strong> as your preferred protocol.
     </li>
-    <img src="images/capture/routeur/tomoto/tomatousb.png" alt="tomatousb">
+    <img :src="images" alt="tomatousb">
 </ol>
 
 <p class="font-thin mb-5">
@@ -33,5 +33,5 @@
 </template>
 
 <script setup>
-//
+const images = '/images/capture/routeur/tomoto/tomatousb.png'
 </script>

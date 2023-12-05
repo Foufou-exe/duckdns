@@ -50,12 +50,12 @@
 </p>
 
 <div class="flex justify-center">
-    <img src="images/capture/routeur/technicolor/technicolor.png" alt="technicolor">
+    <img :src="images" alt="technicolor">
 </div>
 
 
 </template>
 
 <script setup>
-//
+const images = '/images/capture/routeur/technicolor/technicolor.png'
 </script>

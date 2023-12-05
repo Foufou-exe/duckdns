@@ -73,13 +73,13 @@
         - <b>Click</b> OK when done.<br>
     </p>
     <div class="flex justify-center item-center mb-5">
-        <img src="images/capture/windows/windows_task_script.png" alt="windows-screen-task" class="w-1/2">
+        <img :src="images" alt="windows-screen-task" class="w-1/2">
     </div>
     <p class="font-thin mb-5">
         Next go to the Actions tab and select New. In the '<b>Program/script</b>' field select the <b>Browse button</b> . <br> In the new window that opened, click on <kbd class="kbd kbd-sm">This PC</kbd> on the left column and then go to <b>C:\Users\YOUR-USERNAME </b>and click once on the script you created before. Click <b>OPEN</b> on the bottom of the window then click OK and OK again on the Create Task window.
     </p>
     <div class="flex justify-center item-center mb-5">
-        <img src="images/capture/windows/windows_task_script2.png" alt="windows-screen-task" class="w-1/2">
+        <img :src="images1" alt="windows-screen-task" class="w-1/2">
     </div>
     <h4 class="font-bold text-xl  mb-5">Windows XP :</h4>
     <p class="font-thin mb-5">
@@ -88,14 +88,14 @@
         - <b>Click Next</b> on the new window that opens then select <b>Browse</b> when presented with the window shown below.
     </p>
     <div class="flex justify-center item-center mb-5">
-        <img src="images/capture/windows/windowsxp_task_script1.png" alt="windows-screen-task" class="w-1/2">
+        <img :src="images2" alt="windows-screen-task" class="w-1/2">
     </div>
     <p class="font-thin mb-5">
         - <b>Click</b> on My Computer on the left column and go to <b>C:\Documents</b> and <b>Settings\YOUR-USERNAME</b> .<br>
         - <b>Click </b>once on your script file and select <b>Open</b> from the bottom right.
     </p>
     <div class="flex justify-center item-center mb-5">
-        <img src="images/capture/windows/windowsxp_task_script2.png" alt="windows-screen-task" class="w-1/2">
+        <img :src="images3" alt="windows-screen-task" class="w-1/2">
     </div>
     <p  class="font-thin mb-5">
         On the next window select '<b>When I Log On</b>' and click Next. Leave the username and password boxes as they are and select Next, then Select Finish 😊.
@@ -103,6 +103,9 @@
 </template>
 
 <script setup>
-//
+const images = '/images/capture/windows/windows_task_script.png'
+const images1 = '/images/capture/windows/windows_task_script2.png'
+const images2 = '/images/capture/windows/windowsxp_task_script1.png'
+const images3 = '/images/capture/windows/windowsxp_task_script2.png'
 </script>
 

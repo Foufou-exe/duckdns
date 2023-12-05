@@ -5,9 +5,9 @@
         <a href="http://minglebit.com/products/realdns.php" class="link">RealDNS</a> is a client for iOS and they support DuckDNS, have a look on the <a href="https://itunes.apple.com/us/app/realdns/id907980233?mt=12&ign-mpt=uo%3D4" class="link">iTunes Store</a>
     </p>
 
-    <img src="images/capture/macos/realdns_screenshot.png" alt="realdns_screenshot">
+    <img :src="images" alt="realdns_screenshot">
 </template>
 
 <script setup>
-//
+const images = '/images/capture/macos/realdns_screenshot.png'
 </script>

@@ -97,7 +97,7 @@
         <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-3 shadow bg-base-200 rounded-box w-52">
           <li class="flex mb-2">
             <h1 class="text-sm flex justify-center">
-              Connect with<strong class="font-bold">Editor</strong>
+              Connect with<strong class="font-bold">{{ username }}</strong>
             </h1>
           </li>
           <li>
@@ -119,6 +119,7 @@
 </template>
 
 <script setup>
+import { ref , onMounted } from "vue";
 import ButtonTheme from "@components/navbar/end/ButtonTheme.vue";
 import { useLoginStore, useUserStore } from '@store/store';
 
@@ -140,4 +141,14 @@ import { useImageStore } from "@store/store.js"; // Importez votre store Pinia
 import router from "../../router";
 // Use Store Image
 const selectedImage = computed(() => useImageStore().selectedImage);
+
+const username = ref("");
+
+onMounted(() => {
+  username.value = localStorage.getItem('username');
+});
+
+
+
+
 </script>

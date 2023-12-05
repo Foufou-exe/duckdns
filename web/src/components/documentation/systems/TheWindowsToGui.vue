@@ -14,7 +14,7 @@
         Install the client and start it, you should see a new Tray Icon appear (in Windows 7 you may need to make it always visible, by right clicking on your tray and changing the settings)
     </p>
     <div class="mb-5">
-        <img src="images/capture/windows/windows_duckdns_updater_settings1.png" alt="windows-screen-task" class="">
+        <img :src="images1" alt="windows-screen-task" class="">
     </div>
     <h2 class="text-2xl font-extrabold mb-5 underline">Step 2 : Configure the software for your chosen domain</h2>
     <p class="font-thin mb-5">
@@ -23,17 +23,19 @@
         Then click <b>OK</b> to apply the new settings . <br>
     </p>
     <div class="mb-5">
-        <img src="images/capture/windows/windows_duckdns_updater_settings2.png" alt="windows-screen-task" class="">
+        <img :src="images2" alt="windows-screen-task" class="">
     </div>
     <h2 class="text-2xl font-extrabold mb-5 underline">Step 3 : Check it works</h2>
     <p class="font-thin mb-5">
         You should now see the new tray icon, when you hover the mouse over it you will see some details of its current status.
     </p>
     <div class="mb-5">
-        <img src="images/capture/windows/windows_duckdns_updater_tray_icon.png" alt="windows-screen-task" class="">
+        <img :src="images3" alt="windows-screen-task" class="">
     </div>
 </template>
 
 <script setup>
-//
+const images1 = '/images/capture/windows/windows_duckdns_updater_settings1.png'
+const images2 = '/images/capture/windows/windows_duckdns_updater_settings2.png'
+const images3 = '/images/capture/windows/windows_duckdns_updater_tray_icon.png'
 </script>

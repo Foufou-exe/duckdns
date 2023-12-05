@@ -45,11 +45,11 @@
 </p>
 
 <div class="flex justify-center">
-    <img src="images/capture/routeur/zteh108n/zteh108n.png" alt="">
+    <img :src="images" alt="">
 </div>
 
 </template>
 
 <script setup>
-//
+const images = '/images/capture/routeur/zteh108n/zteh108n.png'
 </script>

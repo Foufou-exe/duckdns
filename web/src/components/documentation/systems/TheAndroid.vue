@@ -14,7 +14,7 @@
         <div class="display">
           <div class="artboard artboard-demo phone-1">
             <div class="screen">
-              <img src="images/capture/android/android.png" alt="android">
+              <img :src="images" alt="android">
             </div>
           </div>
         </div>
@@ -23,5 +23,5 @@
 </template>
 
 <script setup>
-//
+const images = '/images/capture/android/android.png'
 </script>

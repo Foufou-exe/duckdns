@@ -42,10 +42,10 @@
     To complete the process, click on "<b>Save</b>" and subsequently "<b>Apply Settings</b>". Monitor the logs to ensure the configuration was successful.
 </p>
 <div class="flex justify-center">
-    <img src="images/capture/routeur/ddwrt/ddwrt.png" alt="ddwrt">
+    <img :src="images" alt="ddwrt">
 </div>
 </template>
 
 <script setup>
-//
+const images = '/images/capture/routeur/ddwrt/ddwrt.png'
 </script>

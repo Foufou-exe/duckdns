@@ -33,10 +33,10 @@
     </p>
 
     <div class="flex justify-center">
-        <img src="images/capture/routeur/pfsense/pfsense.png" alt="">
+        <img :src="images" alt="">
     </div>
 </template>
 
 <script setup>
-//
+const images = '/images/capture/routeur/pfsense/pfsense.png'
 </script>

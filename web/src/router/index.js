@@ -122,6 +122,11 @@ const router = createRouter({
           props: true,
           component: () => import("@components/dashboard/EditArticle.vue"),
         },
+        {
+          path: "user-setting",
+          name: "user-setting",
+          component: () => import("@components/dashboard/UserSetting.vue"),
+        }
       ],
     },
   ],
@@ -131,12 +136,10 @@ router.beforeEach((to, from, next) => {
   const loginStore = useLoginStore(); // Utilisez le store Pinia
   const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
 
-  if (requiresAuth && !loginStore.isLogin) {
-    next('/admin'); // Rediriger vers la page de connexion si non connecté
-  }else if (!requiresAuth && loginStore.isLogin) {
-    next('/admin/dashboard'); // Rediriger un utilisateur déjà connecté vers le tableau de bord
+  if (requiresAuth && loginStore.checkUser === false) {
+    next('/admin'); // Redirect to login page if not logged in
   } else {
-    next(); // Sinon, continuer normalement
+    next(); // Otherwise, continue as normal
   }
 });
 

@@ -31,7 +31,7 @@ app.get("/api/test", (req, res) => {
   res.send("API fonctionnelle");
 });
 
-app.get("/api/user/liste-username", (req, res) => {
+app.get("/api/user/list-users", (req, res) => {
   const requete = "SELECT name FROM user";
   db.all(requete, (err, rows) => {
     if (err) {
@@ -41,6 +41,20 @@ app.get("/api/user/liste-username", (req, res) => {
         .send("Erreur lors de la recherche des utilisateurs");
     }
     res.send(rows);
+  });
+});
+
+app.get("/api/users/count-users", (req, res) => {
+  const requete = "SELECT COUNT(*) AS count FROM user";
+
+  db.get(requete, (err, row) => {
+    if (err) {
+      console.error("Erreur lors de la recherche des utilisateurs", err);
+      return res
+        .status(500)
+        .send("Erreur lors de la recherche des utilisateurs");
+    }
+    res.send(row);
   });
 });
 

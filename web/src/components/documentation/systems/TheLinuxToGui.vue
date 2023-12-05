@@ -24,14 +24,14 @@
         Enter your Domaine name :
     </p>
 
-    <img src="images/capture/linux/linux-gui-01.png" alt="linux-gui-01" class="mb-5">
+    <img :src="images1" alt="linux-gui-01" class="mb-5">
 
 
     <p class="font-thin mb-5">
         Enter your token :
     </p>
 
-    <img src="images/capture/linux/linux-gui-02.png" alt="linux-gui-02" class="mb-5">
+    <img :src="images2" alt="linux-gui-02" class="mb-5">
     
     <p class="font-thin mb-5">
         There will now be a log file and shell script (which you can test manually) installed at something like : <br>
@@ -53,5 +53,6 @@
 </template>
 
 <script setup>
-//
+const images1 = '/images/capture/linux/linux-gui-01.png'
+const images2 = '/images/capture/linux/linux-gui-02.png'
 </script>
