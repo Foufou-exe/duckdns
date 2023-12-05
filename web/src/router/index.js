@@ -3,11 +3,14 @@
  * Path : routeur/index.js
  *
  * Automatically included in `./src/main.js`
- * 
-*/
+ *
+ */
 
 // Import Vue Router
 import { createRouter, createWebHistory } from "vue-router";
+
+// Import store
+import {useLoginStore} from "@store/store.js";
 
 // Create a Vue Router
 const router = createRouter({
@@ -95,13 +98,9 @@ const router = createRouter({
       // Redirect to Dasgboard Admin after login
       path: "/admin/dashboard",
       name: "dashboard",
+      meta: { requiresAuth: true },
       component: () => import("@views/Dashboard.vue"),
       children: [
-        {
-          path: "support",
-          name: "support",
-          component: () => import("@components/dashboard/Support.vue"),
-        },
         {
           path: "create-news-article",
           name: "create-news-article",
@@ -113,19 +112,32 @@ const router = createRouter({
           component: () => import("@components/dashboard/ListArticle.vue"),
         },
         {
-          path: '',
-          name: 'dashboard-home',
+          path: "",
+          name: "dashboard-home",
           component: () => import("@components/dashboard/Home.vue"),
         },
         {
-          path: 'edit-article/:id',
-          name: 'edit-article',
+          path: "edit-article/:id",
+          name: "edit-article",
           props: true,
           component: () => import("@components/dashboard/EditArticle.vue"),
-        }
-      ]
-    }
+        },
+      ],
+    },
   ],
+});
+
+router.beforeEach((to, from, next) => {
+  const loginStore = useLoginStore(); // Utilisez le store Pinia
+  const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+
+  if (requiresAuth && !loginStore.isLogin) {
+    next('/admin'); // Rediriger vers la page de connexion si non connecté
+  }else if (!requiresAuth && loginStore.isLogin) {
+    next('/admin/dashboard'); // Rediriger un utilisateur déjà connecté vers le tableau de bord
+  } else {
+    next(); // Sinon, continuer normalement
+  }
 });
 
 export default router;

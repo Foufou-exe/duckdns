@@ -43,7 +43,9 @@
             <li>
               <div>
                 <input type="text" class="input input-bordered w-full max-w-xs text-base-content font-bold"
-                  v-model="article.viewName" />
+                  v-model="article.viewName" 
+                  placeholder="Name of the article"
+                  />
               </div>
               <span class="  text-base-content ml-1 font-semibold">.md</span>
               <div class="p-2 space-x-2">
@@ -55,7 +57,11 @@
             </li>
           </ul>
         </div>
-        <div>
+        <div class="space-x-3">
+          <router-link to="/admin/dashboard" class="btn btn-base">
+            <font-awesome-icon icon="home" />
+            Home
+          </router-link>
           <button class="btn btn-success" @click="createArticle" :disabled="!isFormValid">Create Article</button>
         </div>
       </div>
@@ -86,7 +92,7 @@
               <label class="label">
                 <span class="label-text font-medium">Title : </span>
               </label>
-              <input type="text" v-model="article.title" class="input input-bordered w-full max-w-xs" />
+              <input type="text" v-model="article.title" class="input input-bordered w-full max-w-xs"  placeholder="Title"/>
             </div>
 
             <div class="form-control w-full max-w-xs">
@@ -115,7 +121,7 @@
             <label class="label">
               <span class="label-text font-medium">Description : </span>
             </label>
-            <textarea v-model="article.content" class="textarea textarea-bordered w-full "></textarea>
+            <textarea v-model="article.content" class="textarea textarea-bordered w-full " placeholder="Item description"></textarea>
           </div>
         </div>
 
@@ -170,7 +176,7 @@
         </div>
 
         <div v-if="activeTab2 === 'preview'">
-          <MdPreview v-model="articleContent" :editorId="id" class="rounded-b-lg" :theme="editorTheme"/>
+          <MdPreview v-model="articleContent" :editorId="id" class="rounded-b-lg" :theme="editorTheme" style="background-color: transparent;"/>
         </div>
       </div>
     </div>

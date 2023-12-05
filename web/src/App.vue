@@ -28,4 +28,5 @@ const isAdminRoute = computed(() => route.meta.admin || route.path.startsWith('/
 
 const imageStore = useImageStore();
 imageStore.initializeImage();
+
 </script>

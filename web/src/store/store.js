@@ -57,7 +57,45 @@ const useThemeStore = defineStore('theme', {
   },
 });
 
+const useLoginStore = defineStore('login', {
+  state: () => ({
+    isLogin: false,
+  }),
+  actions: {
+    // Initializes the connection state when the application starts up
+    initializeLogin() {
+      const storedLogin = localStorage.getItem('user-login');
+      this.isLogin = storedLogin === 'false';
+    },
+
+    // Called after successful authentication or on disconnection
+    setLoginState(isLogin) {
+      this.isLogin = isLogin;
+      localStorage.setItem('user-login', isLogin ? 'true' : 'false');
+    }
+  }
+});
+
+
+const useUserStore = defineStore('user', {
+  state: () => ({
+    username: null,
+  }),
+  actions: {
+    setUser(username) {
+      this.username = username;
+      localStorage.setItem('username', this.username);
+    },
+    dropUser() {
+      this.username = null;
+      localStorage.removeItem('username');
+    },
+  },
+});
+
 export { 
   useImageStore, 
-  useThemeStore 
+  useThemeStore,
+  useLoginStore,
+  useUserStore
 };

@@ -78,12 +78,14 @@
 </template>
 
 <script setup>
-import idlogin from "@data/adminProfile.json";
+// import idlogin from "@data/users.json";
 import { useRouter } from "vue-router";
 import { useToast } from "vue-toastification";
 import "vue-toastification/dist/index.css";
 import { ref } from 'vue';
+import { useLoginStore, useUserStore } from '@store/store';
 
+const loginStore = useLoginStore();
 const treeIconClicked = ref(false);
 const titreClicked = ref(false);
 const strongClicked = ref(false);
@@ -92,9 +94,12 @@ const btnClicked = ref(false);
 const btnSwitchClicked = ref(false);                                                                                                                                                                                                                                                                                                             
 const btnSwitchHover = ref(false);
 const urlClicked = ref(false);
-
+const userStore = useUserStore();
 const bgFond1 = 'bg-[url(/images/fond.png)]';
 const bgFond2 = 'bg-[url(/images/fond2.png)]';
+
+
+loginStore.initializeLogin();
 
 // Simplification de toggleTreeIcon
 const toggleStates = [treeIconClicked, titreClicked, strongClicked, inputClicked, btnClicked, btnSwitchClicked, btnSwitchHover, urlClicked];
@@ -119,17 +124,30 @@ const toast = useToast({
 
 const router = useRouter();
 
-// Connection Optimisation
-function Connexion() {
+async function Connexion() {
   const identifiant = document.getElementById("identifiant").value;
   const password = document.getElementById("password").value;
-  const user = idlogin["Users"][identifiant];
 
-  if (user && user.user === identifiant && user.password.includes(password)) {
+  try {
+    const response = await fetch('http://localhost:3000/api/user/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ username: identifiant, password: password })
+    });
+
+    if (!response.ok) {
+      throw new Error('Erreur de connexion');
+    }
+
+    const user = await response.json();
+    loginStore.setLoginState(true)
+    userStore.setUser(user.name);
     router.push("/admin/dashboard");
-  } else {
+  } catch (error) {
+    console.error(error);
     toast.error("Incorrect user name or password");
   }
 }
-
 </script>

@@ -55,9 +55,13 @@
             </li>
           </ul>
         </div>
-        <div class="space-x-5">
+        <div class="space-x-3">
+          <router-link to="/admin/dashboard" class="btn btn-base">
+            <font-awesome-icon icon="home" />
+            Home
+          </router-link>
           <button @click="this.$router.go(-1)"  class="btn btn-neutral">Cancel</button>
-          <button class="btn btn-success">Save Article</button>
+          <button :disabled="!hasChanges" @click="saveArticle" class="btn btn-success">Save Article</button>
         </div>
       </div>
 
@@ -174,7 +178,7 @@
         </div>
 
         <div v-if="activeTab2 === 'preview'">
-          <MdPreview v-model="articleContent" :editorId="id" class="rounded-b-lg" :theme="editorTheme"/>
+          <MdPreview v-model="articleContent" :editorId="id" class="rounded-b-lg" :theme="editorTheme" style="background-color: transparent;"/>
         </div>
       </div>
     </div>
@@ -182,9 +186,12 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, watch } from "vue";
+import { ref, computed, onMounted, watch, shallowRef } from "vue";
 import { useRoute } from "vue-router";
+
+// Data
 import NewsData from "@data/newsData.json";
+// Format Date
 import { formatDate } from '@js/formatDate';
 
 // Markdown Editor
@@ -194,16 +201,22 @@ import 'md-editor-v3/lib/preview.css';
 // Toast
 import { useToast } from "vue-toastification";
 const toast = useToast();
+
 // Use Store for theme
 import { useThemeStore } from '@store/store.js';
+import { has } from "markdown-it/lib/common/utils";
 const themeStore = useThemeStore();
 const editorTheme = computed(() => themeStore.isDarkMode ? 'dark' : 'light');
 
+// Use route for get id
 const route = useRoute();
+
+// Part Card
 const articleId = parseInt(route.params.id);
 const article = ref(NewsData.find((article) => article.id === articleId));
 const activeTab = ref('edit');
 
+// Part Editor
 const categories = [
   { name: "Feature", icon: "✨" },
   { name: "Release", icon: "🎉" },
@@ -251,9 +264,18 @@ const id = ref('editor');
 const articleContent = ref('');
 const currentBranch = ref('dev');
 
-onMounted(() => {
-  if (article.value.viewName) {
-    loadArticleContent(article.value.viewName);
+// Utilisez shallowRef pour éviter la réactivité sur les objets imbriqués.
+const originalArticle = shallowRef({});
+const originalContent = shallowRef('');
+
+// Lorsque le composant est monté, chargez les données et définissez les valeurs initiales.
+onMounted(async () => {
+  const articleData = NewsData.find(article => article.id === parseInt(route.params.id));
+  if (articleData) {
+    article.value = { ...articleData };
+    originalArticle.value = JSON.parse(JSON.stringify(articleData)); // Copie profonde
+    await loadArticleContent(article.value.viewName); // Assurez-vous que c'est terminé avant de continuer.
+    originalContent.value = articleContent.value; // Après le chargement du contenu
   }
 });
 
@@ -266,14 +288,88 @@ const loadArticleContent = async (viewName) => {
     }
     const content = await response.text();
     articleContent.value = content;
+    originalContent.value = articleContent.value;
   } catch (e) {
     console.error("Erreur lors du chargement du contenu de l'article", e);
   }
 };
 
+// Look for changes in the article content and save them.
 watch(() => article.value.viewName, (newViewName) => {
   if (newViewName) {
     loadArticleContent(newViewName);
   }
 });
+
+
+const hasChanges = computed(() => {
+  const currentArticle = { ...article.value, content: articleContent.value };
+  const initialArticle = { ...originalArticle.value, content: originalContent.value };
+  return JSON.stringify(currentArticle) !== JSON.stringify(initialArticle);
+});
+
+const editArticleJson = async (articleData) => {
+  try {
+    console.log(articleData);
+    const response = await fetch(`http://localhost:3000/api/article/edit-article-content/${articleData.id}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(articleData)
+    });
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    console.log("JSON modifié avec succès");
+  } catch (e) {
+    console.error("Erreur lors de l'édition du JSON de l'article", e);
+  }
+};
+
+const editArticleContent = async (viewName, content) => {
+  try {
+    const response = await fetch(`http://localhost:3000/api/markdown/edit-markdown/${viewName}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        viewName: viewName,
+        content: content
+      })
+    });
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    console.log("Markdown modifié avec succès");
+  } catch (e) {
+    console.error("Erreur lors de l'édition du contenu Markdown de l'article", e);
+  }
+};
+
+const saveArticle = async () => {
+
+  if (hasChanges.value) {
+    // Vérifier s'il y a eu des modifications dans l'objet article
+    if (JSON.stringify(article.value) !== JSON.stringify(originalArticle.value)) {
+      // Appel de la fonction pour sauvegarder les modifications dans le JSON
+      await editArticleJson(article.value);
+    }
+
+    // Vérifier s'il y a eu des modifications dans le contenu de l'article
+    if (articleContent.value !== originalContent.value) {
+      // Appel de la fonction pour sauvegarder les modifications dans le Markdown
+      await editArticleContent(article.value.viewName, articleContent.value);
+    }
+  }
+
+  // Indiquer à l'utilisateur que la sauvegarde a été effectuée
+  toast.success("Article et/ou contenu édité(s) avec succès");
+};
+
+
+
+
 </script>
+
