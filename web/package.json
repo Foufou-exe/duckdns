@@ -4,9 +4,11 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "start": "run-p dev express",
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "express": "node server.js"
   },
   "dependencies": {
     "@codemirror/lang-html": "github:codemirror/lang-html",
