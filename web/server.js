@@ -6,6 +6,7 @@ import path from "path";
 import fs from "fs";
 import { fileURLToPath } from "url";
 
+// Import the database client
 import db from "./database.js";
 import md5 from "md5";
 
@@ -17,19 +18,27 @@ const port = 3000;
 const ip = "0.0.0.0";
 const server = http.createServer(app);
 
+// Define the folder that will be used for static assets
+app.use(express.static('build'));
+
 // Activate CORS for all routes
 app.use(cors());
 // Activate the JSON body parser
 app.use(express.json());
 
+
+
 // Define the static assets folder
+/**
+ * The resolved file path of the current module.
+ * @type {string}
+ */
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Test fonctionnement
-app.get("/api/test", (req, res) => {
-  res.send("API fonctionnelle");
-});
+/*
+  TODO: PARTY CALLED UP BY THE FRONT FOR THE USER
+*/
 
 app.get("/api/user/list-users", (req, res) => {
   const requete = "SELECT name FROM user";
@@ -109,11 +118,10 @@ app.post("/api/user/reset-password", (req, res) => {
   });
 });
 
-
 app.post("/api/user/edit-username", (req, res) => {
-  const { username, newUsername } = req.body;
+  const { oldUsername, newUsername } = req.body;
   const requete = "UPDATE user SET name = ? WHERE name = ?";
-  const params = [newUsername, username];
+  const params = [newUsername, oldUsername];
 
   db.run(requete, params, function (err) {
     if (err) {
@@ -133,7 +141,7 @@ app.post("/api/user/edit-username", (req, res) => {
 
 app.get("/api/article/get-articles", (req, res) => {
   // Définissez le chemin vers votre fichier JSON
-  const filePath = path.join(__dirname, "../../assets/data/newsData.json");
+  const filePath = path.join(__dirname, "./src/assets/data/newsData.json");
 
   // Lisez les données du fichier JSON
   fs.readFile(filePath, (err, data) => {
@@ -149,7 +157,7 @@ app.get("/api/markdown/get-markdown/:viewName", (req, res) => {
   const { viewName } = req.params;
   const filePath = path.join(
     __dirname,
-    "../../components/news/list-news",
+    "./src/components/news/list-news",
     `${viewName}.md`
   );
 
@@ -165,7 +173,7 @@ app.get("/api/markdown/get-markdown/:viewName", (req, res) => {
 app.post("/api/article/save-articles", (req, res) => {
   const newArticle = req.body;
 
-  const filePath = path.join(__dirname, "../../assets/data/newsData.json");
+  const filePath = path.join(__dirname, "./src/assets/data/newsData.json");
 
   fs.readFile(filePath, "utf8", (err, data) => {
     if (err) {
@@ -202,7 +210,7 @@ app.post("/api/article/edit-article-content/:id", (req, res) => {
     return res.status(400).send("Les ID d'article ne correspondent pas.");
   }
 
-  const jsonFilePath = path.join(__dirname, "../../assets/data/newsData.json");
+  const jsonFilePath = path.join(__dirname, "./src/assets/data/newsData.json");
 
   try {
     const data = fs.readFileSync(jsonFilePath, "utf8");
@@ -235,12 +243,16 @@ app.post("/api/article/edit-article-content/:id", (req, res) => {
 app.post("/api/article/edit-article-content/:id", (req, res) => {
   const articleId = req.params.id;
   const updatedArticleData = req.body;
-  const jsonFilePath = path.join(__dirname, "../../assets/data/newsData.json");
+  const jsonFilePath = path.join(__dirname, "./src/assets/data/newsData.json");
 
   try {
     const data = fs.readFileSync(jsonFilePath, "utf8");
     let existingArticles = JSON.parse(data);
 
+    /**
+     * The index of the article in the existingArticles array.
+     * @type {number}
+     */
     const articleIndex = existingArticles.findIndex(
       (article) => article.id.toString() === articleId.toString()
     );
@@ -267,9 +279,13 @@ app.post("/api/article/edit-article-content/:id", (req, res) => {
 
 app.post("/api/markdown/save-markdown", (req, res) => {
   const { content, viewName } = req.body;
+  /**
+   * The file path of the news list view.
+   * @type {string}
+   */
   const filePath = path.join(
     __dirname,
-    "../../components/news/list-news",
+    "./src/components/news/list-news",
     `${viewName}.md`
   );
 
@@ -284,9 +300,13 @@ app.post("/api/markdown/save-markdown", (req, res) => {
 
 app.post("/api/markdown/edit-markdown/:viewName", (req, res) => {
   const { viewName } = req.params;
+  /**
+   * The file path of the news list view.
+   * @type {string}
+   */
   const filePath = path.join(
     __dirname,
-    "../../components/news/list-news",
+    "./src/components/news/list-news",
     `${viewName}.md`
   );
   const { content } = req.body;
@@ -301,6 +321,18 @@ app.post("/api/markdown/edit-markdown/:viewName", (req, res) => {
 });
 
 
+// Middleware pour les routes non trouvées
+app.use((req, res, next) => {
+  res.status(404).send("Page not found !");
+});
+
+// Middleware pour la gestion des erreurs
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something s gone wrong!');
+});
+
+// LISTEN TO THE SERVER
 server.listen(port, ip, () => {
   console.log(`API disponible sur http://localhost:${port}/`);
 });

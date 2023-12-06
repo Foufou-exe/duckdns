@@ -13,7 +13,7 @@
                 <!-- Right column for user information -->
                 <div class="md:w-2/3 p-10">
                     <div class="flex items-center">
-                        <h1 class="text-2xl font-bold text-white">Information</h1>
+                        <h1 class="text-2xl font-bold">Information</h1>
                     </div>
                     <div class="mt-4">
                         <div class="form-control">
@@ -23,7 +23,7 @@
                             <input type="text" v-model="newUsername" :placeholder="username"
                                 class="input input-bordered w-full max-w-xs" />
                         </div>
-                        <button @click="editUsername" class="btn btn-warning mr-5">
+                        <button @click="editUsername" class="btn btn-warning mr-5" :disabled="!checkUsername">
                             <font-awesome-icon icon="edit" />
                             Edit
                         </button>
@@ -67,7 +67,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue'
+import { ref, computed } from 'vue'
 // Store pinia
 import { useImageStore } from "@store/store.js";
 
@@ -121,41 +121,48 @@ const resetPassword = async () => {
     }
 };
 
-const username = ref(localStorage.getItem('username') || ''); // Existing username
-const newUsername = ref(''); // New username entered by the user
+const username = ref(localStorage.getItem('username') || '');
+const newUsername = ref('');
+
+const checkUsername = computed(() => newUsername.value !== username.value && newUsername.value !== '');
 
 // Call this function when the "Edit" button is clicked
 const editUsername = async () => {
-    if (newUsername.value.trim() && newUsername.value !== username.value) {
-        try {
-            const response = await fetch('http://localhost:3000/api/user/edit-username', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    oldUsername: username.value,
-                    newUsername: newUsername.value,
-                }),
-            });
+    try {
+        const response = await fetch('http://localhost:3000/api/user/edit-username', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                oldUsername: username.value,
+                newUsername: newUsername.value,
+            }),
+        });
 
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
 
-            const result = await response.json();
+        const result = await response.text();
+        if (result === 'Incorrect username') {
+            throw new Error('Incorrect username');
+        }
+        else { 
             // Handle the response from your API
             console.log(result);
             // Update the username in local storage and state
+            localStorage.removeItem('username');
             localStorage.setItem('username', newUsername.value);
             username.value = newUsername.value;
             newUsername.value = ''; // Clear the input
             // Notify the user
-            alert('Username updated successfully');
-        } catch (error) {
-            console.error('Failed to update username', error);
+            return toast.success('Username updated successfully');
         }
+    } catch (error) {
+        console.error('Failed to update username', error);
     }
 };
+
 
 </script>
