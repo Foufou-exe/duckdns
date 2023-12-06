@@ -81,6 +81,51 @@ app.post("/api/user/login", (req, res) => {
   });
 });
 
+app.post("/api/user/reset-password", (req, res) => {
+  const { username, newPassword } = req.body;
+  const hashedPassword = md5(newPassword);
+
+  // Vérifier d'abord si l'utilisateur existe
+  const checkUserExists = "SELECT * FROM user WHERE name = ?";
+  db.get(checkUserExists, [username], (userErr, userRow) => {
+    if (userErr) {
+      console.error("Erreur lors de la recherche de l'utilisateur", userErr);
+      return res.status(500).send("Erreur côté serveur");
+    }
+
+    if (!userRow) {
+      return res.status(404).send("Utilisateur non trouvé");
+    }
+
+    // Mise à jour du mot de passe si l'utilisateur existe
+    const updateQuery = "UPDATE user SET password = ? WHERE name = ?";
+    db.run(updateQuery, [hashedPassword, username], function (updateErr) {
+      if (updateErr) {
+        console.error("Erreur lors de la mise à jour du mot de passe", updateErr);
+        return res.status(500).send("Erreur lors de la mise à jour du mot de passe");
+      }
+      res.send("true");
+    });
+  });
+});
+
+
+app.post("/api/user/edit-username", (req, res) => {
+  const { username, newUsername } = req.body;
+  const requete = "UPDATE user SET name = ? WHERE name = ?";
+  const params = [newUsername, username];
+
+  db.run(requete, params, function (err) {
+    if (err) {
+      console.error("Erreur lors de la mise à jour du nom d'utilisateur", err);
+      return res
+        .status(500)
+        .send("Erreur lors de la mise à jour du nom d'utilisateur");
+    }
+    res.send("Nom d'utilisateur mis à jour avec succès");
+  });
+});
+
 
 /*
   TODO: PARTY CALLED UP BY THE FRONT FOR THE MANAGEMENT OF ARTICLES

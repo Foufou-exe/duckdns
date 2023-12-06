@@ -3,7 +3,7 @@
     <div class="w-full max-w-4xl">
       <div class="flex flex-col mb-5">
         <h1 class="text-3xl md:text-3xl lg:text-5xl font-extrabold mb-5">
-          List of Articles
+          List of Articles 📌
         </h1>
         <p class="mt-2 font-thin">Here you can see all the articles</p>
       </div>

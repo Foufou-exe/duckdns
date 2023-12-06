@@ -73,7 +73,7 @@ const hide = "****************";
 const showToken = ref(false);
 
 
-const toast = useToast( {
+const toast = useToast({
     position: "top-right",
     timeout: 5000,
     closeOnClick: true,

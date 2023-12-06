@@ -101,10 +101,10 @@
             </h1>
           </li>
           <li>
-            <a class="font-semibold">
+            <router-link to="/admin/dashboard/user-setting" class="font-semibold">
               <font-awesome-icon icon="user" />
               User settings
-            </a>
+            </router-link>
           </li>
           <li>
             <button @click="Logout" class="font-semibold">
