@@ -143,30 +143,44 @@
 </template>
 
 <script setup>
-import { ref, computed, watch } from 'vue';
-import NewsData from "@data/newsData.json";
+import { ref, computed, watch, onMounted } from 'vue';
 
 // Import toastification
 import { useToast } from 'vue-toastification';
 import 'vue-toastification/dist/index.css';
-// Use toastification
+
 const toast = useToast();
-// Pagination
-const pageSize = 25;
-const articles = ref(NewsData);
+
+// Articles et Pagination
+const articles = ref([]);
 const selectedArticles = ref([]);
 const selectAll = ref(false);
 const currentPage = ref(1);
+const pageSize = 25;
 
-// Calculate the number of pages
+// Charger les articles depuis l'API
+const loadArticles = async () => {
+  try {
+    const response = await fetch('/api/article/get-articles');
+    if (!response.ok) {
+      throw new Error('Erreur lors du chargement des articles');
+    }
+    articles.value = await response.json();
+  } catch (error) {
+    console.error("Erreur lors du chargement des articles", error);
+    toast.error("Erreur lors du chargement des articles");
+  }
+};
+
+// Calcul du nombre de pages
 const numberOfPages = computed(() => Math.ceil(articles.value.length / pageSize));
 
-// Observe changes in articles to reset pagination
+// Observer les changements dans les articles pour réinitialiser la pagination
 watch(articles, () => {
-  currentPage.value = 1; // Return to the first page if the list of articles changes
+  currentPage.value = 1;
 });
 
-// Divide articles into pages
+// Diviser les articles en pages
 const paginatedArticles = computed(() => {
   const pages = [];
   for (let i = 0; i < numberOfPages.value; i++) {
@@ -174,7 +188,6 @@ const paginatedArticles = computed(() => {
   }
   return pages;
 });
-
 // Set the current page
 const setCurrentPage = (page) => {
   currentPage.value = page;
@@ -257,4 +270,6 @@ const deleteSelectedArticles = async () => {
     console.error("Erreur lors de la suppression des articles sélectionnés", error);
   }
 };
+
+onMounted(loadArticles);
 </script>

@@ -11,7 +11,8 @@ export default defineConfig({
       script: {
         refSugar: true,
       },
-    }),
+      
+    })
   ],
   define: {
     "process.env": {
@@ -56,4 +57,11 @@ export default defineConfig({
     ".sass",
     ".md",
   ],
+  server: {
+    port: 5173,
+    strictPort: true,
+    proxy: {
+      '/api': 'http://localhost:3000'
+    }
+  },
 });
