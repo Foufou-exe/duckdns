@@ -252,7 +252,7 @@ const deleteArticle = async (article) => {
     // Mise à jour de l'affichage après suppression
     console.log("Article supprimé avec succès (id: " + article.id + "))");
     articles.value = articles.value.filter((a) => a.id !== article.id);
-    return toast.success(`Article ${ article.viewName } supprimé avec succès`);
+    return toast.success(`Article ${ article.viewName } successfully deleted`);
   } catch (error) {
     console.error("Erreur lors de la suppression de l'article", error);
   }
