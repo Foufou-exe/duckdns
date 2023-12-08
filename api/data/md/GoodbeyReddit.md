@@ -1,4 +1,4 @@
-# Goodbye Reddit ?
+# Goodbye Reddit ??
 
 We have had an exchange of emails from the Reddit Legal team.  
 They extended the switch off date to the **8 March 2021**, we have now took down the ability to login with Reddit oAuth.  

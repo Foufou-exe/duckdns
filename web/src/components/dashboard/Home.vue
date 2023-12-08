@@ -82,23 +82,24 @@
 
 
 <script setup>
-import { ref, computed,onMounted } from 'vue'
-// Article
-import DataArticle from '@data/newsData.json'
+import { ref, computed, onMounted } from 'vue'
 
 const username = ref('');
 const usersList = ref([]);
+const articlesList = ref([]);
 const resultCountUsers = ref(0);
-// User
+
+// Fonction pour récupérer le nombre d'utilisateurs
 const CountUser = async () => {
-    const response = await fetch('http://localhost:3000/api/users/count-users')
-    const data = await response.json()
-    return data
+    const response = await fetch('/api/user/count-users');
+    const data = await response.json();
+    return data;
 }
 
+// Fonction pour récupérer la liste des utilisateurs
 const listeUsers = async () => {
     try {
-        const response = await fetch('http://localhost:3000/api/user/list-users');
+        const response = await fetch('/api/user/list-users');
         const data = await response.json();
         usersList.value = data; 
     } catch (error) {
@@ -106,23 +107,37 @@ const listeUsers = async () => {
     }
 }
 
-const CountArticle = computed(() => {
-    return DataArticle.length
-})
+// Fonction pour récupérer les articles
+const loadArticles = async () => {
+    try {
+        const response = await fetch('/api/article/get-articles');
+        const data = await response.json();
+        articlesList.value = data;
+    } catch (error) {
+        console.error("Erreur lors du chargement des articles", error);
+    }
+}
 
+// Calcul du nombre d'articles
+const CountArticle = computed(() => {
+    return articlesList.value.length;
+});
+
+// Trier et limiter les articles à afficher
 const sortedArticles = computed(() => {
-    return DataArticle
-    .slice()
-    .sort((a, b) => new Date(b.date) - new Date(a.date))
-    .slice(0, 5);
+    return articlesList.value
+        .slice()
+        .sort((a, b) => new Date(b.date) - new Date(a.date))
+        .slice(0, 5);
 });
 
 onMounted(() => {
-  username.value = localStorage.getItem('username');
-  CountUser().then(data => {
-    resultCountUsers.value = data.count
-  });
-  listeUsers();
+    username.value = localStorage.getItem('username');
+    CountUser().then(data => {
+        resultCountUsers.value = data.count;
+    });
+    listeUsers();
+    loadArticles();
 });
 
 </script>

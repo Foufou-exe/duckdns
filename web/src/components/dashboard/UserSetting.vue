@@ -88,7 +88,7 @@ const passwordsMatch = computed(() => newPassword.value && newPassword.value ===
 const resetPassword = async () => {
     if (passwordsMatch.value) {
         try {
-            const response = await fetch('http://localhost:3000/api/user/reset-password', {
+            const response = await fetch('/api/user/reset-password', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -129,7 +129,7 @@ const checkUsername = computed(() => newUsername.value !== username.value && new
 // Call this function when the "Edit" button is clicked
 const editUsername = async () => {
     try {
-        const response = await fetch('http://localhost:3000/api/user/edit-username', {
+        const response = await fetch('/api/user/edit-username', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

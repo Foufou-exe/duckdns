@@ -60,7 +60,7 @@
             <font-awesome-icon icon="home" />
             Home
           </router-link>
-          <button @click="this.$router.go(-1)"  class="btn btn-neutral">Cancel</button>
+          <button @click="this.$router.go(-1)" class="btn btn-neutral">Cancel</button>
           <button :disabled="!hasChanges" @click="saveArticle" class="btn btn-success">Save Article</button>
         </div>
       </div>
@@ -109,10 +109,8 @@
               <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
                 <li class="form-control" v-for="category in categories" :key="category.name">
                   <label class="label">
-                    <input type="checkbox" 
-                          class="checkbox checkbox-warning" 
-                          :checked="article.categorie.includes(category.name)"
-                          @change="toggleCategory(category.name)" />
+                    <input type="checkbox" class="checkbox checkbox-warning"
+                      :checked="article.categorie.includes(category.name)" @change="toggleCategory(category.name)" />
                     <span class="label-text font-semibold">{{ category.icon }}{{ category.name }}</span>
                   </label>
                 </li>
@@ -137,7 +135,8 @@
                     {{ article.title }}
                   </h2>
                   <div class="flex flex-wrap gap-1 mt-2">
-                    <div v-for="categoryName in article.categorie" :key="categoryName" :class="getBadgeClass(categoryName)" 
+                    <div v-for="categoryName in article.categorie" :key="categoryName"
+                      :class="getBadgeClass(categoryName)"
                       class="badge inline-block badge-outline font-semibold badge-lg max-sm:text-xs text-sm">
                       {{ getBadgeText(categoryName) }}
                     </div>
@@ -174,11 +173,13 @@
       </div>
       <div class="border border-neutral rounded-b-lg">
         <div v-if="activeTab2 === 'edit'">
-          <MdEditor v-model="articleContent" :editorId="id" language="en-US" placeholder="# Write Article"  class="rounded-b-lg bg-current" :theme="editorTheme"/>
+          <MdEditor v-model="articleContent" :editorId="id" language="en-US" placeholder="# Write Article"
+            class="rounded-b-lg bg-current" :theme="editorTheme" />
         </div>
 
         <div v-if="activeTab2 === 'preview'">
-          <MdPreview v-model="articleContent" :editorId="id" class="rounded-b-lg" :theme="editorTheme" style="background-color: transparent;"/>
+          <MdPreview v-model="articleContent" :editorId="id" class="rounded-b-lg" :theme="editorTheme"
+            style="background-color: transparent;" />
         </div>
       </div>
     </div>
@@ -186,190 +187,111 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, watch, shallowRef } from "vue";
+import { ref, computed, onMounted, watch } from "vue";
 import { useRoute } from "vue-router";
-
-// Data
-import NewsData from "@data/newsData.json";
-// Format Date
-import { formatDate } from '@js/formatDate';
-
-// Markdown Editor
 import { MdEditor, MdPreview } from 'md-editor-v3';
 import 'md-editor-v3/lib/style.css';
 import 'md-editor-v3/lib/preview.css';
-// Toast
 import { useToast } from "vue-toastification";
-const toast = useToast();
-
-// Use Store for theme
 import { useThemeStore } from '@store/store.js';
-import { has } from "markdown-it/lib/common/utils";
+import { formatDate } from '@js/formatDate';
+
+const toast = useToast();
 const themeStore = useThemeStore();
-const editorTheme = computed(() => themeStore.isDarkMode ? 'dark' : 'light');
-
-// Use route for get id
 const route = useRoute();
-
-// Part Card
 const articleId = parseInt(route.params.id);
-const article = ref(NewsData.find((article) => article.id === articleId));
-const activeTab = ref('edit');
-
-// Part Editor
-const categories = [
-  { name: "Feature", icon: "✨" },
-  { name: "Release", icon: "🎉" },
-  { name: "Epic", icon: "🎈" },
-  { name: "Information", icon: "🔍" },
-];
-
-// This function toggles the item category.
-const toggleCategory = (categoryName) => {
-  if (!article.value.categorie) {
-    article.value.categorie = [];
-  }
-  const index = article.value.categorie.indexOf(categoryName);
-  if (index === -1) {
-    article.value.categorie.push(categoryName);
-  } else {
-    article.value.categorie.splice(index, 1);
-  }
-};
-
-
-const getBadgeClass = (categorie) => {
-  const classes = {
-    'Feature': 'badge-warning',
-    'Release': 'badge-success',
-    'Epic': 'badge-error',
-    'Information': 'badge-primary'
-  }
-  return `badge ${classes[categorie] || 'badge-secondary'}`
-};
-
-const getBadgeText = (categorie) => {
-  const texts = {
-    'Feature': '✨Feature',
-    'Release': '🎉Release',
-    'Epic': '🎈Epic',
-    'Information': '🔍Information'
-  }
-  return texts[categorie] || categorie
-};
-
-// Part Editor
-const activeTab2 = ref('edit');
-const id = ref('editor');
+const article = ref({
+  id: 0,
+  title: '',
+  date: '',
+  viewName: '',
+  content: '',
+  categorie: []
+});
 const articleContent = ref('');
+const originalArticle = ref({});
+const originalContent = ref('');
+const editorTheme = computed(() => themeStore.isDarkMode ? 'dark' : 'light');
+const activeTab = ref('edit');
+const activeTab2 = ref('edit');
 const currentBranch = ref('dev');
 
-// Utilisez shallowRef pour éviter la réactivité sur les objets imbriqués.
-const originalArticle = shallowRef({});
-const originalContent = shallowRef('');
+// Catégories avec leurs icones et classes CSS
+const categories = [
+  { name: "Feature", icon: "✨", class: "badge-warning" },
+  { name: "Release", icon: "🎉", class: "badge-success" },
+  { name: "Epic", icon: "🎈", class: "badge-error" },
+  { name: "Information", icon: "🔍", class: "badge-primary" },
+];
 
-// Lorsque le composant est monté, chargez les données et définissez les valeurs initiales.
-onMounted(async () => {
-  const articleData = NewsData.find(article => article.id === parseInt(route.params.id));
-  if (articleData) {
-    article.value = { ...articleData };
-    originalArticle.value = JSON.parse(JSON.stringify(articleData)); // Copie profonde
-    await loadArticleContent(article.value.viewName); // Assurez-vous que c'est terminé avant de continuer.
-    originalContent.value = articleContent.value; // Après le chargement du contenu
-  }
-});
+// Fonction pour obtenir la classe CSS en fonction de la catégorie
+const getBadgeClass = (categoryName) => {
+  const category = categories.find(cat => cat.name === categoryName);
+  return category ? `badge ${category.class}` : 'badge badge-secondary';
+};
 
-// Requete API
-const loadArticleContent = async (viewName) => {
+// Fonction pour obtenir le texte (avec l'icône) en fonction de la catégorie
+const getBadgeText = (categoryName) => {
+  const category = categories.find(cat => cat.name === categoryName);
+  return category ? `${category.icon}${category.name}` : categoryName;
+};
+
+const toggleCategory = (categoryName) => {
+  if (!article.value.categorie) article.value.categorie = [];
+  const index = article.value.categorie.indexOf(categoryName);
+  index === -1 ? article.value.categorie.push(categoryName) : article.value.categorie.splice(index, 1);
+};
+
+const hasChanges = computed(() => JSON.stringify(article.value) !== JSON.stringify(originalArticle.value) || articleContent.value !== originalContent.value);
+
+const loadArticleAndContent = async (id) => {
   try {
-    const response = await fetch(`http://localhost:3000/api/markdown/get-markdown/${viewName}`);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const content = await response.text();
-    articleContent.value = content;
+    // Charger d'abord l'article
+    const articleRes = await fetch(`/api/article/get-articles/${id}`);
+    if (!articleRes.ok) throw new Error('Erreur de chargement de l\'article');
+
+    article.value = await articleRes.json();
+    originalArticle.value = JSON.parse(JSON.stringify(article.value));
+
+    // Charger ensuite le contenu Markdown en utilisant viewName de l'article
+    const contentRes = await fetch(`/api/article/markdown/get-markdown/${article.value.viewName}`);
+    if (!contentRes.ok) throw new Error('Erreur de chargement du contenu Markdown');
+
+    articleContent.value = await contentRes.text();
     originalContent.value = articleContent.value;
   } catch (e) {
-    console.error("Erreur lors du chargement du contenu de l'article", e);
+    console.error(e);
+    toast.error("Error loading the article or its content");
   }
 };
 
-// Look for changes in the article content and save them.
-watch(() => article.value.viewName, (newViewName) => {
-  if (newViewName) {
-    loadArticleContent(newViewName);
+onMounted(async () => {
+  if (articleId) {
+    await loadArticleAndContent(articleId);
   }
 });
-
-
-const hasChanges = computed(() => {
-  const currentArticle = { ...article.value, content: articleContent.value };
-  const initialArticle = { ...originalArticle.value, content: originalContent.value };
-  return JSON.stringify(currentArticle) !== JSON.stringify(initialArticle);
-});
-
-const editArticleJson = async (articleData) => {
-  try {
-    console.log(articleData);
-    const response = await fetch(`http://localhost:3000/api/article/edit-article-content/${articleData.id}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(articleData)
-    });
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    console.log("JSON modifié avec succès");
-  } catch (e) {
-    console.error("Erreur lors de l'édition du JSON de l'article", e);
-  }
-};
-
-const editArticleContent = async (viewName, content) => {
-  try {
-    const response = await fetch(`http://localhost:3000/api/markdown/edit-markdown/${viewName}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        viewName: viewName,
-        content: content
-      })
-    });
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    console.log("Markdown modifié avec succès");
-  } catch (e) {
-    console.error("Erreur lors de l'édition du contenu Markdown de l'article", e);
-  }
-};
 
 const saveArticle = async () => {
-
-  if (hasChanges.value) {
-    // Vérifier s'il y a eu des modifications dans l'objet article
-    if (JSON.stringify(article.value) !== JSON.stringify(originalArticle.value)) {
-      // Appel de la fonction pour sauvegarder les modifications dans le JSON
-      await editArticleJson(article.value);
-    }
-
-    // Vérifier s'il y a eu des modifications dans le contenu de l'article
-    if (articleContent.value !== originalContent.value) {
-      // Appel de la fonction pour sauvegarder les modifications dans le Markdown
-      await editArticleContent(article.value.viewName, articleContent.value);
-    }
+  if (!hasChanges.value) return;
+  try {
+    await Promise.all([
+      fetch(`/api/article/edit-article-content/${article.value.id}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(article.value) 
+      }),
+      fetch(`/api/article/markdown/edit-markdown/${article.value.viewName}`, { 
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ viewName: article.value.viewName, content: articleContent.value })
+      })
+    ]);
+    toast.success("Article(s) and/or content successfully published");
+  } catch (e) {
+    console.error(e);
+    toast.error("Registration error");
   }
-
-  // Indiquer à l'utilisateur que la sauvegarde a été effectuée
-  toast.success("Article et/ou contenu édité(s) avec succès");
 };
 
 
-
-
-</script>
-
+</script>                                                                  
