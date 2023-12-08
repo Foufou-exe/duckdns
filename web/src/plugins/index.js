@@ -19,8 +19,6 @@ import { Toast, optionsToast } from "./toast.js";
 import { createPinia } from "pinia";
 const pinia = createPinia();
 
-// Vue i18n
-import translate from "./vue-i18n";
 
 export function RegisterPlugins(app) {
   app
@@ -28,6 +26,5 @@ export function RegisterPlugins(app) {
     .use(pinia)
     .use(Vue3Lottie)
     .use(Toast , optionsToast)
-    // .use(translate)
     .component("font-awesome-icon", FontAwesomeIcon);
 }

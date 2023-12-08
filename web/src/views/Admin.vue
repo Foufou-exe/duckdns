@@ -34,37 +34,14 @@
         />
       </div>
       <div class="flex justify-between mt-10">
-        <details class="dropdown dropdown-end">
-          <summary tabindex="0" :class="['btn',btnClicked ? 'btn-green' : 'btn-purple']">
-            <font-awesome-icon
-              icon="language"
-              class="text-lg text-white"
-            ></font-awesome-icon>
-            <font-awesome-icon
-              icon="chevron-down"
-              class="text-white text-xs hidden sm:block"
-            ></font-awesome-icon>
-          </summary>
-          <ul
-            tabindex="0"
-            class="dropdown-content z-[1] menu p-2 shadow bg-base-200 rounded-box w-52"
-          >
-            <!-- <li>
-              <routeur-link class="hover:font-bold"
-                ><span class="badge badge-outline badge-sm font-semibold"
-                  >FR</span
-                >Français</routeur-link
-              >
-            </li>
-            <li>
-              <routeur-link class="hover:font-bold"
-                ><span class="badge badge-outline badge-sm font-semibold"
-                  >EN</span
-                >English</routeur-link
-              >
-            </li> -->
-          </ul>
-        </details>
+        <GoogleTranslateSelect
+          default-language-code="en"
+          default-page-language-code="en"
+          :fetch-browser-language="true"
+          trigger="click"
+          :class="['btn text-white',btnClicked ? 'btn-green' : 'btn-purple']"
+        />
+  
         <button :class="['btn text-white',btnClicked ? 'btn-green' : 'btn-purple']" @click="Connexion">
           <font-awesome-icon icon="sign-in-alt" class="text-lg text-white" />
           Login
@@ -84,6 +61,7 @@ import { useToast } from "vue-toastification";
 import "vue-toastification/dist/index.css";
 import { ref } from 'vue';
 import { useLoginStore, useUserStore } from '@store/store';
+import GoogleTranslateSelect from '@google-translate-select/vue3'
 
 const loginStore = useLoginStore();
 const treeIconClicked = ref(false);

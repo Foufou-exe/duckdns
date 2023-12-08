@@ -10,8 +10,14 @@
     <div class="navbar-end space-x-2" id="app">
       <!-- Switch theme -->
       <ButtonTheme />
+
       <!-- Language switcher -->
-      <ButtonLanguage />
+      <GoogleTranslateSelect
+        default-language-code="en"
+        default-page-language-code="en"
+        :fetch-browser-language="true"
+        trigger="click"
+      />
       <!-- Login -->
       <ButtonConnexion />
       <!-- After login -->
@@ -31,8 +37,9 @@ import Menu from '@components/navbar/center/Menu.vue'
 
 // End Navbar
 import ButtonTheme from '@components/navbar/end/ButtonTheme.vue'
-import ButtonLanguage from '@components/navbar/end/ButtonLanguage.vue';
 import ButtonConnexion from '@components/navbar/end/ButtonConnexion.vue'
 import DropdownProfile from '@components/navbar/end/DropdownProfile.vue'
+
+import GoogleTranslateSelect from '@google-translate-select/vue3'
 
 </script>
