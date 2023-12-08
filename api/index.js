@@ -1,14 +1,18 @@
 import http from "http";
 import app from "./app.js";
+import dotenv from "dotenv";
 
-// Configuration du port et de l'IP
-const port = 3000;
-const ip = "0.0.0.0";
+// .env file configuration
+dotenv.config({ path: '../.env' });
+
+// Port and IP configuration
+const PORT = process.env.VITE_API_SOURCE_PORT
+const IP = process.env.VITE_API_SOURCE_HOST
 
 // Démarrage du serveur
 const server = http.createServer(app);
 
-// Ecoute du serveur sur le port défini
-server.listen(port, ip, () => {
-  console.log(`Server running at http://${ip}:${port}/`);
+// Listen to the server on the defined port
+server.listen(PORT, IP, () => {
+  console.log(`Server running at http://${IP}:${PORT}/`);
 });

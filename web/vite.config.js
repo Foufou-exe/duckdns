@@ -2,6 +2,9 @@
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import { fileURLToPath, URL } from "node:url";
+import dotenv from 'dotenv';
+
+dotenv.config({ path: '../.env' });
 
 // TODO: Vitejs configuration link ==> https://vitejs.dev/config/
 
@@ -10,14 +13,11 @@ export default defineConfig({
     vue({
       script: {
         refSugar: true,
-      },
-      
+      }
     })
   ],
   define: {
-    "process.env": {
-      
-    },
+    "process.env": process.env,
   },
   resolve: {
     alias: {
@@ -61,7 +61,8 @@ export default defineConfig({
     port: 5173,
     strictPort: true,
     proxy: {
-      '/api': 'http://localhost:3000'
-    }
+      '/api': `http://${process.env.VITE_API_SOURCE_HOST}:${process.env.VITE_API_SOURCE_PORT}`,
+    },
   },
-});
+}
+);
