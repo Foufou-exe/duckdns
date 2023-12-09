@@ -4,7 +4,7 @@ import vue from "@vitejs/plugin-vue";
 import { fileURLToPath, URL } from "node:url";
 import dotenv from 'dotenv';
 
-dotenv.config({ path: '../.env' });
+dotenv.config({ path: './.env' });
 
 // TODO: Vitejs configuration link ==> https://vitejs.dev/config/
 
@@ -58,7 +58,8 @@ export default defineConfig({
     ".md",
   ],
   server: {
-    port: 5173,
+    host: true,
+    port: 5174,
     strictPort: true,
     proxy: {
       '/api': `http://${process.env.VITE_API_SOURCE_HOST}:${process.env.VITE_API_SOURCE_PORT}`,

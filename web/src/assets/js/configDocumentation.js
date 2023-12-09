@@ -1,55 +1,55 @@
 // Linux components
-import TheLinuxToEc2 from "@components/documentation/systems/TheLinuxToEc2.vue";
-import TheLinuxToCron from "@components/documentation/systems/TheLinuxToCron.vue";
-import TheLinuxToBsdCron from "@components/documentation/systems/TheLinuxToBsdCron.vue";
-import TheLinuxToNetcatCron from "@components/documentation/systems/TheLinuxToNetcatCron.vue";
-import TheLinuxToGui from "@components/documentation/systems/TheLinuxToGui.vue";
+import LinuxToec2 from "@components/documentation/systems/LinuxToec2.vue";
+import LinuxTocron from "@components/documentation/systems/LinuxTocron.vue";
+import LinuxTobsdcron from "@components/documentation/systems/LinuxTobsdcron.vue";
+import LinuxTonetcatcron from "@components/documentation/systems/LinuxTonetcatcron.vue";
+import LinuxTogui from "@components/documentation/systems/LinuxTogui.vue";
 // Android components
-import TheAndroidToOs from "@components/documentation/systems/TheAndroid.vue";
-// MacOs components
-import TheMacOs from "@components/documentation/systems/TheMacOs.vue";
-import TheMacOsToHomebrew from "@components/documentation/systems/TheMacOsToHomebrew.vue";
-import TheMacOsToIpMonitor from "@components/documentation/systems/TheMacOsIpMonitor.vue";
-import TheMacOsToIosRealDns from "@components/documentation/systems/TheMacOsIosRealDns.vue";
+import Android from "@components/documentation/systems/Android.vue";
+// Macos components
+import MacOs from "@components/documentation/systems/MacOs.vue";
+import MacosHomebrew from "@components/documentation/systems/MacosHomebrew.vue";
+import MacosIpmonitor from "@components/documentation/systems/MacosIpmonitor.vue";
+import MacosIosrealdns from "@components/documentation/systems/MacosIosrealdns.vue";
 // Windows components
-import TheWindowsToC from "@components/documentation/systems/TheWindowsToC.vue";
-import TheWindowsToPowershell from "@components/documentation/systems/TheWindowsToPowershell.vue";
-import TheWindowsToGui from "@components/documentation/systems/TheWindowsToGui.vue";
-import TheWindowsToScript from "@components/documentation/systems/TheWindowsToScript.vue";
+import WindowsToc from "@components/documentation/systems/WindowsToc.vue";
+import WindowsTopowershell from "@components/documentation/systems/WindowsTopowershell.vue";
+import WindowsTogui from "@components/documentation/systems/WindowsTogui.vue";
+import WindowsToscript from "@components/documentation/systems/WindowsToscript.vue";
 // Raspberry components
-import TheRaspberryPi from "@components/documentation/systems/TheRaspberryPi.vue";
-import TheRaspbmc from "@components/documentation/systems/TheRaspbmc.vue";
+import RaspberryPi from "@components/documentation/systems/RaspberryPi.vue";
+import Raspbmc from "@components/documentation/systems/Raspbmc.vue";
 // Other components
-import TheOtherToDotNet from "@components/documentation/systems/TheOtherToDotNet.vue";
-import TheOtherToMono from "@components/documentation/systems/TheOtherMono.vue";
+import OtherTodotnet from "@components/documentation/systems/OtherTodotnet.vue";
+import OtherMono from "@components/documentation/systems/OtherMono.vue";
 // Routers components
-import TheRouteurToAlliedTelesis from "@components/documentation/routeur/TheRouteurToAlliedTelesis.vue";
-import TheRouteurToDdwrt from "@components/documentation/routeur/TheRouteurToDdwrt.vue";
-import TheRouteurToEdgeRouter from "@components/documentation/routeur/TheRouteurToEdgeRouter.vue";
-import TheRouteurToFreenas from "@components/documentation/routeur/TheRouteurToFreenas.vue";
-import TheRouteurToFritzbox from "@components/documentation/routeur/TheRouteurToFritzbox.vue";
-import TheRouteurToMikrotik from "@components/documentation/routeur/TheRouteurToMikrotik.vue";
-import TheRouteurToHardware from "@components/documentation/routeur/TheRouteurToHardware.vue";
-import TheRouteurToOpenwrt from "@components/documentation/routeur/TheRouteurToOpenwrt.vue";
-import TheRouteurToPfsense from "@components/documentation/routeur/TheRouteurToPfsense.vue";
-import TheRouteurToSynology from "@components/documentation/routeur/TheRouteurToSynology.vue";
-import TheRouteurToSmoothwall from "@components/documentation/routeur/TheRouteurToSmoothwall.vue";
-import TheRouteurToTechnicolor from "@components/documentation/routeur/TheRouteurToTechnicolor.vue";
-import TheRouteurToTomotoUsb from "@components/documentation/routeur/TheRouteurToTomotoUsb.vue";
-import TheRouteurToZteh108n from "@components/documentation/routeur/TheRouteurToZteh108n.vue";
+import AlliedTelesis from "@components/documentation/routeur/AlliedTelesis.vue";
+import Ddwrt from "@components/documentation/routeur/Ddwrt.vue";
+import EdgeRouter from "@components/documentation/routeur/EdgeRouter.vue";
+import Freenas from "@components/documentation/routeur/Freenas.vue";
+import Fritzbox from "@components/documentation/routeur/Fritzbox.vue";
+import Mikrotik from "@components/documentation/routeur/Mikrotik.vue";
+import Hardware from "@components/documentation/routeur/Hardware.vue";
+import Openwrt from "@components/documentation/routeur/Openwrt.vue";
+import Pfsense from "@components/documentation/routeur/Pfsense.vue";
+import Synology from "@components/documentation/routeur/Synology.vue";
+import Smoothwall from "@components/documentation/routeur/Smoothwall.vue";
+import Technicolor from "@components/documentation/routeur/Technicolor.vue";
+import TomotoUsb from "@components/documentation/routeur/TomotoUsb.vue";
+import Zteh108n from "@components/documentation/routeur/Zteh108n.vue";
 // Standards components
-import TheStandardsToDNSOmatic from "@components/documentation/standards/TheStandardsToDNSOmatic.vue";
-import TheStandardsToDynDNS from "@components/documentation/standards/TheStandardsToDynDNS.vue";
-import TheStandardsToGnuDIP from "@components/documentation/standards/TheStandardsToGnuDIP.vue";
-import TheStandardsToInadyn from "@components/documentation/standards/TheStandardsToInadyn.vue";
+import DNSOmatic from "@components/documentation/standards/DNSOmatic.vue";
+import DynDNS from "@components/documentation/standards/DynDNS.vue";
+import GnuDIP from "@components/documentation/standards/GnuDIP.vue";
+import Inadyn from "@components/documentation/standards/Inadyn.vue";
 
 // Export different variable
 /**
  * Configuration documentation object.
  * @typedef {Object} ConfigDocumentation
- * @property {Object} categories - The categories of operating systems and routers.
- * @property {Object} types - The types of operating systems.
- * @property {Object} components - The components mapping.
+ * @property {Object} categories -  categories of operating systems and routers.
+ * @property {Object} types -  types of operating systems.
+ * @property {Object} components -  components mapping.
  */
 
 /**
@@ -94,42 +94,42 @@ const configDocumentation = {
     Other: ["DotNet", "Mono"],
   },
   components: {
-    Powershell: TheWindowsToPowershell,
-    Script: TheWindowsToScript,
-    Gui: TheWindowsToGui,
-    "C#": TheWindowsToC,
-    OSX: TheMacOs,
-    Homebrew: TheMacOsToHomebrew,
-    "IP Monitor": TheMacOsToIpMonitor,
-    "IOS RealDNS": TheMacOsToIosRealDns,
-    OS: TheAndroidToOs,
-    EC2: TheLinuxToEc2,
-    Cron: TheLinuxToCron,
-    "Bsd Cron": TheLinuxToBsdCron,
-    "Netcat Cron": TheLinuxToNetcatCron,
-    GUI: TheLinuxToGui,
-    Raspbmc: TheRaspbmc,
-    Pi: TheRaspberryPi,
-    DotNet: TheOtherToDotNet,
-    Mono: TheOtherToMono,
-    "Allied Telesis": TheRouteurToAlliedTelesis,
-    Ddwrt: TheRouteurToDdwrt,
-    "Edge Router": TheRouteurToEdgeRouter,
-    Freenas: TheRouteurToFreenas,
-    Fritzbox: TheRouteurToFritzbox,
-    Mikrotik: TheRouteurToMikrotik,
-    Hardware: TheRouteurToHardware,
-    Openwrt: TheRouteurToOpenwrt,
-    Pfsense: TheRouteurToPfsense,
-    Synology: TheRouteurToSynology,
-    Smoothwall: TheRouteurToSmoothwall,
-    Technicolor: TheRouteurToTechnicolor,
-    "Tomoto USB": TheRouteurToTomotoUsb,
-    Zteh108n: TheRouteurToZteh108n,
-    "DNS Omatic": TheStandardsToDNSOmatic,
-    DynDNS: TheStandardsToDynDNS,
-    GnuDIP: TheStandardsToGnuDIP,
-    Inadyn: TheStandardsToInadyn,
+    Powershell: WindowsTopowershell,
+    Script: WindowsToscript,
+    Gui: WindowsTogui,
+    "C#": WindowsToc,
+    OSX: MacOs,
+    Homebrew: MacosHomebrew,
+    "IP Monitor": MacosIpmonitor,
+    "IOS RealDNS": MacosIosrealdns,
+    OS: Android,
+    EC2: LinuxToec2,
+    Cron: LinuxTocron,
+    "Bsd Cron": LinuxTobsdcron,
+    "Netcat Cron": LinuxTonetcatcron,
+    GUI: LinuxTogui,
+    Raspbmc: Raspbmc,
+    Pi: RaspberryPi,
+    DotNet: OtherTodotnet,
+    Mono: OtherMono,
+    "Allied Telesis": AlliedTelesis,
+    Ddwrt: Ddwrt,
+    "Edge Router": EdgeRouter,
+    Freenas: Freenas,
+    Fritzbox: Fritzbox,
+    Mikrotik: Mikrotik,
+    Hardware: Hardware,
+    Openwrt: Openwrt,
+    Pfsense: Pfsense,
+    Synology: Synology,
+    Smoothwall: Smoothwall,
+    Technicolor: Technicolor,
+    "Tomoto USB": TomotoUsb,
+    Zteh108n: Zteh108n,
+    "DNS Omatic": DNSOmatic,
+    DynDNS: DynDNS,
+    GnuDIP: GnuDIP,
+    Inadyn: Inadyn,
   },
 };
 

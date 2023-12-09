@@ -1,19 +1,19 @@
-# Tâche à faire ✨
+# Task to do ✨
 
-## Fonctionnalitées de base ✅
+## Basic functionality ✅
 
-- [x] Copier le contenu du site
+- [x] Copy site content
 
-## Ajout de fonctionnalitées 🎈
+## Add functionality 🎈
 
-- [x] Systeme de themes dark/light
-- [x] Site responsif
-- [x] Systeme de selection dans la page de Documentation
-- [x] Créer une page News qui aura pour but de lister les News du site
-- [x] Pouvoir trier et filtrer les News
-- [x] Systeme de navigation avec un bouton home et un bouton retour dans les News
-- [x] Systeme d'alerte personnalisée sur les pages Domaine et Profile
-- [ ] Traduire les pages dans les langues définie
-- [ ] Ajouter une notification au début du site pour montrer la derniere News
-- [ ] Créer un panel Admin pour créer des articles en markdown
+- [x] Dark/light theme system
+- [x] Responsive site
+- [x] Selection system in the Documentation page
+- [x] Create a News page to list the site's news
+- [x] Sort and filter news items
+- [x] Navigation system with a home button and a back button in the News
+- [x] Personalised alert system on the Domain and Profile pages
+- [x] Translate pages into defined languages
+- [x] Add a notification at the start of the site to show the latest News
+- [x] Create an Admin panel to create articles in markdown
 

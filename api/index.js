@@ -3,7 +3,7 @@ import app from "./app.js";
 import dotenv from "dotenv";
 
 // .env file configuration
-dotenv.config({ path: '../.env' });
+dotenv.config({ path: './.env' });
 
 // Port and IP configuration
 const PORT = process.env.VITE_API_SOURCE_PORT
