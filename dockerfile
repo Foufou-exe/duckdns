@@ -1,6 +1,8 @@
 # Initialisation de l'image de base
 FROM node:20 as base-stage-0
 
+LABEL maintainer="Foufou-exe"
+
 # Création du repertoire de travail
 WORKDIR /app
 
