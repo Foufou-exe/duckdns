@@ -1,0 +1,72 @@
+/* 
+    FILEPATH: @/styles/global.css
+    Description: This file contains global styles for the web application, including responsive code, 3D effects on images, and color schemes for different elements.
+*/
+/* 
+    Path: web/src/styles/global.css 
+*/
+
+/* Responsif mecode */
+.mockup-code pre code {
+  word-wrap: break-word; /* Enables the text to break and go to the line */
+  white-space: pre-wrap; /* Respects spaces and line breaks in texte */
+}
+
+/* Effect 3D on picture  */
+.hover-move {
+  transition: transform 0.1s;
+  transform-style: preserve-3d;
+}
+
+/* Switch color Panel */
+
+:root {
+  --color-purple: #615e96;
+  --color-light-purple: #5a63b1;
+  --color-dark-purple: #6d78d7;
+  --color-pale-purple: #8776b7;
+  --color-dark-gray: #3c4063;
+  --color-green: #45a83e;
+}
+
+.titre-purple,
+.strong-purple {
+  color: var(--color-purple);
+}
+.strong-purple {
+  color: var(--color-light-purple);
+}
+.input-purple,
+.btn-purple,
+.btn-switch-purple {
+  border-color: var(--color-dark-purple);
+}
+.input-purple {
+  color: var(--color-dark-purple);
+}
+.btn-purple {
+  background-color: var(--color-pale-purple);
+}
+
+.btn-switch-purple {
+  background-color: var(--color-dark-gray);
+}
+.btn-switch-purple:hover {
+  background-color: var(--color-green);
+}
+
+.titre-green,
+.strong-green,
+.input-green {
+  color: var(--color-green);
+}
+
+.btn-green,
+.btn-switch-green {
+  background-color: var(--color-green);
+  border-color: var(--color-green);
+}
+
+.btn-switch-green:hover {
+  background-color: var(--color-dark-gray);
+}
