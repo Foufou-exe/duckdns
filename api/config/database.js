@@ -1,19 +1,8 @@
 import sqlite3 from 'sqlite3';
 import md5 from 'md5';
 import path from 'path';
-import { fileURLToPath } from "url";
-import fs from 'fs';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-// Database folder path definition
-const dbDir = path.join(__dirname, 'sql');
-
-// Create the folder if it does not exist
-if (!fs.existsSync(dbDir)) {
-  fs.mkdirSync(dbDir, { recursive: true });
-}
-// Full path to the database file
-const dbPath = path.join(dbDir, 'db.sqlite');
+const dbPath = path.join('./config/sql', 'db.sqlite');
 
 let db = new sqlite3.Database(dbPath, (err) => {
     if (err) {

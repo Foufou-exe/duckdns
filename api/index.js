@@ -9,7 +9,7 @@ dotenv.config({ path: './.env' });
 const PORT = process.env.VITE_API_SOURCE_PORT
 const IP = process.env.VITE_API_SOURCE_HOST
 
-// Démarrage du serveur
+// Start the server
 const server = http.createServer(app);
 
 // Listen to the server on the defined port

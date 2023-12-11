@@ -1,6 +1,7 @@
 
 import express from "express";
 import { listUsers, countUsers, loginUser, resetPassword, editUser } from "../controllers/userController.js";
+
 const router = express.Router();
 
 router.get("/list-users", listUsers);

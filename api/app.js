@@ -3,7 +3,7 @@ import express from 'express';
 import cors from 'cors';
 
 
-// Importation des routeurs
+// Importing routers
 import userRoutes from './routes/userRoutes.js';
 import  router  from './routes/articleRoutes.js';
 
@@ -11,7 +11,7 @@ import  router  from './routes/articleRoutes.js';
 import notFoundHandler from './middleware/notFoundHandler.js';
 import errorHandler from './middleware/errorHandler.js';
 
-// Création de l'application Express
+// Creating the Express application
 const app = express();
 
 // Activation des middlewares de base
@@ -28,5 +28,6 @@ app.use('/api/article', router);
 app.use(notFoundHandler);
 app.use(errorHandler);
 
+// Exporting the application
 export default app;
 
