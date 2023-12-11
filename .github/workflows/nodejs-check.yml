@@ -18,15 +18,17 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Change to web directory
-      run: cd web/
-
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-
+        
     - run: npm ci
+      working-directory: web
+
     - run: npm run build --if-present
+      working-directory: web
+
     - run: npm preview
+      working-directory: web
