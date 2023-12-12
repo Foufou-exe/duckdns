@@ -1,3 +1,4 @@
 # Ignore dossier
 node_modules
 tmp
+db.sqlite
