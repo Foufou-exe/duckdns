@@ -6,7 +6,7 @@
 ![JavaScript](https://img.shields.io/badge/Language-JavaScript-blue)
 ![Node.js](https://img.shields.io/badge/Language-Node.js-blue)
 ![Express](https://img.shields.io/badge/Language-Vue3-green)
-
+[![DeepScan grade](https://deepscan.io/api/teams/22793/projects/26090/branches/825585/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=22793&pid=26090&bid=825585)
 
 
 This project aims to modernise the DuckDNS site.
