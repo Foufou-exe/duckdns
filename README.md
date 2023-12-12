@@ -40,6 +40,7 @@ Clone this repository on your local machine.
 2. Run `npm install` to install the dependencies.
 3. Run `npm start` to launch the API.
 
+
 __IMPORTANT: The backend must be launched before the frontend.__
 
 #### Docker
@@ -49,7 +50,6 @@ __IMPORTANT: The backend must be launched before the frontend.__
 3. Run `docker run --name web-site-duckdns -d -p 8080:80 duckdns:latest` to launch the site.
 
 Example: `http://localhost:8080/`
-
 
 
 ## Contribution
